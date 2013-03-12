@@ -112,6 +112,8 @@
 		2EFA3D2C16EFBBE2002F9B42 /* StoreFeeder */ = {
 			isa = PBXGroup;
 			children = (
+				2EFA3D5C16EFBCEF002F9B42 /* Views */,
+				2EFA3D5B16EFBCE0002F9B42 /* Controllers */,
 				2EFA3D3516EFBBE2002F9B42 /* AppDelegate.h */,
 				2EFA3D3616EFBBE2002F9B42 /* AppDelegate.m */,
 				2EFA3D2D16EFBBE2002F9B42 /* Supporting Files */,
@@ -150,6 +152,20 @@
 				2EFA3D4D16EFBBE3002F9B42 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2EFA3D5B16EFBCE0002F9B42 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2EFA3D5C16EFBCEF002F9B42 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
