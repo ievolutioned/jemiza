@@ -43,15 +43,15 @@
     [self.view addSubview:activity];
     [activity startAnimating];
     
-    [self.dataManager getProductListToHandler:^(NSArray *result) {
-        [activity stopAnimating];
-        [activity removeFromSuperview];
-        if(result != nil)
-        {
-            self.products = result;
-            [self.tableView reloadData];
-            [self loadSearchBar];
-        }
+    [self.dataManager loadProductListWithHandler:^(BOOL loaded) {
+         [activity stopAnimating];
+         [activity removeFromSuperview];
+         if(loaded)
+         {
+             self.filteredProducts = self.dataManager.cachedInfo;
+             [self.tableView reloadData];
+             [self loadSearchBar];
+         }
     }];
 }
 
@@ -64,6 +64,7 @@
         height = 44;
         
         UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+        [searchBar setDelegate:self];
         [self.tableView setTableHeaderView:searchBar];
         
         self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
@@ -89,7 +90,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.products count];
+    return [self.filteredProducts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,7 +106,7 @@
             cell = [[NSBundle mainBundle] loadNibNamed:@"ProductCell-iPhone" owner:self options:nil][0];
     }
     
-    [cell loadData:self.products[indexPath.row]];
+    [cell loadData:self.filteredProducts[indexPath.row]];
     
     return cell;
 }
@@ -169,6 +170,22 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+#pragma mark - SearchBar delegate
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if([searchText length] != 0)
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY FUNCTION(SELF, 'allValues') contains[cd] %@", searchText];
+        self.filteredProducts = [self.dataManager.cachedInfo filteredArrayUsingPredicate:predicate];
+    }
+    else
+    {
+        self.filteredProducts = self.dataManager.cachedInfo;
+    }
+    [self.tableView reloadData];
 }
 
 @end

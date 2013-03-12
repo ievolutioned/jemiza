@@ -10,5 +10,8 @@
 #import "IDataManager.h"
 
 @interface MasterController : NSObject<IDataManager>
+{
+    NSArray *_cachedInfo;
+}
 
 @end

@@ -1,5 +1,5 @@
 //
-//  IDataManager.h
+//  FileManager.h
 //  StoreFeeder
 //
 //  Created by Victor Valenzuela on 3/12/13.
@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol IDataManager <NSObject>
-
-@property(nonatomic, readonly) NSArray *cachedInfo;
--(void)loadProductListWithHandler:(void(^)(BOOL))handler;
-
+@interface FileManager : NSObject
 
 @end

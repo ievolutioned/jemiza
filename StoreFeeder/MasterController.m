@@ -9,8 +9,9 @@
 #import "MasterController.h"
 
 @implementation MasterController
+@synthesize cachedInfo = _cachedInfo;
 
--(void)getProductListToHandler:(void (^)(NSArray *))handler
+-(void)loadProductListWithHandler:(void (^)(BOOL))handler
 {
     NSArray *products = @[ @{@"id": @"ABC1",
                              @"description": @"Bla bla bla bla bla",
@@ -23,7 +24,10 @@
                              @"quantity": @"789"}
                           ];
     
-    handler(products);
+    _cachedInfo = products;
+    handler(self.cachedInfo != nil);
 }
+
+
 
 @end

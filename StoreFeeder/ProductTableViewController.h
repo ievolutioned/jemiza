@@ -12,6 +12,6 @@
 @interface ProductTableViewController : UITableViewController<UISearchBarDelegate>
 
 @property(nonatomic, assign) id<IDataManager> dataManager;
-@property(nonatomic, retain) NSArray *products;
+@property(nonatomic, retain) NSArray *filteredProducts;
 
 @end
