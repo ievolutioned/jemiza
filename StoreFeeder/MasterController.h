@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "IDataManager.h"
+#import "RESTDataManager.h"
+#import "FileManager.h"
 
 @interface MasterController : NSObject<IDataManager>
-{
-    NSArray *_cachedInfo;
-}
+
+@property(nonatomic, retain)RESTDataManager *restDataManager;
+@property(nonatomic, retain)FileManager *fileManager;
 
 @end

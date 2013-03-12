@@ -9,25 +9,40 @@
 #import "MasterController.h"
 
 @implementation MasterController
-@synthesize cachedInfo = _cachedInfo;
+@synthesize cachedInfo;
+
+-(id)init
+{
+    self = [super init];
+    if(self)
+    {
+        self.restDataManager = [[RESTDataManager alloc] init];
+        self.fileManager = [[FileManager alloc] init];
+    }
+    return self;
+}
 
 -(void)loadProductListWithHandler:(void (^)(BOOL))handler
 {
-    NSArray *products = @[ @{@"id": @"ABC1",
-                             @"description": @"Bla bla bla bla bla",
-                             @"quantity": @"123"},
-                           @{@"id": @"CDE2",
-                             @"description": @"Bla bla bla bla bla",
-                             @"quantity": @"456"},
-                           @{@"id": @"FGH3",
-                             @"description": @"Bla bla bla bla bla",
-                             @"quantity": @"789"}
-                          ];
     
-    _cachedInfo = products;
-    handler(self.cachedInfo != nil);
+    if(![self.fileManager checkIfJsonFileExists])
+    {
+        [self resyncInfoWithHandler:handler];
+    }
+    else
+    {
+        self.cachedInfo = [self.fileManager loadInfoFromJsonFile];
+        handler(self.cachedInfo != nil);
+    }
 }
 
-
+-(void)resyncInfoWithHandler:(void (^)(BOOL))handler
+{
+    [self.restDataManager getInfoFromServiceToHandler:^(NSData *data) {
+        [self.fileManager loadInfoToJsonFile:data];
+        self.cachedInfo = [self.fileManager loadInfoFromJsonFile];
+        handler(self.cachedInfo != nil);
+    }];
+}
 
 @end

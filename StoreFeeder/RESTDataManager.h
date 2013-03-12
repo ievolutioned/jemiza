@@ -10,4 +10,6 @@
 
 @interface RESTDataManager : NSObject
 
+-(void)getInfoFromServiceToHandler:(void(^)(NSData*))handler;
+
 @end

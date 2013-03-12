@@ -35,10 +35,10 @@
 {
     if(!self.dataMapping)
     {
-        self.dataMapping = @[@"id", @"description", @"quantity"];
+        self.dataMapping = @[@"product_code", @"description", @"stock"];
     }
     [self.productInfoList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [((UILabel *)obj) setText:data[self.dataMapping[idx]]];
+        [((UILabel *)obj) setText:[NSString stringWithFormat:@"%@", data[self.dataMapping[idx]]]];
     }];
 }
 

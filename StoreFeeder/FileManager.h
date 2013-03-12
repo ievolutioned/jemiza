@@ -10,4 +10,8 @@
 
 @interface FileManager : NSObject
 
+-(void)loadInfoToJsonFile:(NSData *)jsonInfo;
+-(BOOL)checkIfJsonFileExists;
+-(NSArray *)loadInfoFromJsonFile;
+
 @end

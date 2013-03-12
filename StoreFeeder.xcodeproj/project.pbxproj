@@ -28,6 +28,8 @@
 		2EFA3D6C16EFC9E4002F9B42 /* ProductCell-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D6B16EFC9E4002F9B42 /* ProductCell-iPhone.xib */; };
 		2EFA3D7016EFE09A002F9B42 /* RESTDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D6F16EFE09A002F9B42 /* RESTDataManager.m */; };
 		2EFA3D7316EFE0B3002F9B42 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7216EFE0B3002F9B42 /* FileManager.m */; };
+		2EFA3D7716EFF4DB002F9B42 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7516EFF4DB002F9B42 /* ProductDetailViewController.m */; };
+		2EFA3D7816EFF4DB002F9B42 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7616EFF4DB002F9B42 /* ProductDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,9 @@
 		2EFA3D6F16EFE09A002F9B42 /* RESTDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTDataManager.m; sourceTree = "<group>"; };
 		2EFA3D7116EFE0B3002F9B42 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		2EFA3D7216EFE0B3002F9B42 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		2EFA3D7416EFF4DB002F9B42 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		2EFA3D7516EFF4DB002F9B42 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		2EFA3D7616EFF4DB002F9B42 /* ProductDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +197,9 @@
 				2EFA3D6116EFBDEB002F9B42 /* ProductCell.m */,
 				2EFA3D6316EFBE34002F9B42 /* ProductCell-iPad.xib */,
 				2EFA3D6B16EFC9E4002F9B42 /* ProductCell-iPhone.xib */,
+				2EFA3D7416EFF4DB002F9B42 /* ProductDetailViewController.h */,
+				2EFA3D7516EFF4DB002F9B42 /* ProductDetailViewController.m */,
+				2EFA3D7616EFF4DB002F9B42 /* ProductDetailViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -302,6 +310,7 @@
 				2EFA3D3D16EFBBE2002F9B42 /* Default-568h@2x.png in Resources */,
 				2EFA3D6416EFBE34002F9B42 /* ProductCell-iPad.xib in Resources */,
 				2EFA3D6C16EFC9E4002F9B42 /* ProductCell-iPhone.xib in Resources */,
+				2EFA3D7816EFF4DB002F9B42 /* ProductDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +352,7 @@
 				2EFA3D6816EFBF72002F9B42 /* MasterController.m in Sources */,
 				2EFA3D7016EFE09A002F9B42 /* RESTDataManager.m in Sources */,
 				2EFA3D7316EFE0B3002F9B42 /* FileManager.m in Sources */,
+				2EFA3D7716EFF4DB002F9B42 /* ProductDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

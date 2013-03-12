@@ -10,4 +10,16 @@
 
 @implementation RESTDataManager
 
+-(void)getInfoFromServiceToHandler:(void (^)(NSData *))handler
+{
+    NSURL *url = [NSURL URLWithString:@"http://jemiza.herokuapp.com/admin/products.json"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if(!error)
+        {
+            handler(data);
+        }
+    }];
+}
+
 @end

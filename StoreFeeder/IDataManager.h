@@ -10,8 +10,9 @@
 
 @protocol IDataManager <NSObject>
 
-@property(nonatomic, readonly) NSArray *cachedInfo;
+@property(nonatomic, retain) NSArray *cachedInfo;
 -(void)loadProductListWithHandler:(void(^)(BOOL))handler;
+-(void)resyncInfoWithHandler:(void(^)(BOOL))handler;
 
 
 @end
