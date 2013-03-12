@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navController;
+@property(nonatomic, retain) UITableViewController *tableViewController;
+@property(nonatomic, retain) MasterController *masterController;
 
 @end

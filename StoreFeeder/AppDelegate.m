@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ProductTableViewController.h"
+
 
 @implementation AppDelegate
 
@@ -19,8 +21,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.masterController = [[MasterController alloc] init];
+    self.tableViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [((ProductTableViewController *)self.tableViewController) setDataManager:self.masterController];
     
-    self.navController = [[UINavigationController alloc] init];
+    self.navController = [[UINavigationController alloc] initWithRootViewController:self.tableViewController];
+    
     [self.window addSubview:self.navController.view];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

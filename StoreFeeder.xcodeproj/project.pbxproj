@@ -21,6 +21,11 @@
 		2EFA3D4716EFBBE3002F9B42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D2816EFBBE2002F9B42 /* Foundation.framework */; };
 		2EFA3D4F16EFBBE3002F9B42 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D4D16EFBBE3002F9B42 /* InfoPlist.strings */; };
 		2EFA3D5216EFBBE3002F9B42 /* StoreFeederTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D5116EFBBE3002F9B42 /* StoreFeederTests.m */; };
+		2EFA3D5F16EFBDC8002F9B42 /* ProductTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D5E16EFBDC8002F9B42 /* ProductTableViewController.m */; };
+		2EFA3D6216EFBDEB002F9B42 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D6116EFBDEB002F9B42 /* ProductCell.m */; };
+		2EFA3D6416EFBE34002F9B42 /* ProductCell-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D6316EFBE34002F9B42 /* ProductCell-iPad.xib */; };
+		2EFA3D6816EFBF72002F9B42 /* MasterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D6716EFBF72002F9B42 /* MasterController.m */; };
+		2EFA3D6C16EFC9E4002F9B42 /* ProductCell-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D6B16EFC9E4002F9B42 /* ProductCell-iPhone.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,15 @@
 		2EFA3D4E16EFBBE3002F9B42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2EFA3D5016EFBBE3002F9B42 /* StoreFeederTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreFeederTests.h; sourceTree = "<group>"; };
 		2EFA3D5116EFBBE3002F9B42 /* StoreFeederTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreFeederTests.m; sourceTree = "<group>"; };
+		2EFA3D5D16EFBDC8002F9B42 /* ProductTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewController.h; sourceTree = "<group>"; };
+		2EFA3D5E16EFBDC8002F9B42 /* ProductTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewController.m; sourceTree = "<group>"; };
+		2EFA3D6016EFBDEB002F9B42 /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
+		2EFA3D6116EFBDEB002F9B42 /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
+		2EFA3D6316EFBE34002F9B42 /* ProductCell-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductCell-iPad.xib"; sourceTree = "<group>"; };
+		2EFA3D6616EFBF72002F9B42 /* MasterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterController.h; sourceTree = "<group>"; };
+		2EFA3D6716EFBF72002F9B42 /* MasterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterController.m; sourceTree = "<group>"; };
+		2EFA3D6A16EFC0DE002F9B42 /* IDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDataManager.h; sourceTree = "<group>"; };
+		2EFA3D6B16EFC9E4002F9B42 /* ProductCell-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductCell-iPhone.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +126,8 @@
 		2EFA3D2C16EFBBE2002F9B42 /* StoreFeeder */ = {
 			isa = PBXGroup;
 			children = (
+				2EFA3D6916EFC0C8002F9B42 /* Protocols */,
+				2EFA3D6516EFBF5D002F9B42 /* Data */,
 				2EFA3D5C16EFBCEF002F9B42 /* Views */,
 				2EFA3D5B16EFBCE0002F9B42 /* Controllers */,
 				2EFA3D3516EFBBE2002F9B42 /* AppDelegate.h */,
@@ -157,6 +173,8 @@
 		2EFA3D5B16EFBCE0002F9B42 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2EFA3D5D16EFBDC8002F9B42 /* ProductTableViewController.h */,
+				2EFA3D5E16EFBDC8002F9B42 /* ProductTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -164,8 +182,29 @@
 		2EFA3D5C16EFBCEF002F9B42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2EFA3D6016EFBDEB002F9B42 /* ProductCell.h */,
+				2EFA3D6116EFBDEB002F9B42 /* ProductCell.m */,
+				2EFA3D6316EFBE34002F9B42 /* ProductCell-iPad.xib */,
+				2EFA3D6B16EFC9E4002F9B42 /* ProductCell-iPhone.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		2EFA3D6516EFBF5D002F9B42 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2EFA3D6616EFBF72002F9B42 /* MasterController.h */,
+				2EFA3D6716EFBF72002F9B42 /* MasterController.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		2EFA3D6916EFC0C8002F9B42 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2EFA3D6A16EFC0DE002F9B42 /* IDataManager.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +282,8 @@
 				2EFA3D3916EFBBE2002F9B42 /* Default.png in Resources */,
 				2EFA3D3B16EFBBE2002F9B42 /* Default@2x.png in Resources */,
 				2EFA3D3D16EFBBE2002F9B42 /* Default-568h@2x.png in Resources */,
+				2EFA3D6416EFBE34002F9B42 /* ProductCell-iPad.xib in Resources */,
+				2EFA3D6C16EFC9E4002F9B42 /* ProductCell-iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +320,9 @@
 			files = (
 				2EFA3D3316EFBBE2002F9B42 /* main.m in Sources */,
 				2EFA3D3716EFBBE2002F9B42 /* AppDelegate.m in Sources */,
+				2EFA3D5F16EFBDC8002F9B42 /* ProductTableViewController.m in Sources */,
+				2EFA3D6216EFBDEB002F9B42 /* ProductCell.m in Sources */,
+				2EFA3D6816EFBF72002F9B42 /* MasterController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
