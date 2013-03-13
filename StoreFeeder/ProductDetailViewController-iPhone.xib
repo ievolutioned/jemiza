@@ -179,7 +179,7 @@
 							<object class="IBUILabel" id="205358796">
 								<reference key="NSNextResponder" ref="1053238713"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{9, 10}, {73, 24}}</string>
+								<string key="NSFrame">{{9, 10}, {86, 42}}</string>
 								<reference key="NSSuperview" ref="1053238713"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="930920520"/>
@@ -189,15 +189,17 @@
 								<int key="IBUIContentMode">1</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Precios:</string>
+								<string key="IBUIText">Precios por caja:</string>
 								<reference key="IBUITextColor" ref="248990727"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<bool key="IBUIAdjustsLetterSpacingToFitWidth">YES</bool>
+								<int key="IBUINumberOfLines">2</int>
 								<int key="IBUILineBreakMode">0</int>
 								<reference key="IBUIFontDescription" ref="13102337"/>
 								<reference key="IBUIFont" ref="1025723977"/>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+								<double key="preferredMaxLayoutWidth">86</double>
 							</object>
 							<object class="IBUILabel" id="674019840">
 								<reference key="NSNextResponder" ref="1053238713"/>
@@ -527,56 +529,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
-						<string key="label">productDetailLabels</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="674019840"/>
-						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
-						<bool key="addsContentToExistingCollection">NO</bool>
-					</object>
-					<int key="connectionID">85</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
-						<string key="label">productDetailLabels</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="515020292"/>
-						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
-						<bool key="addsContentToExistingCollection">NO</bool>
-					</object>
-					<int key="connectionID">86</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
-						<string key="label">productDetailLabels</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="745118250"/>
-						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
-						<bool key="addsContentToExistingCollection">NO</bool>
-					</object>
-					<int key="connectionID">87</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
-						<string key="label">productDetailLabels</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="482806320"/>
-						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
-						<bool key="addsContentToExistingCollection">NO</bool>
-					</object>
-					<int key="connectionID">88</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
-						<string key="label">productDetailLabels</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="748710550"/>
-						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
-						<bool key="addsContentToExistingCollection">NO</bool>
-					</object>
-					<int key="connectionID">89</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
 						<string key="label">viewAreas</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="784049774"/>
@@ -612,6 +564,56 @@
 						<reference key="destination" ref="191373211"/>
 					</object>
 					<int key="connectionID">94</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
+						<string key="label">productQuantitiesLabels</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="674019840"/>
+						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
+						<bool key="addsContentToExistingCollection">NO</bool>
+					</object>
+					<int key="connectionID">95</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
+						<string key="label">productQuantitiesLabels</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="515020292"/>
+						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
+						<bool key="addsContentToExistingCollection">NO</bool>
+					</object>
+					<int key="connectionID">96</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
+						<string key="label">productQuantitiesLabels</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="745118250"/>
+						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
+						<bool key="addsContentToExistingCollection">NO</bool>
+					</object>
+					<int key="connectionID">97</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
+						<string key="label">productQuantitiesLabels</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="482806320"/>
+						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
+						<bool key="addsContentToExistingCollection">NO</bool>
+					</object>
+					<int key="connectionID">98</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletCollectionConnection" key="connection">
+						<string key="label">productQuantitiesLabels</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="748710550"/>
+						<string key="cachedDesigntimeCollectionClassName">NSArray</string>
+						<bool key="addsContentToExistingCollection">NO</bool>
+					</object>
+					<int key="connectionID">99</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -785,7 +787,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">94</int>
+			<int key="maxID">99</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -795,6 +797,11 @@
 					<dictionary class="NSMutableDictionary" key="toManyOutletInfosByName">
 						<object class="IBToManyOutletInfo" key="productDetailLabels">
 							<string key="name">productDetailLabels</string>
+							<string key="candidateClassName">UILabel</string>
+							<string key="collectionClassName">NSArray</string>
+						</object>
+						<object class="IBToManyOutletInfo" key="productQuantitiesLabels">
+							<string key="name">productQuantitiesLabels</string>
 							<string key="candidateClassName">UILabel</string>
 							<string key="collectionClassName">NSArray</string>
 						</object>

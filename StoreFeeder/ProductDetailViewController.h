@@ -12,6 +12,7 @@
 
 @property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productDetailLabels;
 @property(nonatomic, retain) IBOutletCollection(UIView) NSArray *viewAreas;
+@property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productQuantitiesLabels;
 @property(nonatomic, assign) NSDictionary *productData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil WithData:(NSDictionary *)data;

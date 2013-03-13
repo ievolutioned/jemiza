@@ -12,6 +12,7 @@
 @interface ProductDetailViewController ()
 {
     NSArray *_dataMapping;
+    NSArray *_quantitiesMapping;
 }
 
 @end
@@ -23,7 +24,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.productData = data;
-        _dataMapping = @[@"product_code", @"description", @"p_1", @"p_2", @"p_3", @"p_4", @"stock"];
     }
     return self;
 }
@@ -33,9 +33,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"Información de producto";
-    _dataMapping = @[@"product_code", @"description", @"p_1", @"p_2", @"p_3", @"p_4", @"stock"];
+    _dataMapping = @[@"product_code", @"description"];
+    _quantitiesMapping = @[@"p_1", @"p_2", @"p_3", @"p_4", @"stock"];
     [self.productDetailLabels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [((UILabel *)obj) setText:[NSString stringWithFormat:@"%@", self.productData[_dataMapping[idx]]]];
+        if(self.productData[_dataMapping[idx]] != [NSNull null])
+        {
+            NSString *detail = [self stripDoubleSpaceFrom:self.productData[_dataMapping[idx]]];
+            [((UILabel *)obj) setText:detail];
+        }
+        else
+        {
+            [((UILabel *)obj) setText:@""];
+        }
+    }];
+    
+    [self.productQuantitiesLabels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if(self.productData[_quantitiesMapping[idx]] != [NSNull null])
+        {
+            float value = [self.productData[_quantitiesMapping[idx]] floatValue];
+            [((UILabel *)obj) setText:[NSString stringWithFormat:@"%.2f", value]];
+        }
+        else
+        {
+            [((UILabel *)obj) setText:@""];
+        }
     }];
     
     [self.viewAreas enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -44,6 +65,13 @@
         ((UIView *)obj).layer.borderColor = [[UIColor grayColor] CGColor];
         ((UIView *)obj).layer.borderWidth = 2;
     }];
+}
+
+- (NSString *)stripDoubleSpaceFrom:(NSString *)str {
+    while ([str rangeOfString:@"  "].location != NSNotFound) {
+        str = [str stringByReplacingOccurrencesOfString:@"  " withString:@" "];
+    }
+    return str;
 }
 
 - (void)didReceiveMemoryWarning
