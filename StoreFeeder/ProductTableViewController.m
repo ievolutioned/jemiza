@@ -199,7 +199,7 @@
 {
     if([searchText length] != 0)
     {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SUBQUERY(FUNCTION(SELF, 'allValues'), $k, SELF[$k].stringValue contains[cd] %@).@count > 0", searchText];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"description", searchText];
         
         self.filteredProducts = [[self.dataManager cachedInfo] filteredArrayUsingPredicate:predicate];
     }

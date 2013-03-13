@@ -45,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2EFA3D2316EFBBE2002F9B42 /* JemizaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JemizaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EFA3D2316EFBBE2002F9B42 /* Jemiza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jemiza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFA3D2616EFBBE2002F9B42 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2EFA3D2816EFBBE2002F9B42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2EFA3D2A16EFBBE2002F9B42 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,7 +124,7 @@
 		2EFA3D2416EFBBE2002F9B42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2EFA3D2316EFBBE2002F9B42 /* JemizaApp.app */,
+				2EFA3D2316EFBBE2002F9B42 /* Jemiza.app */,
 				2EFA3D4316EFBBE3002F9B42 /* StoreFeederTests.octest */,
 			);
 			name = Products;
@@ -260,7 +260,7 @@
 			);
 			name = Jemiza;
 			productName = StoreFeeder;
-			productReference = 2EFA3D2316EFBBE2002F9B42 /* JemizaApp.app */;
+			productReference = 2EFA3D2316EFBBE2002F9B42 /* Jemiza.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2EFA3D4216EFBBE3002F9B42 /* StoreFeederTests */ = {
@@ -479,10 +479,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA60866EC4FF4870BA444535 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Victor Manuel VALENZUELA MARTINEZ (972VCTC8E2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "78288D82-71BB-431F-B394-0977BB95697F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -491,10 +493,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA60866EC4FF4870BA444535 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Victor Manuel VALENZUELA MARTINEZ (972VCTC8E2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "78288D82-71BB-431F-B394-0977BB95697F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
