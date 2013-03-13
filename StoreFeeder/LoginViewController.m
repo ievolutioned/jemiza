@@ -52,6 +52,10 @@
         if(result)
         {
             [self completeLogin];
+            [self.loginTextFields enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [((UITextField *)obj) resignFirstResponder];
+                [((UITextField *)obj) setText:@""];
+            }];
         }
         else
         {
@@ -67,6 +71,22 @@
     self.tableViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain];
     [((ProductTableViewController *)self.tableViewController) setDataManager:self.dataManager];
     [self.navigationController pushViewController:self.tableViewController animated:YES];
+}
+
+#pragma mark - TextField delegate
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if(textField == self.loginTextFields[0])
+    {
+        [((UITextField *)self.loginTextFields[1]) becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];
+        [self login:nil];
+    }
+    return NO;
 }
 
 @end

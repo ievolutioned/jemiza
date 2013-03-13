@@ -17,6 +17,7 @@
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(BOOL))handler;
 -(BOOL)checkLogin;
 -(void)logout;
+-(NSString *)getProfileOfLoggedInUser;
 
 
 @end

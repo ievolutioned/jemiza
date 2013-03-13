@@ -56,4 +56,19 @@ NSString *const kLoginFilename = @"login.info";
     if(exists == YES) [fm removeItemAtPath:[self getFilePath:kLoginFilename] error:nil];
 }
 
+-(NSString *)getProfileOfLoggedInUser
+{
+    if([self checkIfLoginInfoExists])
+    {
+        @try {
+            NSMutableDictionary *appState = [NSKeyedUnarchiver unarchiveObjectWithFile: [self getFilePath:kLoginFilename]];
+            return appState[@"profile"];
+        }
+        @catch (NSException *exception) {
+            return nil;
+        }
+    }
+    return nil;
+}
+
 @end

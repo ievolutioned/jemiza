@@ -16,5 +16,6 @@
 -(NSArray *)loadInfoFromJsonFile;
 -(BOOL)checkIfLoginInfoExists;
 -(void)logout;
+-(NSString *)getProfileOfLoggedInUser;
 
 @end

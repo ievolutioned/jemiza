@@ -79,4 +79,10 @@
     [self.navController popToRootViewControllerAnimated:YES];
 }
 
+
+-(NSString *)getProfileOfLoggedInUser
+{
+    return [self.fileManager getProfileOfLoggedInUser];
+}
+
 @end
