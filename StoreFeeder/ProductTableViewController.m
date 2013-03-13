@@ -189,8 +189,16 @@
         detailViewController = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController-iPad" bundle:[NSBundle mainBundle] WithData:self.filteredProducts[indexPath.row]];
     else
         detailViewController = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController-iPhone" bundle:[NSBundle mainBundle] WithData:self.filteredProducts[indexPath.row]];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    UIScrollView *mainScrollView = [[[UIScrollView alloc] initWithFrame:self.view.frame] autorelease];
+    [mainScrollView addSubview:detailViewController.view];
+    [mainScrollView setContentSize:detailViewController.view.frame.size];
     [detailViewController release];
+    
+    UIViewController *mainController = [UIViewController new];
+    [mainController setView:mainScrollView];
+    
+    [self.navigationController pushViewController:mainController animated:YES];
 }
 
 #pragma mark - SearchBar delegate
