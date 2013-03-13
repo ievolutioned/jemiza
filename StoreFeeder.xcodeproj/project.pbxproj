@@ -245,9 +245,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2EFA3D2216EFBBE2002F9B42 /* JemizaApp */ = {
+		2EFA3D2216EFBBE2002F9B42 /* Jemiza */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2EFA3D5516EFBBE3002F9B42 /* Build configuration list for PBXNativeTarget "JemizaApp" */;
+			buildConfigurationList = 2EFA3D5516EFBBE3002F9B42 /* Build configuration list for PBXNativeTarget "Jemiza" */;
 			buildPhases = (
 				2EFA3D1F16EFBBE2002F9B42 /* Sources */,
 				2EFA3D2016EFBBE2002F9B42 /* Frameworks */,
@@ -258,7 +258,7 @@
 			);
 			dependencies = (
 			);
-			name = JemizaApp;
+			name = Jemiza;
 			productName = StoreFeeder;
 			productReference = 2EFA3D2316EFBBE2002F9B42 /* JemizaApp.app */;
 			productType = "com.apple.product-type.application";
@@ -303,7 +303,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2EFA3D2216EFBBE2002F9B42 /* JemizaApp */,
+				2EFA3D2216EFBBE2002F9B42 /* Jemiza */,
 				2EFA3D4216EFBBE3002F9B42 /* StoreFeederTests */,
 			);
 		};
@@ -394,7 +394,7 @@
 /* Begin PBXTargetDependency section */
 		2EFA3D4916EFBBE3002F9B42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2EFA3D2216EFBBE2002F9B42 /* JemizaApp */;
+			target = 2EFA3D2216EFBBE2002F9B42 /* Jemiza */;
 			targetProxy = 2EFA3D4816EFBBE3002F9B42 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -545,7 +545,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2EFA3D5516EFBBE3002F9B42 /* Build configuration list for PBXNativeTarget "JemizaApp" */ = {
+		2EFA3D5516EFBBE3002F9B42 /* Build configuration list for PBXNativeTarget "Jemiza" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2EFA3D5616EFBBE3002F9B42 /* Debug */,
