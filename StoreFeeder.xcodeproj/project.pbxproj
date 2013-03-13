@@ -498,7 +498,7 @@
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "78288D82-71BB-431F-B394-0977BB95697F";
+				PROVISIONING_PROFILE = "6B0217A4-CC2B-426F-A327-41463464DDD1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -508,11 +508,13 @@
 			baseConfigurationReference = EA60866EC4FF4870BA444535 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Victor Manuel VALENZUELA MARTINEZ (972VCTC8E2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "78288D82-71BB-431F-B394-0977BB95697F";
+				PROVISIONING_PROFILE = "6B0217A4-CC2B-426F-A327-41463464DDD1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6B0217A4-CC2B-426F-A327-41463464DDD1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

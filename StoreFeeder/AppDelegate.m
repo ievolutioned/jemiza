@@ -31,7 +31,7 @@
     [self.loginViewController setDataManager:self.masterController];
     UISwipeGestureRecognizer *logoutSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self.masterController action:@selector(logout)];
     [logoutSwipe setNumberOfTouchesRequired:1];
-    [logoutSwipe setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [logoutSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
     self.navController = [[[UINavigationController alloc] initWithRootViewController:self.loginViewController] autorelease];
     [self.navController.navigationBar addGestureRecognizer:logoutSwipe];
     [self.masterController setNavController:self.navController];
