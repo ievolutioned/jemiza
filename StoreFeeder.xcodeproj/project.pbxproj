@@ -31,6 +31,9 @@
 		2EFA3D7716EFF4DB002F9B42 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7516EFF4DB002F9B42 /* ProductDetailViewController.m */; };
 		2EFA3D7816EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7616EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib */; };
 		2EFA3D7A16EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7916EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib */; };
+		2EFA3D9216F11300002F9B42 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9016F112FF002F9B42 /* LoginViewController.m */; };
+		2EFA3D9316F11300002F9B42 /* LoginViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9116F11300002F9B42 /* LoginViewController-iPad.xib */; };
+		2EFA3D9516F11DD8002F9B42 /* LoginViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9416F11DD8002F9B42 /* LoginViewController-iPhone.xib */; };
 		49B73B6C1D7147DE8FF7412E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FABAB9835C8C4708A9828EAC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +84,10 @@
 		2EFA3D7516EFF4DB002F9B42 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
 		2EFA3D7616EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailViewController-iPad.xib"; sourceTree = "<group>"; };
 		2EFA3D7916EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailViewController-iPhone.xib"; sourceTree = "<group>"; };
+		2EFA3D8F16F112FF002F9B42 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		2EFA3D9016F112FF002F9B42 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2EFA3D9116F11300002F9B42 /* LoginViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPad.xib"; sourceTree = "<group>"; };
+		2EFA3D9416F11DD8002F9B42 /* LoginViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPhone.xib"; sourceTree = "<group>"; };
 		EA60866EC4FF4870BA444535 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FABAB9835C8C4708A9828EAC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -209,6 +216,10 @@
 				2EFA3D7516EFF4DB002F9B42 /* ProductDetailViewController.m */,
 				2EFA3D7616EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib */,
 				2EFA3D7916EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib */,
+				2EFA3D8F16F112FF002F9B42 /* LoginViewController.h */,
+				2EFA3D9016F112FF002F9B42 /* LoginViewController.m */,
+				2EFA3D9116F11300002F9B42 /* LoginViewController-iPad.xib */,
+				2EFA3D9416F11DD8002F9B42 /* LoginViewController-iPhone.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -322,6 +333,8 @@
 				2EFA3D6C16EFC9E4002F9B42 /* ProductCell-iPhone.xib in Resources */,
 				2EFA3D7816EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib in Resources */,
 				2EFA3D7A16EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib in Resources */,
+				2EFA3D9316F11300002F9B42 /* LoginViewController-iPad.xib in Resources */,
+				2EFA3D9516F11DD8002F9B42 /* LoginViewController-iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +391,7 @@
 				2EFA3D7016EFE09A002F9B42 /* RESTDataManager.m in Sources */,
 				2EFA3D7316EFE0B3002F9B42 /* FileManager.m in Sources */,
 				2EFA3D7716EFF4DB002F9B42 /* ProductDetailViewController.m in Sources */,
+				2EFA3D9216F11300002F9B42 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

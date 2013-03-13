@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MasterController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navController;
-@property(nonatomic, retain) UITableViewController *tableViewController;
+@property (nonatomic, retain) LoginViewController *loginViewController;
 @property(nonatomic, retain) MasterController *masterController;
 
 @end

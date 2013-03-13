@@ -23,10 +23,18 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.masterController = [[MasterController alloc] init];
-    self.tableViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [((ProductTableViewController *)self.tableViewController) setDataManager:self.masterController];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        self.loginViewController = [[[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:[NSBundle mainBundle]] autorelease];
+    else
+        self.loginViewController = [[[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:[NSBundle mainBundle]] autorelease];
     
-    self.navController = [[UINavigationController alloc] initWithRootViewController:self.tableViewController];
+    [self.loginViewController setDataManager:self.masterController];
+    UISwipeGestureRecognizer *logoutSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self.masterController action:@selector(logout)];
+    [logoutSwipe setNumberOfTouchesRequired:1];
+    [logoutSwipe setDirection:UISwipeGestureRecognizerDirectionLeft];
+    self.navController = [[[UINavigationController alloc] initWithRootViewController:self.loginViewController] autorelease];
+    [self.navController.navigationBar addGestureRecognizer:logoutSwipe];
+    [self.masterController setNavController:self.navController];
     
     [TestFlight takeOff:@"0f36bcf9-e6fc-4703-b724-59bbd3140139"];
     

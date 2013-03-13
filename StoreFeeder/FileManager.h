@@ -11,7 +11,10 @@
 @interface FileManager : NSObject
 
 -(void)loadInfoToJsonFile:(NSData *)jsonInfo;
+-(BOOL)saveLoginInfo:(NSDictionary *)loginInfo;
 -(BOOL)checkIfJsonFileExists;
 -(NSArray *)loadInfoFromJsonFile;
+-(BOOL)checkIfLoginInfoExists;
+-(void)logout;
 
 @end

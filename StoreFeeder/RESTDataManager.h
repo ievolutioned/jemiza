@@ -11,5 +11,6 @@
 @interface RESTDataManager : NSObject
 
 -(void)getInfoFromServiceToHandler:(void(^)(NSData*))handler;
+-(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void(^)(NSDictionary *))handler;
 
 @end

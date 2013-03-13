@@ -45,4 +45,38 @@
     }];
 }
 
+-(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(BOOL))handler
+{
+    [self.restDataManager loginWithUsername:username withPassword:password withHandler:^(NSDictionary *data) {
+       if(data[@"result"])
+       {
+           NSMutableDictionary *info = [NSMutableDictionary new];
+           [info setValue:username forKey:@"username"];
+           [info setValue:password forKey:@"password"];
+           [info setValue:data[@"profile"] forKey:@"profile"];
+           
+           if (![self.fileManager saveLoginInfo:info])
+           {
+               NSLog(@"Could not save file");
+               handler(NO);
+           }
+           else
+           {
+               handler(YES);
+           }
+       }
+    }];
+}
+
+-(BOOL)checkLogin
+{
+    return [self.fileManager checkIfLoginInfoExists];
+}
+
+-(void)logout
+{
+    [self.fileManager logout];
+    [self.navController popToRootViewControllerAnimated:YES];
+}
+
 @end

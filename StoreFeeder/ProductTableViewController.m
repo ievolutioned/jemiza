@@ -41,7 +41,7 @@
     self.title = @"Productos de abarrote";
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(syncData)]];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(syncData)]];
     
     [self loadHud];
     [self.dataManager loadProductListWithHandler:self.loadHandler];
