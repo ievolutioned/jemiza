@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ProductTableViewController.h"
+#import "TestFlight.h"
 
 
 @implementation AppDelegate
@@ -26,6 +27,8 @@
     [((ProductTableViewController *)self.tableViewController) setDataManager:self.masterController];
     
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.tableViewController];
+    
+    [TestFlight takeOff:@"0f36bcf9-e6fc-4703-b724-59bbd3140139"];
     
     [self.window addSubview:self.navController.view];
     // Override point for customization after application launch.

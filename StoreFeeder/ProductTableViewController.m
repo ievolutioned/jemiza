@@ -38,6 +38,7 @@
     self.title = @"Productos de abarrote";
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(syncData)]];
     
     __block UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [activity setCenter:self.view.center];
@@ -53,6 +54,25 @@
              [self.tableView reloadData];
              [self loadSearchBar];
          }
+    }];
+}
+
+-(void)syncData
+{
+    __block UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [activity setCenter:self.view.center];
+    [self.view addSubview:activity];
+    [activity startAnimating];
+    
+    [self.dataManager resyncInfoWithHandler:^(BOOL loaded) {
+        [activity stopAnimating];
+        [activity removeFromSuperview];
+        if(loaded)
+        {
+            self.filteredProducts = self.dataManager.cachedInfo;
+            [self.tableView reloadData];
+            [self loadSearchBar];
+        }
     }];
 }
 
