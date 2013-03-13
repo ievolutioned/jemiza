@@ -20,7 +20,16 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        [self setLoadHandler:^(BOOL loaded)
+         {
+            [self.hud hide:YES];
+            if(loaded)
+            {
+                self.filteredProducts = self.dataManager.cachedInfo;
+                [self.tableView reloadData];
+                [self loadSearchBar];
+            }
+        }];
     }
     return self;
 }
@@ -29,51 +38,25 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     self.title = @"Productos de abarrote";
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(syncData)]];
     
-    __block UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [activity setCenter:self.view.center];
-    [self.view addSubview:activity];
-    [activity startAnimating];
-    
-    [self.dataManager loadProductListWithHandler:^(BOOL loaded) {
-         [activity stopAnimating];
-         [activity removeFromSuperview];
-         if(loaded)
-         {
-             self.filteredProducts = self.dataManager.cachedInfo;
-             [self.tableView reloadData];
-             [self loadSearchBar];
-         }
-    }];
+    [self loadHud];
+    [self.dataManager loadProductListWithHandler:self.loadHandler];
 }
 
 -(void)syncData
 {
-    __block UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [activity setCenter:self.view.center];
-    [self.view addSubview:activity];
-    [activity startAnimating];
-    
-    [self.dataManager resyncInfoWithHandler:^(BOOL loaded) {
-        [activity stopAnimating];
-        [activity removeFromSuperview];
-        if(loaded)
-        {
-            self.filteredProducts = self.dataManager.cachedInfo;
-            [self.tableView reloadData];
-            [self loadSearchBar];
-        }
-    }];
+    [self loadHud];
+    [self.dataManager resyncInfoWithHandler:self.loadHandler];
+}
+
+-(void)loadHud
+{
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.labelText = @"Sincronizando info...";
 }
 
 -(void)loadSearchBar
