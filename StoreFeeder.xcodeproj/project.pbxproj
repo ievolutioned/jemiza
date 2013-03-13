@@ -34,6 +34,10 @@
 		2EFA3D9216F11300002F9B42 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9016F112FF002F9B42 /* LoginViewController.m */; };
 		2EFA3D9316F11300002F9B42 /* LoginViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9116F11300002F9B42 /* LoginViewController-iPad.xib */; };
 		2EFA3D9516F11DD8002F9B42 /* LoginViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9416F11DD8002F9B42 /* LoginViewController-iPhone.xib */; };
+		2EFA3D9716F13B18002F9B42 /* jemiza2_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9616F13B17002F9B42 /* jemiza2_ico.png */; };
+		2EFA3D9916F13BAA002F9B42 /* jemiza2_ico@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9816F13BA9002F9B42 /* jemiza2_ico@2x.png */; };
+		2EFA3D9B16F13BB3002F9B42 /* jemiza_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9A16F13BB3002F9B42 /* jemiza_ico.png */; };
+		2EFA3D9D16F13BC1002F9B42 /* jemiza_ico@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9C16F13BC0002F9B42 /* jemiza_ico@2x.png */; };
 		49B73B6C1D7147DE8FF7412E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FABAB9835C8C4708A9828EAC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +92,10 @@
 		2EFA3D9016F112FF002F9B42 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2EFA3D9116F11300002F9B42 /* LoginViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPad.xib"; sourceTree = "<group>"; };
 		2EFA3D9416F11DD8002F9B42 /* LoginViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPhone.xib"; sourceTree = "<group>"; };
+		2EFA3D9616F13B17002F9B42 /* jemiza2_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jemiza2_ico.png; sourceTree = "<group>"; };
+		2EFA3D9816F13BA9002F9B42 /* jemiza2_ico@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jemiza2_ico@2x.png"; sourceTree = "<group>"; };
+		2EFA3D9A16F13BB3002F9B42 /* jemiza_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jemiza_ico.png; sourceTree = "<group>"; };
+		2EFA3D9C16F13BC0002F9B42 /* jemiza_ico@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jemiza_ico@2x.png"; sourceTree = "<group>"; };
 		EA60866EC4FF4870BA444535 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FABAB9835C8C4708A9828EAC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -120,6 +128,10 @@
 		2EFA3D1A16EFBBE2002F9B42 = {
 			isa = PBXGroup;
 			children = (
+				2EFA3D9C16F13BC0002F9B42 /* jemiza_ico@2x.png */,
+				2EFA3D9A16F13BB3002F9B42 /* jemiza_ico.png */,
+				2EFA3D9816F13BA9002F9B42 /* jemiza2_ico@2x.png */,
+				2EFA3D9616F13B17002F9B42 /* jemiza2_ico.png */,
 				2EFA3D2C16EFBBE2002F9B42 /* StoreFeeder */,
 				2EFA3D4A16EFBBE3002F9B42 /* StoreFeederTests */,
 				2EFA3D2516EFBBE2002F9B42 /* Frameworks */,
@@ -335,6 +347,10 @@
 				2EFA3D7A16EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib in Resources */,
 				2EFA3D9316F11300002F9B42 /* LoginViewController-iPad.xib in Resources */,
 				2EFA3D9516F11DD8002F9B42 /* LoginViewController-iPhone.xib in Resources */,
+				2EFA3D9716F13B18002F9B42 /* jemiza2_ico.png in Resources */,
+				2EFA3D9916F13BAA002F9B42 /* jemiza2_ico@2x.png in Resources */,
+				2EFA3D9B16F13BB3002F9B42 /* jemiza_ico.png in Resources */,
+				2EFA3D9D16F13BC1002F9B42 /* jemiza_ico@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
