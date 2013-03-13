@@ -10,4 +10,10 @@
 
 @interface ProductDetailViewController : UIViewController
 
+@property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productDetailLabels;
+@property(nonatomic, retain) IBOutletCollection(UIView) NSArray *viewAreas;
+@property(nonatomic, assign) NSDictionary *productData;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil WithData:(NSDictionary *)data;
+
 @end
