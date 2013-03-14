@@ -41,6 +41,7 @@
 		2EFA3DA116F13ED1002F9B42 /* InfoSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9F16F13ED0002F9B42 /* InfoSelectionViewController.m */; };
 		2EFA3DA216F13ED1002F9B42 /* InfoSelectionViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3DA016F13ED0002F9B42 /* InfoSelectionViewController-iPad.xib */; };
 		2EFA3DA416F13EFD002F9B42 /* InfoSelectionViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3DA316F13EFD002F9B42 /* InfoSelectionViewController-iPhone.xib */; };
+		2EFA3DAB16F24577002F9B42 /* AccordionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3DAA16F24577002F9B42 /* AccordionView.m */; };
 		49B73B6C1D7147DE8FF7412E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FABAB9835C8C4708A9828EAC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,8 @@
 		2EFA3D9F16F13ED0002F9B42 /* InfoSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoSelectionViewController.m; sourceTree = "<group>"; };
 		2EFA3DA016F13ED0002F9B42 /* InfoSelectionViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "InfoSelectionViewController-iPad.xib"; sourceTree = "<group>"; };
 		2EFA3DA316F13EFD002F9B42 /* InfoSelectionViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "InfoSelectionViewController-iPhone.xib"; sourceTree = "<group>"; };
+		2EFA3DA916F24577002F9B42 /* AccordionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionView.h; sourceTree = "<group>"; };
+		2EFA3DAA16F24577002F9B42 /* AccordionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionView.m; sourceTree = "<group>"; };
 		EA60866EC4FF4870BA444535 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FABAB9835C8C4708A9828EAC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,6 +184,7 @@
 		2EFA3D2D16EFBBE2002F9B42 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2EFA3DA516F24532002F9B42 /* External libraries */,
 				2EFA3D9C16F13BC0002F9B42 /* jemiza_ico@2x.png */,
 				2EFA3D9A16F13BB3002F9B42 /* jemiza_ico.png */,
 				2EFA3D9816F13BA9002F9B42 /* jemiza2_ico@2x.png */,
@@ -274,6 +278,23 @@
 				2EFA3D7216EFE0B3002F9B42 /* FileManager.m */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		2EFA3DA516F24532002F9B42 /* External libraries */ = {
+			isa = PBXGroup;
+			children = (
+				2EFA3DAC16F2457C002F9B42 /* Accordion lib */,
+			);
+			name = "External libraries";
+			sourceTree = "<group>";
+		};
+		2EFA3DAC16F2457C002F9B42 /* Accordion lib */ = {
+			isa = PBXGroup;
+			children = (
+				2EFA3DA916F24577002F9B42 /* AccordionView.h */,
+				2EFA3DAA16F24577002F9B42 /* AccordionView.m */,
+			);
+			name = "Accordion lib";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +443,7 @@
 				2EFA3D7716EFF4DB002F9B42 /* ProductDetailViewController.m in Sources */,
 				2EFA3D9216F11300002F9B42 /* LoginViewController.m in Sources */,
 				2EFA3DA116F13ED1002F9B42 /* InfoSelectionViewController.m in Sources */,
+				2EFA3DAB16F24577002F9B42 /* AccordionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
