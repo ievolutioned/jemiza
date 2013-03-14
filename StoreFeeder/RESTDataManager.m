@@ -41,7 +41,7 @@
 
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(NSDictionary *))handler
 {
-    NSDictionary *data = @{@"result": @YES, @"profile": @"admin"};
+    NSDictionary *data = @{@"result": @YES, @"profile": @"normal"};
     handler(data);
 }
 

@@ -34,6 +34,10 @@
     [logoutSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
     self.navController = [[[UINavigationController alloc] initWithRootViewController:self.loginViewController] autorelease];
     [self.navController.navigationBar addGestureRecognizer:logoutSwipe];
+    
+    UIImage *image = [self imageWithColor:[UIColor colorWithRed:.658823529 green:0 blue:.101960784 alpha:1]];
+    [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    
     [self.masterController setNavController:self.navController];
     
     [TestFlight takeOff:@"0f36bcf9-e6fc-4703-b724-59bbd3140139"];
@@ -70,6 +74,22 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Custom methods
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

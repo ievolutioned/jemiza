@@ -101,4 +101,9 @@
     return [self.fileManager getProfileOfLoggedInUser];
 }
 
+-(NSArray *)cachedInfo
+{
+    return self.cachedInfo;
+}
+
 @end

@@ -13,6 +13,7 @@
 {
     NSArray *_dataMapping;
     NSArray *_quantitiesMapping;
+    NSArray *_datesMapping;
 }
 
 @end
@@ -32,9 +33,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = self.productData[@"product_code"];
     _dataMapping = @[@"description"];
     _quantitiesMapping = @[@"p_1", @"p_2", @"p_3", @"p_4", @"p_u_1", @"p_u_2", @"p_u_3", @"p_u_4", @"stock"];
+    _datesMapping = @[@"updated_at"];
     [self.productDetailLabels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if(self.productData[_dataMapping[idx]] != [NSNull null])
         {
@@ -57,6 +58,13 @@
         {
             [((UILabel *)obj) setText:@""];
         }
+    }];
+    
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd/MM/yyyy"];
+    [self.productDatesLabels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *dateString = [formatter stringFromDate:self.productData[_datesMapping[idx]]];
+        [((UILabel *)obj) setText:dateString];
     }];
     
     [self.viewAreas enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {

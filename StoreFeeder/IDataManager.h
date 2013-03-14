@@ -13,7 +13,6 @@
 
 @property(nonatomic, retain) NSArray *cachedInfo;
 
-
 -(void)loadProductListWithHandler:(void(^)(BOOL))handler;
 -(void)resyncInfoWithHandler:(void (^)(BOOL, ConnectionResult))handler;
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(BOOL))handler;

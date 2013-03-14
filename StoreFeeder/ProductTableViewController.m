@@ -26,13 +26,13 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
         [self setLoadHandler:^(BOOL loaded)
          {
              self.tableView.userInteractionEnabled = YES;
-            [self.hud hide:YES];
-            if(loaded)
-            {
+             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             if(loaded)
+             {
                 self.filteredProducts = self.dataManager.cachedInfo;
                 [self.tableView reloadData];
                 [self loadSearchBar];
-            }
+             }
         }];
         
         [self setResyncHandler:^(BOOL resynched, ConnectionResult result)
@@ -214,37 +214,43 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductDetailViewController *detailViewController;
+    NSDictionary *product = self.filteredProducts[indexPath.row];
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        detailViewController = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController-iPad" bundle:[NSBundle mainBundle] WithData:self.filteredProducts[indexPath.row]];
+        detailViewController = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController-iPad" bundle:[NSBundle mainBundle] WithData:product];
     else
-        detailViewController = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController-iPhone" bundle:[NSBundle mainBundle] WithData:self.filteredProducts[indexPath.row]];
+        detailViewController = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController-iPhone" bundle:[NSBundle mainBundle] WithData:product];
     
     UIScrollView *mainScrollView = [[[UIScrollView alloc] initWithFrame:self.view.frame] autorelease];
-    [mainScrollView setBackgroundColor:[UIColor colorWithRed:.941176471 green:.937254902 blue:.929411765 alpha:0]];
     [mainScrollView addSubview:detailViewController.view];
     [mainScrollView setContentSize:detailViewController.view.frame.size];
+    [mainScrollView setBackgroundColor:[UIColor colorWithRed:.941176471 green:.937254902 blue:.929411765 alpha:0]];
     [detailViewController release];
     
     UIViewController *mainController = [UIViewController new];
     [mainController setView:mainScrollView];
-    
+    mainController.title = [NSString stringWithFormat:@"Identificador - %@", product[@"product_code"]];
+
     [self.navigationController pushViewController:mainController animated:YES];
 }
 
 #pragma mark - SearchBar delegate
+
+-(NSArray *)applyGlobalFilters
+{
+    return [self.dataManager cachedInfo];
+}
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if([searchText length] != 0)
     {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"description", searchText];
-        
-        self.filteredProducts = [[self.dataManager cachedInfo] filteredArrayUsingPredicate:predicate];
+        self.filteredProducts = [[self applyGlobalFilters] filteredArrayUsingPredicate:predicate];
     }
     else
     {
-        self.filteredProducts = [self.dataManager cachedInfo];
+        self.filteredProducts = [self applyGlobalFilters];
     }
     [self.tableView reloadData];
 }
