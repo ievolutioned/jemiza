@@ -72,6 +72,7 @@
         height = 44;
         
         UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+        [searchBar setTintColor:[UIColor blackColor]];
         [searchBar setDelegate:self];
         [self.tableView setTableHeaderView:searchBar];
         
@@ -115,8 +116,14 @@
     }
     
     [cell loadData:self.filteredProducts[indexPath.row]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor colorWithRed:.874509804 green:.874509804 blue:.866666667 alpha:1]];
 }
 
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,7 +131,7 @@
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return 50.0;
     else
-        return 100.0;
+        return 78;
 }
 
 /*

@@ -16,7 +16,7 @@ NSString *const kLoginFilename = @"login.info";
 -(NSArray *)loadInfoFromJsonFile
 {
     NSData *fileContent = [NSData dataWithContentsOfFile:[self getFilePath:kDataFilename]];
-    return [NSJSONSerialization JSONObjectWithData:fileContent options:kNilOptions error:nil];
+    return [self parseDates:[NSJSONSerialization JSONObjectWithData:fileContent options:NSJSONReadingMutableContainers error:nil]];
 }
 
 
@@ -29,6 +29,12 @@ NSString *const kLoginFilename = @"login.info";
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     return [fileManager fileExistsAtPath:[self getFilePath:kDataFilename]];
+}
+
+-(NSMutableArray *)parseDates:(NSMutableArray *)json
+{
+    NSArray *mapping = @[];
+    return nil;
 }
 
 -(NSString *)getFilePath:(NSString *)filename
