@@ -42,6 +42,7 @@
 		2EFA3DA216F13ED1002F9B42 /* InfoSelectionViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3DA016F13ED0002F9B42 /* InfoSelectionViewController-iPad.xib */; };
 		2EFA3DA416F13EFD002F9B42 /* InfoSelectionViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3DA316F13EFD002F9B42 /* InfoSelectionViewController-iPhone.xib */; };
 		2EFA3DAB16F24577002F9B42 /* AccordionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3DAA16F24577002F9B42 /* AccordionView.m */; };
+		2EFA3DAF16F24C6F002F9B42 /* LineDrawProductDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3DAE16F24C6C002F9B42 /* LineDrawProductDetail.m */; };
 		49B73B6C1D7147DE8FF7412E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FABAB9835C8C4708A9828EAC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,8 @@
 		2EFA3DA316F13EFD002F9B42 /* InfoSelectionViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "InfoSelectionViewController-iPhone.xib"; sourceTree = "<group>"; };
 		2EFA3DA916F24577002F9B42 /* AccordionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionView.h; sourceTree = "<group>"; };
 		2EFA3DAA16F24577002F9B42 /* AccordionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionView.m; sourceTree = "<group>"; };
+		2EFA3DAD16F24C6B002F9B42 /* LineDrawProductDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDrawProductDetail.h; sourceTree = "<group>"; };
+		2EFA3DAE16F24C6C002F9B42 /* LineDrawProductDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDrawProductDetail.m; sourceTree = "<group>"; };
 		EA60866EC4FF4870BA444535 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FABAB9835C8C4708A9828EAC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -247,6 +250,8 @@
 				2EFA3D9416F11DD8002F9B42 /* LoginViewController-iPhone.xib */,
 				2EFA3DA016F13ED0002F9B42 /* InfoSelectionViewController-iPad.xib */,
 				2EFA3DA316F13EFD002F9B42 /* InfoSelectionViewController-iPhone.xib */,
+				2EFA3DAD16F24C6B002F9B42 /* LineDrawProductDetail.h */,
+				2EFA3DAE16F24C6C002F9B42 /* LineDrawProductDetail.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 				2EFA3D9216F11300002F9B42 /* LoginViewController.m in Sources */,
 				2EFA3DA116F13ED1002F9B42 /* InfoSelectionViewController.m in Sources */,
 				2EFA3DAB16F24577002F9B42 /* AccordionView.m in Sources */,
+				2EFA3DAF16F24C6F002F9B42 /* LineDrawProductDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
