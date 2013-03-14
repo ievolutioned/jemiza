@@ -109,6 +109,7 @@
 		2EFA3DAA16F24577002F9B42 /* AccordionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionView.m; sourceTree = "<group>"; };
 		2EFA3DAD16F24C6B002F9B42 /* LineDrawProductDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDrawProductDetail.h; sourceTree = "<group>"; };
 		2EFA3DAE16F24C6C002F9B42 /* LineDrawProductDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDrawProductDetail.m; sourceTree = "<group>"; };
+		2EFA3DB016F27740002F9B42 /* ConnectionResults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionResults.h; sourceTree = "<group>"; };
 		EA60866EC4FF4870BA444535 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FABAB9835C8C4708A9828EAC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -270,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				2EFA3D6A16EFC0DE002F9B42 /* IDataManager.h */,
+				2EFA3DB016F27740002F9B42 /* ConnectionResults.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

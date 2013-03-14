@@ -27,21 +27,33 @@
     
     if(![self.fileManager checkIfJsonFileExists])
     {
-        [self resyncInfoWithHandler:handler];
+        [self resyncInfoWithHandler:^(BOOL result, ConnectionResult conResult) {
+            if(result)
+            {
+                handler(result);
+            }
+        }];
     }
     else
     {
-        self.cachedInfo = [self.fileManager loadInfoFromJsonFile];
-        handler(self.cachedInfo != nil);
+        [self loadingDataWithHandler:handler];
     }
 }
 
--(void)resyncInfoWithHandler:(void (^)(BOOL))handler
+-(void)loadingDataWithHandler:(void (^)(BOOL))handler
 {
-    [self.restDataManager getInfoFromServiceToHandler:^(NSData *data) {
-        [self.fileManager loadInfoToJsonFile:data];
-        self.cachedInfo = [self.fileManager loadInfoFromJsonFile];
+    [self.fileManager loadInfoFromJsonFileWithHandler:^(NSArray *result) {
+        self.cachedInfo = result;
         handler(self.cachedInfo != nil);
+    }];
+}
+
+-(void)resyncInfoWithHandler:(void (^)(BOOL, ConnectionResult))handler
+{
+    [self.restDataManager getInfoFromServiceToHandler:^(NSData *data, ConnectionResult connResult) {
+        if(connResult == CR_SUCCESS)
+            [self.fileManager loadInfoToJsonFile:data];
+        handler(connResult == CR_SUCCESS, connResult);
     }];
 }
 

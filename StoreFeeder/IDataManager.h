@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ConnectionResults.h"
 
 @protocol IDataManager <NSObject>
 
 @property(nonatomic, retain) NSArray *cachedInfo;
 
+
 -(void)loadProductListWithHandler:(void(^)(BOOL))handler;
--(void)resyncInfoWithHandler:(void(^)(BOOL))handler;
+-(void)resyncInfoWithHandler:(void (^)(BOOL, ConnectionResult))handler;
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(BOOL))handler;
 -(BOOL)checkLogin;
 -(void)logout;

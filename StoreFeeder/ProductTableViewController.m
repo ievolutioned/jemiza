@@ -10,6 +10,9 @@
 #import  "ProductCell.h"
 #import "ProductDetailViewController.h"
 
+NSString *const kLoadingInfoText = @"Cargando datos...";
+NSString *const kSyncInfoText = @"Sincronizando info...";
+
 @interface ProductTableViewController ()
 
 @end
@@ -22,6 +25,7 @@
     if (self) {
         [self setLoadHandler:^(BOOL loaded)
          {
+             self.tableView.userInteractionEnabled = YES;
             [self.hud hide:YES];
             if(loaded)
             {
@@ -30,8 +34,30 @@
                 [self loadSearchBar];
             }
         }];
+        
+        [self setResyncHandler:^(BOOL resynched, ConnectionResult result)
+         {
+             [self.hud hide:YES];
+             if(result == CR_SUCCESS)
+                 [self loadInfo];
+             else
+                 [self showErrorMessage:result];
+        }];
     }
     return self;
+}
+
+-(void)showErrorMessage:(ConnectionResult)err
+{
+    NSString *message;
+    if(err == CR_TIMEOUT)
+        message = @"Error al bajar el archivo, intentelo mas tarde.";
+    else if(err == CR_NOTFOUND)
+        message = @"Error en servidor, favor de reportarlo al equipo de desarrollo.";
+    else
+        message = @"Error al bajar el archivo.";
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil, nil];
+    [alertView show];
 }
 
 - (void)viewDidLoad
@@ -47,20 +73,30 @@
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(syncData)]];
     
-    [self loadHud];
+    [self loadHud:kLoadingInfoText];
+    if(self.dataManager.cachedInfo == nil)
+        [self loadInfo];
+    else
+        self.loadHandler(YES);
+}
+
+-(void)loadInfo
+{
+    [self loadHud:kLoadingInfoText];
     [self.dataManager loadProductListWithHandler:self.loadHandler];
 }
 
 -(void)syncData
 {
-    [self loadHud];
-    [self.dataManager resyncInfoWithHandler:self.loadHandler];
+    [self loadHud:kSyncInfoText];
+    [self.dataManager resyncInfoWithHandler:self.resyncHandler];
 }
 
--(void)loadHud
+-(void)loadHud:(NSString *)text
 {
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.labelText = @"Sincronizando info...";
+    self.hud.labelText = text;
+    self.tableView.userInteractionEnabled = NO;
 }
 
 -(void)loadSearchBar

@@ -10,14 +10,31 @@
 
 @implementation RESTDataManager
 
--(void)getInfoFromServiceToHandler:(void (^)(NSData *))handler
+-(void)getInfoFromServiceToHandler:(void (^)(NSData *, ConnectionResult))handler
 {
+    NSLog(@"Comenzando bajado de info");
     NSURL *url = [NSURL URLWithString:@"http://jemiza.herokuapp.com/admin/products.json"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSLog(@"Terminado bajado de info");
         if(!error)
         {
-            handler(data);
+            handler(data, CR_SUCCESS);
+        }
+        else
+        {
+            if(error.code == kCFURLErrorTimedOut)
+            {
+                handler(nil, CR_TIMEOUT);
+            }
+            else if(error.code == kCFURLErrorBadURL)
+            {
+                handler(nil, CR_NOTFOUND);
+            }
+            else
+            {
+                handler(nil, CR_ERROR);
+            }
         }
     }];
 }

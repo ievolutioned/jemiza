@@ -8,6 +8,7 @@
 
 #import "InfoSelectionViewController.h"
 #import "ProductTableViewController.h"
+#import <MBProgressHUD.h>
 
 @interface InfoSelectionViewController ()
 
@@ -41,9 +42,20 @@
 
 -(IBAction)enterSaleView
 {
-    self.tableViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [((ProductTableViewController *)self.tableViewController) setDataManager:self.dataManager];
-    [self.navigationController pushViewController:self.tableViewController animated:YES];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = kLoadingInfoText;
+    void(^loadHandler)(BOOL) = ^(BOOL result) {
+        [hud hide:YES];
+        self.tableViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        [((ProductTableViewController *)self.tableViewController) setDataManager:self.dataManager];
+        [self.navigationController pushViewController:self.tableViewController animated:YES];
+    };
+    
+    if(self.dataManager.cachedInfo == nil)
+        [self.dataManager loadProductListWithHandler:loadHandler];
+    else
+        loadHandler(YES);
 }
 
 -(IBAction)enterAdminView

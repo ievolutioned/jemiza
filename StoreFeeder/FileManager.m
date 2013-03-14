@@ -13,10 +13,10 @@ NSString *const kLoginFilename = @"login.info";
 
 @implementation FileManager
 
--(NSArray *)loadInfoFromJsonFile
+-(void)loadInfoFromJsonFileWithHandler:(void(^)(NSArray *))handler
 {
     NSData *fileContent = [NSData dataWithContentsOfFile:[self getFilePath:kDataFilename]];
-    return [self parseDates:[NSJSONSerialization JSONObjectWithData:fileContent options:NSJSONReadingMutableContainers error:nil]];
+    [self parseDates:[NSJSONSerialization JSONObjectWithData:fileContent options:NSJSONReadingMutableContainers error:nil] toHandler:handler];
 }
 
 
@@ -31,10 +31,28 @@ NSString *const kLoginFilename = @"login.info";
     return [fileManager fileExistsAtPath:[self getFilePath:kDataFilename]];
 }
 
--(NSMutableArray *)parseDates:(NSMutableArray *)json
+-(void)parseDates:(NSMutableArray *)json toHandler:(void(^)(NSArray *))handler
 {
-    NSArray *mapping = @[];
-    return nil;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(queue, ^{
+        NSArray *mapping = @[@"created_at", @"updated_at"];
+        for(NSMutableDictionary *item in json)
+        {
+            [mapping enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                if([item valueForKeyPath:obj] != [NSNull null])
+                {
+                    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+                    
+                    NSDate *date = [formatter dateFromString:[item valueForKeyPath:obj]];
+                    [item setValue:date forKeyPath:obj];
+                }
+            }];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            handler(json);
+        });
+    });
 }
 
 -(NSString *)getFilePath:(NSString *)filename

@@ -10,12 +10,15 @@
 #import "IDataManager.h"
 #import "MBProgressHUD.h"
 
+extern NSString *const kLoadingInfoText;
 typedef void(^InfoLoadedBlock)(BOOL);
+typedef void(^ResyncInfoBlock)(BOOL, ConnectionResult);
 @interface ProductTableViewController : UITableViewController<UISearchBarDelegate>
 
 @property(nonatomic, assign) id<IDataManager> dataManager;
 @property(nonatomic, retain) NSArray *filteredProducts;
 @property(nonatomic, copy) InfoLoadedBlock loadHandler;
+@property(nonatomic, copy) ResyncInfoBlock resyncHandler;
 @property(nonatomic, assign) MBProgressHUD *hud;
 
 @end

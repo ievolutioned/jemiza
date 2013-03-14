@@ -13,7 +13,7 @@
 -(void)loadInfoToJsonFile:(NSData *)jsonInfo;
 -(BOOL)saveLoginInfo:(NSDictionary *)loginInfo;
 -(BOOL)checkIfJsonFileExists;
--(NSArray *)loadInfoFromJsonFile;
+-(void)loadInfoFromJsonFileWithHandler:(void(^)(NSArray *))handler;
 -(BOOL)checkIfLoginInfoExists;
 -(void)logout;
 -(NSString *)getProfileOfLoggedInUser;
