@@ -12,7 +12,7 @@
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 
 @property(nonatomic, retain) IBOutletCollection(UITextField) NSArray *loginTextFields;
-@property(nonatomic, retain) UITableViewController *tableViewController;
+@property(nonatomic, retain) UIViewController *mainViewController;
 @property(nonatomic, assign) id<IDataManager> dataManager;
 -(IBAction)login:(id)sender;
 

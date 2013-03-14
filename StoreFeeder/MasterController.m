@@ -48,7 +48,7 @@
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(BOOL))handler
 {
     [self.restDataManager loginWithUsername:username withPassword:password withHandler:^(NSDictionary *data) {
-       if(data[@"result"])
+       if(![data[@"result"] isEqual: @NO])
        {
            NSMutableDictionary *info = [NSMutableDictionary new];
            [info setValue:username forKey:@"username"];
@@ -64,6 +64,10 @@
            {
                handler(YES);
            }
+       }
+       else
+       {
+           handler(NO);
        }
     }];
 }

@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <MBProgressHUD.h>
 #import "ProductTableViewController.h"
+#import "InfoSelectionViewController.h"
 
 @interface LoginViewController ()
 
@@ -71,9 +72,24 @@
 
 -(void)completeLogin
 {
-    self.tableViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [((ProductTableViewController *)self.tableViewController) setDataManager:self.dataManager];
-    [self.navigationController pushViewController:self.tableViewController animated:YES];
+    if([[self.dataManager getProfileOfLoggedInUser] isEqualToString:@"normal"])
+    {
+        self.mainViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        [((ProductTableViewController *)self.mainViewController) setDataManager:self.dataManager];
+    }
+    else
+    {
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            self.mainViewController = [[InfoSelectionViewController alloc] initWithNibName:@"InfoSelectionViewController-iPad" bundle:[NSBundle mainBundle]];
+        }
+        else
+        {
+            self.mainViewController = [[InfoSelectionViewController alloc] initWithNibName:@"InfoSelectionViewController-iPhone" bundle:[NSBundle mainBundle]];
+        }
+        [((InfoSelectionViewController *)self.mainViewController) setDataManager:self.dataManager];
+    }
+    [self.navigationController pushViewController:self.mainViewController animated:YES];
 }
 
 #pragma mark - TextField delegate

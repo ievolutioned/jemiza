@@ -32,9 +32,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"Información de producto";
+    self.title = self.productData[@"product_code"];
     _dataMapping = @[@"product_code", @"description"];
-    _quantitiesMapping = @[@"p_1", @"p_2", @"p_3", @"p_4", @"stock"];
+    _quantitiesMapping = @[@"p_1", @"p_2", @"p_3", @"p_4", @"p_u_1", @"p_u_2", @"p_u_3", @"p_u_4", @"stock"];
     [self.productDetailLabels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if(self.productData[_dataMapping[idx]] != [NSNull null])
         {
