@@ -29,6 +29,7 @@
         self.loginViewController = [[[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:[NSBundle mainBundle]] autorelease];
     
     [self.loginViewController setDataManager:self.masterController];
+    [self.loginViewController setFilterManager:self.masterController];
     UISwipeGestureRecognizer *logoutSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self.masterController action:@selector(logout)];
     [logoutSwipe setNumberOfTouchesRequired:1];
     [logoutSwipe setDirection:UISwipeGestureRecognizerDirectionRight];

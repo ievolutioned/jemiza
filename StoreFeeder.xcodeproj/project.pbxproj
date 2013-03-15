@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EF233F816F2A12C00A968FA /* FilterViewModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF233F716F2A12C00A968FA /* FilterViewModal.m */; };
+		2EF233FC16F2A1A000A968FA /* FilterViewiPhoneModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF233FB16F2A1A000A968FA /* FilterViewiPhoneModal.m */; };
 		2EFA3D2716EFBBE2002F9B42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D2616EFBBE2002F9B42 /* UIKit.framework */; };
 		2EFA3D2916EFBBE2002F9B42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D2816EFBBE2002F9B42 /* Foundation.framework */; };
 		2EFA3D2B16EFBBE2002F9B42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D2A16EFBBE2002F9B42 /* CoreGraphics.framework */; };
@@ -57,6 +59,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EF233F616F2A12C00A968FA /* FilterViewModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewModal.h; sourceTree = "<group>"; };
+		2EF233F716F2A12C00A968FA /* FilterViewModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewModal.m; sourceTree = "<group>"; };
+		2EF233FA16F2A1A000A968FA /* FilterViewiPhoneModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewiPhoneModal.h; sourceTree = "<group>"; };
+		2EF233FB16F2A1A000A968FA /* FilterViewiPhoneModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewiPhoneModal.m; sourceTree = "<group>"; };
 		2EFA3D2316EFBBE2002F9B42 /* Jemiza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jemiza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFA3D2616EFBBE2002F9B42 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2EFA3D2816EFBBE2002F9B42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,6 +116,7 @@
 		2EFA3DAD16F24C6B002F9B42 /* LineDrawProductDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDrawProductDetail.h; sourceTree = "<group>"; };
 		2EFA3DAE16F24C6C002F9B42 /* LineDrawProductDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDrawProductDetail.m; sourceTree = "<group>"; };
 		2EFA3DB016F27740002F9B42 /* ConnectionResults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionResults.h; sourceTree = "<group>"; };
+		2EFA3DB116F2929B002F9B42 /* IFiltersManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFiltersManager.h; sourceTree = "<group>"; };
 		EA60866EC4FF4870BA444535 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FABAB9835C8C4708A9828EAC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -139,6 +146,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EF233F916F2A13100A968FA /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				2EF233F616F2A12C00A968FA /* FilterViewModal.h */,
+				2EF233F716F2A12C00A968FA /* FilterViewModal.m */,
+				2EF233FA16F2A1A000A968FA /* FilterViewiPhoneModal.h */,
+				2EF233FB16F2A1A000A968FA /* FilterViewiPhoneModal.m */,
+			);
+			name = Filters;
+			sourceTree = "<group>";
+		};
 		2EFA3D1A16EFBBE2002F9B42 = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +259,7 @@
 		2EFA3D5C16EFBCEF002F9B42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2EF233F916F2A13100A968FA /* Filters */,
 				2EFA3D6016EFBDEB002F9B42 /* ProductCell.h */,
 				2EFA3D6116EFBDEB002F9B42 /* ProductCell.m */,
 				2EFA3D6316EFBE34002F9B42 /* ProductCell-iPad.xib */,
@@ -272,6 +291,7 @@
 			children = (
 				2EFA3D6A16EFC0DE002F9B42 /* IDataManager.h */,
 				2EFA3DB016F27740002F9B42 /* ConnectionResults.h */,
+				2EFA3DB116F2929B002F9B42 /* IFiltersManager.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -452,6 +472,8 @@
 				2EFA3DA116F13ED1002F9B42 /* InfoSelectionViewController.m in Sources */,
 				2EFA3DAB16F24577002F9B42 /* AccordionView.m in Sources */,
 				2EFA3DAF16F24C6F002F9B42 /* LineDrawProductDetail.m in Sources */,
+				2EF233F816F2A12C00A968FA /* FilterViewModal.m in Sources */,
+				2EF233FC16F2A1A000A968FA /* FilterViewiPhoneModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

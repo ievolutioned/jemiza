@@ -9,6 +9,8 @@
 #import "ProductTableViewController.h"
 #import  "ProductCell.h"
 #import "ProductDetailViewController.h"
+#import <UAModalPanel.h>
+#import "FilterViewiPhoneModal.h"
 
 NSString *const kLoadingInfoText = @"Cargando datos...";
 NSString *const kSyncInfoText = @"Sincronizando info...";
@@ -19,21 +21,22 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 
 @implementation ProductTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+-(id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
+    if(self)
+    {
         [self setLoadHandler:^(BOOL loaded)
          {
              self.tableView.userInteractionEnabled = YES;
              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
              if(loaded)
              {
-                self.filteredProducts = self.dataManager.cachedInfo;
-                [self.tableView reloadData];
-                [self loadSearchBar];
+                 self.filteredProducts = self.dataManager.cachedInfo;
+                 [self.tableView reloadData];
+                 [self loadSearchBar];
              }
-        }];
+         }];
         
         [self setResyncHandler:^(BOOL resynched, ConnectionResult result)
          {
@@ -42,7 +45,17 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
                  [self loadInfo];
              else
                  [self showErrorMessage:result];
-        }];
+         }];
+    }
+    return self;
+}
+
+- (id)initWithStyle:(UITableViewStyle)style withDataManager:(id<IDataManager>)theDataManager withFilterManager:(id<IFiltersManager>)theFilterManager
+{
+    self = [self initWithStyle:style];
+    if (self) {
+        self.dataManager = theDataManager;
+        self.filterManager = theFilterManager;
     }
     return self;
 }
@@ -63,6 +76,10 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openFilterView)];
+    [tapRecognizer setNumberOfTouchesRequired:2];
+    [self.view addGestureRecognizer:tapRecognizer];
 
     self.title = @"Productos de abarrote";
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
@@ -238,7 +255,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 
 -(NSArray *)applyGlobalFilters
 {
-    return [self.dataManager cachedInfo];
+    return [self.filterManager getFilteredInfo];
 }
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -264,6 +281,15 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
+}
+
+#pragma mark - Tap Gesture Recognizer implementation
+
+-(void)openFilterView
+{
+    UAModalPanel *modalPanel = [[[FilterViewiPhoneModal alloc] initWithFrame:self.navigationController.view.bounds] autorelease];
+    [self.navigationController.view addSubview:modalPanel];
+    [modalPanel show];
 }
 
 @end

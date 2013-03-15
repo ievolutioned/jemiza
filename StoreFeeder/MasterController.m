@@ -101,9 +101,14 @@
     return [self.fileManager getProfileOfLoggedInUser];
 }
 
--(NSArray *)cachedInfo
+-(NSArray *)getFilteredInfo
 {
     return self.cachedInfo;
+}
+
+-(void)setFilters:(NSDictionary *)filters
+{
+    
 }
 
 @end

@@ -10,8 +10,9 @@
 #import "IDataManager.h"
 #import "RESTDataManager.h"
 #import "FileManager.h"
+#import "IFiltersManager.h"
 
-@interface MasterController : NSObject<IDataManager>
+@interface MasterController : NSObject<IDataManager, IFiltersManager>
 
 @property(nonatomic, retain)RESTDataManager *restDataManager;
 @property(nonatomic, retain)FileManager *fileManager;

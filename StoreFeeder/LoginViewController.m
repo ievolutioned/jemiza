@@ -74,8 +74,7 @@
 {
     if([[self.dataManager getProfileOfLoggedInUser] isEqualToString:@"normal"])
     {
-        self.mainViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        [((ProductTableViewController *)self.mainViewController) setDataManager:self.dataManager];
+        self.mainViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain withDataManager:self.dataManager withFilterManager:self.filterManager];
     }
     else
     {
@@ -88,6 +87,7 @@
             self.mainViewController = [[InfoSelectionViewController alloc] initWithNibName:@"InfoSelectionViewController-iPhone" bundle:[NSBundle mainBundle]];
         }
         [((InfoSelectionViewController *)self.mainViewController) setDataManager:self.dataManager];
+        [((InfoSelectionViewController *)self.mainViewController) setFilterManager:self.filterManager];
     }
     [self.navigationController pushViewController:self.mainViewController animated:YES];
 }
