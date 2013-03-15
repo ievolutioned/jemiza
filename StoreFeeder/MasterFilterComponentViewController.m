@@ -30,18 +30,13 @@
     self.dataSource = [self.filtersManager getDataSourceForNib:self.nibName];
     [self.dateTextFields enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [((UITextField *)obj) setInputView:self.datePicker];
-        [((UITextField *)obj) setText:[self.filtersManager getValueForFilter:self.dataSource[idx]]];
+        [((UITextField *)obj) setText:[self.filtersManager getValueForFilter:self.dataSource[idx] forNibName:self.nibName]];
     }];
     
     if(self.dataTable)
     {
         self.filteringData = [self.filtersManager getFilteringDataForNib:self.nibName];
         [self.dataTable reloadData];
-        id obj;
-        if((obj = [self.filtersManager getValueForFilter:self.dataSource[0]]) != nil)
-        {
-            [self.dataTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[obj intValue] inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        }
     }
 
 }
@@ -102,5 +97,21 @@
 
 
 #pragma mark - Table view data delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.filtersManager addFilter:self.dataSource[0] withValue:[NSNumber numberWithInt:indexPath.row]];
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
+        NSNumber *obj;
+        if(![[(obj = [self.filtersManager getValueForFilter:self.dataSource[0] forNibName:self.nibName]) class] isSubclassOfClass:[NSNumber class]])
+        {
+            [self.dataTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[obj intValue] inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+    }
+}
 
 @end

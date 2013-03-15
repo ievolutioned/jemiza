@@ -126,7 +126,19 @@
 
 -(NSArray *)getFilteringDataForNib:(NSString *)nibName
 {
-    
+    NSString *realName = [nibName componentsSeparatedByString:@"-"][0];
+    if([realName isEqualToString:@"CategoryFilter"])
+    {
+        return self.categories;
+    }
+    else if([realName isEqualToString:@"SubfamilyFilter"])
+    {
+        return self.subfamilies;
+    }
+    else
+    {
+        return self.warehouses;
+    }
 }
 
 -(id)getValueForFilter:(NSString *)filterName forNibName:(NSString *)nibName
@@ -182,6 +194,28 @@
         [componentList addObject:@{@"nibName": @"WarehouseFilter", @"title": @"Por almacen:"}];
     }
     return componentList;
+}
+
+-(void)loadFilteringDataWithHandler:(void (^)(BOOL))handler
+{
+    [self.fileManager loadFilterInfo:@"category" toHandler:^(NSArray *filteredCategories) {
+        self.categories = filteredCategories;
+        
+       [self.fileManager loadFilterInfo:@"subfamily" toHandler:^(NSArray *filteredSubfamilies) {
+           self.subfamilies = filteredSubfamilies;
+           
+          [self.fileManager loadFilterInfo:@"warehouse" toHandler:^(NSArray *filteredWarehouses) {
+              self.warehouses = filteredWarehouses;
+              
+              handler(YES);
+          }];
+       }];
+    }];
+}
+
+-(BOOL)checkIfFilteringDataIsLoaded
+{
+    return (self.categories != nil && self.subfamilies != nil && self.warehouses != nil);
 }
 
 @end

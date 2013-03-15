@@ -8,6 +8,7 @@
 
 #import "FilterViewiPhoneModal.h"
 #import "MasterFilterComponentViewController.h"
+#import <MBProgressHUD.h>
 
 @implementation FilterViewiPhoneModal
 
@@ -29,9 +30,8 @@
 }
 */
 
--(void)loadView
+-(void)loadAccordionView
 {
-    [super loadView];
     self.margin = UIEdgeInsetsMake(40, 20, 20, 20);
     UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 230, 300)];
     [self.contentView addSubview:scroll];
@@ -60,7 +60,25 @@
     
     // Set this if you want to allow multiple selection
     [accordion setAllowsMultipleSelection:NO];
-    [self.actionButton setTitle:@"Guardar" forState:UIControlStateNormal];
+}
+
+-(void)loadView
+{
+    [super loadView];
+    
+    if(![self.filtersManager checkIfFilteringDataIsLoaded])
+    {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+        hud.labelText = @"Cargando información de filtrado...";
+        [self.filtersManager loadFilteringDataWithHandler:^(BOOL loaded) {
+            [hud hide:YES];
+            [self loadAccordionView];
+        }];
+    }
+    else
+    {
+        [self loadAccordionView];
+    }
 }
 
 @end

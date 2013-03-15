@@ -17,6 +17,6 @@
 -(BOOL)checkIfLoginInfoExists;
 -(void)logout;
 -(NSString *)getProfileOfLoggedInUser;
--(NSArray *)filterValuesForFilter:(NSString *)filter;
+-(void)loadFilterInfo:(NSString *)filter toHandler:(void(^)(NSArray *))handler;
 
 @end
