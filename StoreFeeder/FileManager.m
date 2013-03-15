@@ -95,4 +95,56 @@ NSString *const kLoginFilename = @"login.info";
     return nil;
 }
 
+-(void)loadFilterInfo:(NSString *)filter toHandler:(void(^)(NSArray *))handler
+{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(queue, ^{
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *filteredInfo = nil;
+        if([fileManager fileExistsAtPath:[self getFilePath:[NSString stringWithFormat:@"%@.json", filter]]])
+        {
+            NSData *fileContent = [NSData dataWithContentsOfFile:[self getFilePath:kDataFilename]];
+            filteredInfo = [NSJSONSerialization JSONObjectWithData:fileContent options:kNilOptions error:nil];
+        }
+        else
+        {
+            filteredInfo = [self filterValuesForFilter:filter];
+            [filteredInfo writeToFile:[self getFilePath:[NSString stringWithFormat:@"%@.json", filter]] atomically:YES];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            handler(filteredInfo);
+        });
+    });
+}
+
+-(NSArray *)filterValuesForFilter:(NSString *)filter
+{
+    NSData *fileContent = [NSData dataWithContentsOfFile:[self getFilePath:kDataFilename]];
+    NSArray *jsonInfo = [NSJSONSerialization JSONObjectWithData:fileContent options:NSJSONReadingMutableContainers error:nil];
+    
+    NSString *keyToSearch;
+    if([filter isEqualToString:@"category"])
+    {
+        keyToSearch = @"description_category";
+    }
+    else if([filter isEqualToString:@"subfamily"])
+    {
+        keyToSearch = @"description_sub_family";
+    }
+    else //warehouse
+    {
+        keyToSearch = @"warehouse";
+    }
+
+    NSMutableArray *valueList = [NSMutableArray new];
+    [jsonInfo enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if(![valueList containsObject:obj[keyToSearch]])
+        {
+            [valueList addObject:obj[keyToSearch]];
+        }
+    }];
+
+    return valueList;
+}
+
 @end

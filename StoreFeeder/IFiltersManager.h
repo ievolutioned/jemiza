@@ -13,8 +13,9 @@
 -(NSArray *)getFilteredInfo;
 -(void)addFilter:(NSString *)filterName withValue:(id)filterValue;
 -(NSArray *)getDataSourceForNib:(NSString *)nibName;
--(NSString *)getStringValueForFilter:(NSString *)filterName;
+-(id)getValueForFilter:(NSString *)filterName;
 -(NSArray *)getComponentListForLoggedUser;
+-(NSArray *)getFilteringDataForNib:(NSString *)nibName;
 
 @property(nonatomic, retain)NSDictionary *filtersDataSource;
 

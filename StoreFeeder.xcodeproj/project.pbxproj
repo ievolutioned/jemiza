@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2E38956916F38494003161F0 /* MasterFilterComponentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E38956816F38494003161F0 /* MasterFilterComponentViewController.m */; };
 		2E38956B16F384BC003161F0 /* DateFilter-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E38956A16F384BC003161F0 /* DateFilter-iPhone.xib */; };
+		2E38956D16F3A9F2003161F0 /* CategoryFilter-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E38956C16F3A9F2003161F0 /* CategoryFilter-iPhone.xib */; };
+		2E38956F16F3B28C003161F0 /* FilteringDataCell-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E38956E16F3B28B003161F0 /* FilteringDataCell-iPhone.xib */; };
+		2E38957216F3B350003161F0 /* FilteringDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E38957116F3B350003161F0 /* FilteringDataCell.m */; };
 		2EF233F816F2A12C00A968FA /* FilterViewModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF233F716F2A12C00A968FA /* FilterViewModal.m */; };
 		2EF233FC16F2A1A000A968FA /* FilterViewiPhoneModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF233FB16F2A1A000A968FA /* FilterViewiPhoneModal.m */; };
 		2EFA3D2716EFBBE2002F9B42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D2616EFBBE2002F9B42 /* UIKit.framework */; };
@@ -64,6 +67,10 @@
 		2E38956716F38494003161F0 /* MasterFilterComponentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterFilterComponentViewController.h; sourceTree = "<group>"; };
 		2E38956816F38494003161F0 /* MasterFilterComponentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterFilterComponentViewController.m; sourceTree = "<group>"; };
 		2E38956A16F384BC003161F0 /* DateFilter-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DateFilter-iPhone.xib"; sourceTree = "<group>"; };
+		2E38956C16F3A9F2003161F0 /* CategoryFilter-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CategoryFilter-iPhone.xib"; sourceTree = "<group>"; };
+		2E38956E16F3B28B003161F0 /* FilteringDataCell-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FilteringDataCell-iPhone.xib"; sourceTree = "<group>"; };
+		2E38957016F3B350003161F0 /* FilteringDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringDataCell.h; sourceTree = "<group>"; };
+		2E38957116F3B350003161F0 /* FilteringDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringDataCell.m; sourceTree = "<group>"; };
 		2EF233F616F2A12C00A968FA /* FilterViewModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewModal.h; sourceTree = "<group>"; };
 		2EF233F716F2A12C00A968FA /* FilterViewModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewModal.m; sourceTree = "<group>"; };
 		2EF233FA16F2A1A000A968FA /* FilterViewiPhoneModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewiPhoneModal.h; sourceTree = "<group>"; };
@@ -157,6 +164,10 @@
 				2E38956716F38494003161F0 /* MasterFilterComponentViewController.h */,
 				2E38956816F38494003161F0 /* MasterFilterComponentViewController.m */,
 				2E38956A16F384BC003161F0 /* DateFilter-iPhone.xib */,
+				2E38956C16F3A9F2003161F0 /* CategoryFilter-iPhone.xib */,
+				2E38956E16F3B28B003161F0 /* FilteringDataCell-iPhone.xib */,
+				2E38957016F3B350003161F0 /* FilteringDataCell.h */,
+				2E38957116F3B350003161F0 /* FilteringDataCell.m */,
 			);
 			name = FilterComponents;
 			sourceTree = "<group>";
@@ -429,6 +440,8 @@
 				2EFA3DA216F13ED1002F9B42 /* InfoSelectionViewController-iPad.xib in Resources */,
 				2EFA3DA416F13EFD002F9B42 /* InfoSelectionViewController-iPhone.xib in Resources */,
 				2E38956B16F384BC003161F0 /* DateFilter-iPhone.xib in Resources */,
+				2E38956D16F3A9F2003161F0 /* CategoryFilter-iPhone.xib in Resources */,
+				2E38956F16F3B28C003161F0 /* FilteringDataCell-iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +505,7 @@
 				2EF233F816F2A12C00A968FA /* FilterViewModal.m in Sources */,
 				2EF233FC16F2A1A000A968FA /* FilterViewiPhoneModal.m in Sources */,
 				2E38956916F38494003161F0 /* MasterFilterComponentViewController.m in Sources */,
+				2E38957216F3B350003161F0 /* FilteringDataCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

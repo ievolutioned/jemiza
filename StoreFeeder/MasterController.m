@@ -18,7 +18,10 @@
     {
         self.restDataManager = [[RESTDataManager alloc] init];
         self.fileManager = [[FileManager alloc] init];
-        self.filtersDataSource = @{@"DateFilter": @[@"from_date", @"to_date"]};
+        self.filtersDataSource = @{@"DateFilter": @[@"from_date", @"to_date"]
+                                   , @"CategoryFilter": @[@"category"]
+                                   , @"SubfamilyFilter": @[@"subfamily"]
+                                   , @"WarehouseFilter": @[@"warehouse"]};
         self.filters = [NSMutableDictionary new];
     }
     return self;
@@ -121,8 +124,14 @@
     return [self.filtersDataSource valueForKeyPath:realName];
 }
 
--(NSString *)getStringValueForFilter:(NSString *)filterName
+-(NSArray *)getFilteringDataForNib:(NSString *)nibName
 {
+    
+}
+
+-(id)getValueForFilter:(NSString *)filterName forNibName:(NSString *)nibName
+{
+    NSString *realName = [nibName componentsSeparatedByString:@"-"][0];
     id obj;
     if((obj = [self.filters valueForKeyPath:filterName]))
     {
@@ -134,7 +143,28 @@
         }
         else
         {
-            return obj;
+            NSArray *filteringData;
+            if([realName isEqualToString:@"CategoryFilter"])
+            {
+                filteringData = self.categories;
+            }
+            else if([realName isEqualToString:@"SubfamilyFilter"])
+            {
+                filteringData = self.subfamilies;
+            }
+            else
+            {
+                filteringData = self.warehouses;
+            }
+            
+            NSUInteger result;
+            if((result = [filteringData indexOfObject:obj]))
+            {
+                if(result != NSNotFound)
+                {
+                    return [NSNumber numberWithUnsignedInt:result];
+                }
+            }
         }
     }
     return @"";

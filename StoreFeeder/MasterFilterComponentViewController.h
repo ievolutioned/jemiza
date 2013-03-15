@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "IFiltersManager.h"
 
-@interface MasterFilterComponentViewController : UIViewController
+@interface MasterFilterComponentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, retain) IBOutletCollection(UITextField) NSArray *dateTextFields;
 @property(nonatomic, retain) IBOutlet UIView *datePicker;
 @property(nonatomic, assign) id<IFiltersManager> filtersManager;
 @property(nonatomic, retain) NSArray *dataSource;
+
+@property(nonatomic, retain) IBOutlet UITableView *dataTable;
+@property(nonatomic, assign) NSArray *filteringData;
 
 
 -(IBAction)datePickerValueChanged:(id)sender;

@@ -18,5 +18,8 @@
 @property(nonatomic, retain)FileManager *fileManager;
 @property(nonatomic, assign)UINavigationController *navController;
 @property(nonatomic, retain)NSMutableDictionary *filters;
+@property(nonatomic, retain)NSArray *categories;
+@property(nonatomic, retain)NSArray *subfamilies;
+@property(nonatomic, retain)NSArray *warehouses;
 
 @end
