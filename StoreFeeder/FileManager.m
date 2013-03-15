@@ -13,16 +13,37 @@ NSString *const kLoginFilename = @"login.info";
 
 @implementation FileManager
 
+-(id)init
+{
+    self = [super init];
+    if(self)
+    {
+        self.cachedFilteringDataNames = @[@"category.json", @"subfamily.json", @"warehouse.json"];
+    }
+    return self;
+}
+
+
 -(void)loadInfoFromJsonFileWithHandler:(void(^)(NSArray *))handler
 {
     NSData *fileContent = [NSData dataWithContentsOfFile:[self getFilePath:kDataFilename]];
     [self parseDates:[NSJSONSerialization JSONObjectWithData:fileContent options:NSJSONReadingMutableContainers error:nil] toHandler:handler];
 }
 
+-(void)deleteFile:(NSString*)filename
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    BOOL exists = [fm fileExistsAtPath:[self getFilePath:filename]];
+    if(exists == YES) [fm removeItemAtPath:[self getFilePath:filename] error:nil];
+}
+
 
 -(void)loadInfoToJsonFile:(NSData *)jsonInfo
 {
     [jsonInfo writeToFile:[self getFilePath:kDataFilename] atomically:YES];
+    [self.cachedFilteringDataNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [self deleteFile:obj];
+    }];
 }
 
 -(BOOL)checkIfJsonFileExists
@@ -75,18 +96,16 @@ NSString *const kLoginFilename = @"login.info";
 
 -(void)logout
 {
-    NSFileManager *fm = [NSFileManager defaultManager];
-    BOOL exists = [fm fileExistsAtPath:[self getFilePath:kLoginFilename]];
-    if(exists == YES) [fm removeItemAtPath:[self getFilePath:kLoginFilename] error:nil];
+    [self deleteFile:kLoginFilename];
 }
 
--(NSString *)getProfileOfLoggedInUser
+-(id)getObjectFromUserFile:(NSString *)keyName
 {
     if([self checkIfLoginInfoExists])
     {
         @try {
             NSMutableDictionary *appState = [NSKeyedUnarchiver unarchiveObjectWithFile: [self getFilePath:kLoginFilename]];
-            return appState[@"profile"];
+            return appState[keyName];
         }
         @catch (NSException *exception) {
             return nil;
@@ -95,22 +114,32 @@ NSString *const kLoginFilename = @"login.info";
     return nil;
 }
 
+
+-(NSString *)getProfileOfLoggedInUser
+{
+    return [self getObjectFromUserFile:@"profile"];
+}
+
+-(NSString *)getAccessTokenOfLoggedInUser
+{
+    return [self getObjectFromUserFile:@"accessToken"];
+}
+
 -(void)loadFilterInfo:(NSString *)filter toHandler:(void(^)(NSArray *))handler
 {
-    __block NSString *filtername = filter;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(queue, ^{
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSArray *filteredInfo = nil;
-        if([fileManager fileExistsAtPath:[self getFilePath:[NSString stringWithFormat:@"%@.json", filtername]]])
+        if([fileManager fileExistsAtPath:[self getFilePath:[NSString stringWithFormat:@"%@.json", filter]]])
         {
-            NSData *fileContent = [NSData dataWithContentsOfFile:[self getFilePath:[NSString stringWithFormat:@"%@.json", filtername]]];
+            NSData *fileContent = [NSData dataWithContentsOfFile:[self getFilePath:[NSString stringWithFormat:@"%@.json", filter]]];
             filteredInfo = [NSJSONSerialization JSONObjectWithData:fileContent options:kNilOptions error:nil];
         }
         else
         {
-            filteredInfo = [self filterValuesForFilter:filtername];
-            [filteredInfo writeToFile:[self getFilePath:[NSString stringWithFormat:@"%@.json", filtername]] atomically:YES];
+            filteredInfo = [self filterValuesForFilter:filter];
+            [filteredInfo writeToFile:[self getFilePath:[NSString stringWithFormat:@"%@.json", filter]] atomically:YES];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             handler(filteredInfo);
@@ -139,7 +168,7 @@ NSString *const kLoginFilename = @"login.info";
 
     NSMutableArray *valueList = [NSMutableArray new];
     [jsonInfo enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if(![valueList containsObject:obj[keyToSearch]])
+        if(obj[keyToSearch] != [NSNull null] && ![valueList containsObject:obj[keyToSearch]])
         {
             [valueList addObject:obj[keyToSearch]];
         }

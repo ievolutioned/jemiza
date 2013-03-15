@@ -10,10 +10,10 @@
 
 @implementation RESTDataManager
 
--(void)getInfoFromServiceToHandler:(void (^)(NSData *, ConnectionResult))handler
+-(void)getInfoFromServiceWithAccessToken:(NSString *)accessToken ToHandler:(void (^)(NSData *, ConnectionResult))handler
 {
     NSLog(@"Comenzando bajado de info");
-    NSURL *url = [NSURL URLWithString:@"http://jemiza.herokuapp.com/admin/products.json"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://jemiza.herokuapp.com/admin/products.json?access_token=%@", accessToken]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         NSLog(@"Terminado bajado de info");
@@ -41,8 +41,35 @@
 
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(NSDictionary *))handler
 {
-    NSDictionary *data = @{@"result": @YES, @"profile": @"admin"};
-    handler(data);
+    
+    NSLog(@"Comenzando login");
+    NSURL *url = [NSURL URLWithString:@"http://jemiza.herokuapp.com/admin/login.json"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    NSDictionary *jsonDict = @{@"admin_user": @{@"email": username, @"password": password}};
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDict options:kNilOptions error:nil];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [request setValue:@"json" forHTTPHeaderField:@"Data-Type"];
+    [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-Length"];
+    
+    [request setHTTPBody:jsonData];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSLog(@"Terminado login");
+        NSDictionary *responseJson = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        NSDictionary *result = nil;
+        if(!error && [responseJson[@"success"] boolValue])
+        {
+            result =  @{@"result": @YES, @"profile": responseJson[@"user"][@"role"], @"accessToken": responseJson[@"user"][@"access_token"]};
+        }
+        else
+        {
+            result = @{@"result": @NO};
+        }
+        handler(result);
+    }];
 }
 
 @end

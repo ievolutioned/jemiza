@@ -55,7 +55,11 @@
 
 -(void)resyncInfoWithHandler:(void (^)(BOOL, ConnectionResult))handler
 {
-    [self.restDataManager getInfoFromServiceToHandler:^(NSData *data, ConnectionResult connResult) {
+    if(!self.accessToken)
+    {
+       self.accessToken = [self.fileManager getAccessTokenOfLoggedInUser];
+    }
+    [self.restDataManager getInfoFromServiceWithAccessToken:self.accessToken ToHandler:^(NSData *data, ConnectionResult connResult) {
         if(connResult == CR_SUCCESS)
             [self.fileManager loadInfoToJsonFile:data];
         handler(connResult == CR_SUCCESS, connResult);
@@ -67,12 +71,7 @@
     [self.restDataManager loginWithUsername:username withPassword:password withHandler:^(NSDictionary *data) {
        if(![data[@"result"] isEqual: @NO])
        {
-           NSMutableDictionary *info = [NSMutableDictionary new];
-           [info setValue:username forKey:@"username"];
-           [info setValue:password forKey:@"password"];
-           [info setValue:data[@"profile"] forKey:@"profile"];
-           
-           if (![self.fileManager saveLoginInfo:info])
+           if (![self.fileManager saveLoginInfo:data])
            {
                NSLog(@"Could not save file");
                handler(NO);

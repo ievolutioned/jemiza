@@ -18,5 +18,8 @@
 -(void)logout;
 -(NSString *)getProfileOfLoggedInUser;
 -(void)loadFilterInfo:(NSString *)filter toHandler:(void(^)(NSArray *))handler;
+-(NSString *)getAccessTokenOfLoggedInUser;
+
+@property(nonatomic, retain) NSArray *cachedFilteringDataNames;
 
 @end

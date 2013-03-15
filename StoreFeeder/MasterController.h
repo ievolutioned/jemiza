@@ -21,5 +21,6 @@
 @property(nonatomic, retain)NSArray *categories;
 @property(nonatomic, retain)NSArray *subfamilies;
 @property(nonatomic, retain)NSArray *warehouses;
+@property(nonatomic, retain)NSString *accessToken;
 
 @end
