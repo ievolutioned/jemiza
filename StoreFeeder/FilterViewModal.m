@@ -7,7 +7,6 @@
 //
 
 #import "FilterViewModal.h"
-#import "AccordionView.h"
 
 @implementation FilterViewModal
 
@@ -15,7 +14,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
     }
     return self;
 }
@@ -28,5 +26,10 @@
     // Drawing code
 }
 */
+
+-(void)loadView
+{
+    
+}
 
 @end

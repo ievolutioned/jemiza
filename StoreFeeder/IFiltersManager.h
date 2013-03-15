@@ -11,6 +11,11 @@
 @protocol IFiltersManager <NSObject>
 
 -(NSArray *)getFilteredInfo;
--(void)setFilters:(NSDictionary *)filters;
+-(void)addFilter:(NSString *)filterName withValue:(id)filterValue;
+-(NSArray *)getDataSourceForNib:(NSString *)nibName;
+-(NSString *)getStringValueForFilter:(NSString *)filterName;
+-(NSArray *)getComponentListForLoggedUser;
+
+@property(nonatomic, retain)NSDictionary *filtersDataSource;
 
 @end

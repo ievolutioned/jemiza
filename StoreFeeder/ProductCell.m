@@ -37,8 +37,25 @@
     {
         self.dataMapping = @[@"product_code", @"description", @"stock"];
     }
+    
     [self.productInfoList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [((UILabel *)obj) setText:[NSString stringWithFormat:@"%@", data[self.dataMapping[idx]]]];
+        
+        if(data[self.dataMapping[idx]] != [NSNull null])
+        {
+            if([[data[self.dataMapping[idx]] class] isSubclassOfClass:[NSNumber class]])
+            {
+                float value = [data[self.dataMapping[idx]] floatValue];
+                [((UILabel *)obj) setText:[NSString stringWithFormat:@"%.2f", value]];
+            }
+            else
+            {
+                [((UILabel *)obj) setText:[NSString stringWithFormat:@"%@", data[self.dataMapping[idx]]]];
+            }
+        }
+        else
+        {
+            [((UILabel *)obj) setText:@""];
+        }
     }];
 }
 

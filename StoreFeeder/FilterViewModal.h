@@ -7,7 +7,13 @@
 //
 
 #import "UATitledModalPanel.h"
+#import "AccordionView.h"
+#import "IFiltersManager.h"
 
-@interface FilterViewModal : UATitledModalPanel
+@interface FilterViewModal : UAModalPanel
+
+@property(nonatomic, assign) id<IFiltersManager> filtersManager;
+
+-(void)loadView;
 
 @end

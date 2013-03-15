@@ -17,5 +17,6 @@
 @property(nonatomic, retain)RESTDataManager *restDataManager;
 @property(nonatomic, retain)FileManager *fileManager;
 @property(nonatomic, assign)UINavigationController *navController;
+@property(nonatomic, retain)NSMutableDictionary *filters;
 
 @end
