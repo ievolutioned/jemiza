@@ -49,6 +49,7 @@
 {
     [self.fileManager loadInfoFromJsonFileWithHandler:^(NSArray *result) {
         self.cachedInfo = result;
+        self.filtered = self.cachedInfo;
         handler(self.cachedInfo != nil);
     }];
 }
@@ -109,7 +110,7 @@
 
 -(NSArray *)getFilteredInfo
 {
-    return self.cachedInfo;
+    return self.filtered;
 }
 
 -(void)addFilter:(NSString *)filterName withValue:(id)filterValue
@@ -142,7 +143,6 @@
 
 -(id)getValueForFilter:(NSString *)filterName forNibName:(NSString *)nibName
 {
-    NSString *realName = [nibName componentsSeparatedByString:@"-"][0];
     id obj;
     if((obj = [self.filters valueForKeyPath:filterName]))
     {
@@ -152,31 +152,7 @@
             [formatter setDateFormat:@"dd/MM/yyyy"];
             return [formatter stringFromDate:obj];
         }
-        else
-        {
-            NSArray *filteringData;
-            if([realName isEqualToString:@"CategoryFilter"])
-            {
-                filteringData = self.categories;
-            }
-            else if([realName isEqualToString:@"SubfamilyFilter"])
-            {
-                filteringData = self.subfamilies;
-            }
-            else
-            {
-                filteringData = self.warehouses;
-            }
-            
-            NSUInteger result;
-            if((result = [filteringData indexOfObject:obj]))
-            {
-                if(result != NSNotFound)
-                {
-                    return [NSNumber numberWithUnsignedInt:result];
-                }
-            }
-        }
+        return obj;
     }
     return @"";
 }
@@ -215,6 +191,45 @@
 -(BOOL)checkIfFilteringDataIsLoaded
 {
     return (self.categories != nil && self.subfamilies != nil && self.warehouses != nil);
+}
+
+-(void)applyFilters
+{
+    __block BOOL firstTime = YES;
+    [self.filters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSPredicate *predicate = nil;
+        NSString *valueFromList = nil;
+        if([key isEqualToString:@"category"])
+        {
+            valueFromList = self.categories[[obj intValue]];
+            predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"description_category", valueFromList];
+        }
+        if([key isEqualToString:@"warehouse"])
+        {
+            valueFromList = self.warehouses[[obj intValue]];
+            predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"warehouse", valueFromList];
+        }
+        if([key isEqualToString:@"subfamily"])
+        {
+            valueFromList = self.subfamilies[[obj intValue]];
+            predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"description_sub_family", valueFromList];
+        }
+        if([key isEqualToString:@"from_date"])
+        {
+            predicate = [NSPredicate predicateWithFormat:@"%K >= %@", @"updated_at", obj];
+        }
+        if([key isEqualToString:@"to_date"])
+        {
+            predicate = [NSPredicate predicateWithFormat:@"%K <= %@", @"updated_at", obj];
+        }
+        NSArray *filteredCopy;
+        if(firstTime)
+            filteredCopy = [[self.cachedInfo copy] autorelease];
+        else
+            filteredCopy = [[self.filtered copy] autorelease];
+        firstTime = NO;
+        self.filtered = [filteredCopy filteredArrayUsingPredicate:predicate];
+    }];
 }
 
 @end

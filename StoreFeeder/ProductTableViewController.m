@@ -291,6 +291,15 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     [modalPanel setFiltersManager:self.filterManager];
     [modalPanel loadView];
     [self.navigationController.view addSubview:modalPanel];
+    
+    modalPanel.onClosePressed = ^(UAModalPanel *panel)
+    {
+        [self.filterManager applyFilters];
+        [panel hideWithOnComplete:^(BOOL finished) {
+            [self searchBar:nil textDidChange:((UISearchBar *)self.tableView.tableHeaderView).text];
+        }];
+    };
+    
     [modalPanel show];
 }
 

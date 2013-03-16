@@ -37,6 +37,12 @@
     {
         self.filteringData = [self.filtersManager getFilteringDataForNib:self.nibName];
         [self.dataTable reloadData];
+        NSNumber *obj;
+        if([[(obj = [self.filtersManager getValueForFilter:self.dataSource[0] forNibName:self.nibName]) class] isSubclassOfClass:[NSNumber class]])
+        {
+            [self.dataTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[obj intValue] inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+
     }
 
 }
@@ -91,7 +97,7 @@
         else
             cell = [[NSBundle mainBundle] loadNibNamed:@"FilteringDataCell-iPhone" owner:self options:nil][0];
     }
-    [((FilteringDataCell *)cell).infoLabel setText:self.filteringData[indexPath.row]];
+    [((FilteringDataCell *)cell).infoLabel setText:[NSString stringWithFormat:@"%@", self.filteringData[indexPath.row]]];
     return cell;
 }
 
@@ -105,11 +111,12 @@
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
-        NSNumber *obj;
-        if(![[(obj = [self.filtersManager getValueForFilter:self.dataSource[0] forNibName:self.nibName]) class] isSubclassOfClass:[NSNumber class]])
+    id obj;
+    if([[(obj = [self.filtersManager getValueForFilter:self.dataSource[0] forNibName:self.nibName]) class] isSubclassOfClass:[NSNumber class]])
+    {
+        if([obj intValue] == indexPath.row)
         {
-            [self.dataTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[obj intValue] inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [cell setSelected:YES];
         }
     }
 }

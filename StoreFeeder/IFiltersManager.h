@@ -18,6 +18,7 @@
 -(NSArray *)getFilteringDataForNib:(NSString *)nibName;
 -(void)loadFilteringDataWithHandler:(void(^)(BOOL))handler;
 -(BOOL)checkIfFilteringDataIsLoaded;
+-(void)applyFilters;
 
 @property(nonatomic, retain)NSDictionary *filtersDataSource;
 

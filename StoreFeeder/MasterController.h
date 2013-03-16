@@ -22,5 +22,6 @@
 @property(nonatomic, retain)NSArray *subfamilies;
 @property(nonatomic, retain)NSArray *warehouses;
 @property(nonatomic, retain)NSString *accessToken;
+@property(nonatomic, retain)NSArray *filtered;
 
 @end

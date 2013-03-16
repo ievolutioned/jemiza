@@ -33,7 +33,7 @@
 -(void)loadAccordionView
 {
     self.margin = UIEdgeInsetsMake(40, 20, 20, 20);
-    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 230, 300)];
+    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 230, 380)];
     [self.contentView addSubview:scroll];
     
     AccordionView *accordion = [[AccordionView alloc] initWithFrame:CGRectMake(0, 0, 230, 420)];

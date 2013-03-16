@@ -130,6 +130,7 @@ NSString *const kLoginFilename = @"login.info";
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(queue, ^{
         NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSLog(@"Filter name: %@", filter);
         NSArray *filteredInfo = nil;
         if([fileManager fileExistsAtPath:[self getFilePath:[NSString stringWithFormat:@"%@.json", filter]]])
         {
@@ -139,7 +140,7 @@ NSString *const kLoginFilename = @"login.info";
         else
         {
             filteredInfo = [self filterValuesForFilter:filter];
-            [filteredInfo writeToFile:[self getFilePath:[NSString stringWithFormat:@"%@.json", filter]] atomically:YES];
+            [[NSJSONSerialization dataWithJSONObject:filteredInfo options:kNilOptions error:nil] writeToFile:[self getFilePath:[NSString stringWithFormat:@"%@.json", filter]] atomically:YES];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             handler(filteredInfo);
