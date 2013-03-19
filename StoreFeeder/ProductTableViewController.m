@@ -84,10 +84,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 
     self.title = @"Productos de abarrote";
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    if([[self.dataManager getProfileOfLoggedInUser] isEqualToString:@"normal"])
-    {
-        [self.navigationItem setHidesBackButton:YES];
-    }
+    [self.navigationItem setHidesBackButton:YES];
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(syncData)]];
     
