@@ -286,7 +286,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 
 -(void)openFilterView
 {
-    FilterViewiPhoneModal *modalPanel = [[[FilterViewiPhoneModal alloc] initWithFrame:self.navigationController.view.bounds] autorelease];
+    FilterViewiPhoneModal *modalPanel = [[FilterViewiPhoneModal alloc] initWithFrame:self.navigationController.view.bounds];
     [modalPanel setFiltersManager:self.filterManager];
     [modalPanel loadView];
     [self.navigationController.view addSubview:modalPanel];

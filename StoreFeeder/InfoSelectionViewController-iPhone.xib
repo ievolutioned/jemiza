@@ -43,23 +43,20 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="540538142"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="951220550">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+						<object class="NSColor" key="IBUIBackgroundColor" id="336334">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC42ODgyMjQ1NDY0IDAgMC4wNjY2NjY2NjY2NwA</bytes>
 						</object>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Vendedor</string>
+						<string key="IBUINormalTitle">Precios</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="1073522363">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yMjY2Njg2NDgxIDAuMjI2NjY4NjQ4MSAwLjIyNjY2ODY0ODEAA</bytes>
-						</object>
+						<reference key="IBUINormalTitleColor" ref="1073522363"/>
 						<object class="NSColor" key="IBUINormalTitleShadowColor" id="797079976">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
@@ -82,17 +79,14 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<reference key="IBUIBackgroundColor" ref="951220550"/>
+						<reference key="IBUIBackgroundColor" ref="336334"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Administrador</string>
+						<string key="IBUINormalTitle">Costos</string>
 						<reference key="IBUIHighlightedTitleColor" ref="1073522363"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yMjY2Njg2NDgxIDAuMjI2NjY4NjQ4MSAwLjIyNjY2ODY0ODEAA</bytes>
-						</object>
+						<reference key="IBUINormalTitleColor" ref="1073522363"/>
 						<reference key="IBUINormalTitleShadowColor" ref="797079976"/>
 						<reference key="IBUIFontDescription" ref="1018893053"/>
 						<reference key="IBUIFont" ref="863304859"/>
@@ -169,8 +163,8 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="311670548"/>
 							<reference ref="540538142"/>
+							<reference ref="311670548"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

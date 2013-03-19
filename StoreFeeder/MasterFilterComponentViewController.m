@@ -60,8 +60,24 @@
     [self.dateTextFields enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if([((UITextField *)obj) isFirstResponder])
         {
-            [self.filtersManager addFilter:self.dataSource[idx] withValue:[sender date]];
-            [((UITextField *)obj) setText:[formatter stringFromDate:[sender date]]];
+            NSDate *date = [sender date];
+            NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+            NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
+            if(idx == 0)
+            {
+                [components setHour:00];
+                [components setMinute:00];
+                [components setSecond:00];
+            }
+            else
+            {
+                [components setHour:23];
+                [components setMinute:59];
+                [components setSecond:59];
+            }
+            NSDate *finalDate = [calendar dateFromComponents:components];
+            [self.filtersManager addFilter:self.dataSource[idx] withValue:finalDate];
+            [((UITextField *)obj) setText:[formatter stringFromDate:finalDate]];
             *stop = YES;
         }
     }];

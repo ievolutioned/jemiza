@@ -239,6 +239,7 @@
             filteredCopy = [[self.filtered copy] autorelease];
         firstTime = NO;
         self.filtered = [filteredCopy filteredArrayUsingPredicate:predicate];
+        NSLog(@"Obtenidos %d objectos filtrados de %d originalmente con filtro %@", [self.filtered count], [filteredCopy count], obj);
     }];
 }
 
