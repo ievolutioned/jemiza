@@ -246,7 +246,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     [mainScrollView setBackgroundColor:[UIColor colorWithRed:.941176471 green:.937254902 blue:.929411765 alpha:0]];
     [detailViewController release];
     
-    UIViewController *mainController = [UIViewController new];
+    UIViewController *mainController = [[[UIViewController alloc] init] autorelease];
     [mainController setView:mainScrollView];
     mainController.title = [NSString stringWithFormat:@"Identificador - %@", product[@"product_code"]];
 

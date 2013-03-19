@@ -18,6 +18,7 @@
 		2EE3C3F416F82DAC007E07F2 /* ProductDetailAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE3C3F316F82DAC007E07F2 /* ProductDetailAdminViewController.m */; };
 		2EE3C3F716F82E22007E07F2 /* ProductDetailAdminViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EE3C3F516F82E22007E07F2 /* ProductDetailAdminViewController-iPad.xib */; };
 		2EE3C3F816F82E22007E07F2 /* ProductDetailAdminViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EE3C3F616F82E22007E07F2 /* ProductDetailAdminViewController-iPhone.xib */; };
+		2EE3C3FA16F8C61D007E07F2 /* LogoJemiza.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EE3C3F916F8C61D007E07F2 /* LogoJemiza.jpg */; };
 		2EF233F816F2A12C00A968FA /* FilterViewModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF233F716F2A12C00A968FA /* FilterViewModal.m */; };
 		2EF233FC16F2A1A000A968FA /* FilterViewiPhoneModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF233FB16F2A1A000A968FA /* FilterViewiPhoneModal.m */; };
 		2EFA3D2716EFBBE2002F9B42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D2616EFBBE2002F9B42 /* UIKit.framework */; };
@@ -85,6 +86,7 @@
 		2EE3C3F316F82DAC007E07F2 /* ProductDetailAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailAdminViewController.m; sourceTree = "<group>"; };
 		2EE3C3F516F82E22007E07F2 /* ProductDetailAdminViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailAdminViewController-iPad.xib"; sourceTree = "<group>"; };
 		2EE3C3F616F82E22007E07F2 /* ProductDetailAdminViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailAdminViewController-iPhone.xib"; sourceTree = "<group>"; };
+		2EE3C3F916F8C61D007E07F2 /* LogoJemiza.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LogoJemiza.jpg; sourceTree = "<group>"; };
 		2EF233F616F2A12C00A968FA /* FilterViewModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewModal.h; sourceTree = "<group>"; };
 		2EF233F716F2A12C00A968FA /* FilterViewModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewModal.m; sourceTree = "<group>"; };
 		2EF233FA16F2A1A000A968FA /* FilterViewiPhoneModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewiPhoneModal.h; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				2EFA3D9A16F13BB3002F9B42 /* jemiza_ico.png */,
 				2EFA3D9816F13BA9002F9B42 /* jemiza2_ico@2x.png */,
 				2EFA3D9616F13B17002F9B42 /* jemiza2_ico.png */,
+				2EE3C3F916F8C61D007E07F2 /* LogoJemiza.jpg */,
 				2EFA3D2E16EFBBE2002F9B42 /* JemizaApp-Info.plist */,
 				2EFA3D2F16EFBBE2002F9B42 /* InfoPlist.strings */,
 				2EFA3D3216EFBBE2002F9B42 /* main.m */,
@@ -468,6 +471,7 @@
 				2E38957616F3C815003161F0 /* WarehouseFilter-iPhone.xib in Resources */,
 				2EE3C3F716F82E22007E07F2 /* ProductDetailAdminViewController-iPad.xib in Resources */,
 				2EE3C3F816F82E22007E07F2 /* ProductDetailAdminViewController-iPhone.xib in Resources */,
+				2EE3C3FA16F8C61D007E07F2 /* LogoJemiza.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

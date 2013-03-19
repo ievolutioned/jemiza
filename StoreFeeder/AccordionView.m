@@ -131,7 +131,7 @@
 
 - (void)touchDown:(id)sender {
     if (allowsMultipleSelection) {
-        NSMutableIndexSet *mis = [selectionIndexes mutableCopy];
+        NSMutableIndexSet *mis = [[selectionIndexes mutableCopy] autorelease];
         if ([selectionIndexes containsIndex:[sender tag]]) {
             [mis removeIndex:[sender tag]];
         } else {

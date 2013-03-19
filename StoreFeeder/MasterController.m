@@ -11,18 +11,24 @@
 @implementation MasterController
 @synthesize cachedInfo, filtersDataSource, chosenOption;
 
+-(void)dealloc
+{
+    [super dealloc];
+    self.filtersDataSource = nil;
+}
+
 -(id)init
 {
     self = [super init];
     if(self)
     {
-        self.restDataManager = [[RESTDataManager alloc] init];
-        self.fileManager = [[FileManager alloc] init];
+        self.restDataManager = [[[RESTDataManager alloc] init] autorelease];
+        self.fileManager = [[[FileManager alloc] init] autorelease];
         self.filtersDataSource = @{@"DateFilter": @[@"from_date", @"to_date"]
                                    , @"CategoryFilter": @[@"category"]
                                    , @"SubfamilyFilter": @[@"subfamily"]
                                    , @"WarehouseFilter": @[@"warehouse"]};
-        self.filters = [NSMutableDictionary new];
+        self.filters = [[[NSMutableDictionary alloc] init] autorelease];
     }
     return self;
 }
@@ -148,7 +154,7 @@
     {
         if([[obj class] isSubclassOfClass:[NSDate class]])
         {
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
             [formatter setDateFormat:@"dd/MM/yyyy"];
             return [formatter stringFromDate:obj];
         }
@@ -160,7 +166,7 @@
 -(NSArray *)getComponentListForLoggedUser
 {
     NSString *profile = [self getProfileOfLoggedInUser];
-    NSMutableArray *componentList = [NSMutableArray new];
+    NSMutableArray *componentList = [[NSMutableArray new] autorelease];
     [componentList addObject:@{@"nibName": @"DateFilter", @"title": @"Por fecha:"}];
     if(![profile isEqualToString:@"normal"])
     {

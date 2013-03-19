@@ -33,21 +33,21 @@
 -(void)loadAccordionView
 {
     self.margin = UIEdgeInsetsMake(40, 20, 20, 20);
-    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 230, 380)];
+    UIScrollView *scroll = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 230, 380)] autorelease];
     [self.contentView addSubview:scroll];
     
-    AccordionView *accordion = [[AccordionView alloc] initWithFrame:CGRectMake(0, 0, 230, 420)];
+    AccordionView *accordion = [[[AccordionView alloc] initWithFrame:CGRectMake(0, 0, 230, 420)] autorelease];
     [scroll addSubview:accordion];
     
-    NSArray *filterComponents = [self.filtersManager getComponentListForLoggedUser];
+    NSArray *filterComponents = [[self.filtersManager getComponentListForLoggedUser] autorelease];
     NSString *deviceSugar = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? @"-iPad" : @"-iPhone";
     
     [filterComponents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         // Only height is taken into account, so other parameters are just dummy
-        UIButton *header = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 30)];
+        UIButton *header = [[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 30)] autorelease];
         [header setTitle:obj[@"title"] forState:UIControlStateNormal];
         
-        MasterFilterComponentViewController *content = [[MasterFilterComponentViewController alloc] initWithNibName:[NSString stringWithFormat:@"%@%@", obj[@"nibName"], deviceSugar] bundle:[NSBundle mainBundle]];
+        MasterFilterComponentViewController *content = [[[MasterFilterComponentViewController alloc] initWithNibName:[NSString stringWithFormat:@"%@%@", obj[@"nibName"], deviceSugar] bundle:[NSBundle mainBundle]] autorelease];
         [content setFiltersManager:self.filtersManager];
         
         [accordion addHeader:header withView:content.view];

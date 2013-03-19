@@ -46,7 +46,7 @@
     hud.labelText = kLoadingInfoText;
     void(^loadHandler)(BOOL) = ^(BOOL result) {
         [hud hide:YES];
-        self.tableViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain withDataManager:self.dataManager withFilterManager:self.filterManager];
+        self.tableViewController = [[[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain withDataManager:self.dataManager withFilterManager:self.filterManager] autorelease];
         [self.navigationController pushViewController:self.tableViewController animated:YES];
     };
     

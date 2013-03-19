@@ -62,7 +62,7 @@ NSString *const kLoginFilename = @"login.info";
             [mapping enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 if([item valueForKeyPath:obj] != [NSNull null])
                 {
-                    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+                    NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
                     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
                     
                     NSDate *date = [formatter dateFromString:[item valueForKeyPath:obj]];

@@ -22,7 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.masterController = [[MasterController alloc] init];
+    self.masterController = [[[MasterController alloc] init] autorelease];
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         self.loginViewController = [[[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:[NSBundle mainBundle]] autorelease];
     else
