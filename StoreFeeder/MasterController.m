@@ -125,6 +125,16 @@
 
 -(void)addFilter:(NSString *)filterName withValue:(id)filterValue
 {
+    if([filterName rangeOfString:@"date"].location != NSNotFound)
+    {
+        if(self.filters[@"to_date"] != nil || self.filters[@"from_date"] != nil)
+        {
+            [self.filters setValue:filterValue forKeyPath:filterName];
+            return;
+        }
+    }
+    self.filters = nil;
+    self.filters = [[[NSMutableDictionary alloc] init] autorelease];
     [self.filters setValue:filterValue forKeyPath:filterName];
 }
 
@@ -165,6 +175,20 @@
         return obj;
     }
     return @"";
+}
+
+-(int)getActiveFilter
+{
+    NSArray *discreteMapping = @[@"category", @"subfamily", @"warehouse"];
+    if(self.filters && [self.filters count] > 0)
+    {
+        NSUInteger result = [discreteMapping indexOfObject:[self.filters allKeys][0]];
+        if(result != NSNotFound)
+        {
+            return result+1;
+        }
+    }
+    return 0;
 }
 
 -(NSArray *)getComponentListForLoggedUser
@@ -226,11 +250,11 @@
         }
         if([key isEqualToString:@"from_date"])
         {
-            predicate = [NSPredicate predicateWithFormat:@"%K >= %@", @"updated_at", obj];
+            predicate = [NSPredicate predicateWithFormat:@"%K >= %@", @"created_at", obj];
         }
         if([key isEqualToString:@"to_date"])
         {
-            predicate = [NSPredicate predicateWithFormat:@"%K <= %@", @"updated_at", obj];
+            predicate = [NSPredicate predicateWithFormat:@"%K <= %@", @"created_at", obj];
         }
         NSArray *filteredCopy;
         if(firstTime)
@@ -239,7 +263,7 @@
             filteredCopy = [[self.filtered copy] autorelease];
         firstTime = NO;
         self.filtered = [filteredCopy filteredArrayUsingPredicate:predicate];
-        NSLog(@"Obtenidos %d objectos filtrados de %d originalmente con filtro %@", [self.filtered count], [filteredCopy count], obj);
+        NSLog(@"Obtenidos %d objectos filtrados de %d originalmente con filtro %@", [self.filtered count], [filteredCopy count], key);
     }];
 }
 

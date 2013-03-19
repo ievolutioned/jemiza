@@ -10,6 +10,7 @@
 
 @protocol IFiltersManager <NSObject>
 
+-(int)getActiveFilter;
 -(NSArray *)getFilteredInfo;
 -(void)addFilter:(NSString *)filterName withValue:(id)filterValue;
 -(NSArray *)getDataSourceForNib:(NSString *)nibName;

@@ -32,6 +32,7 @@
 
 -(void)loadAccordionView
 {
+    self.headers = [[[NSMutableArray alloc] init] autorelease];
     self.margin = UIEdgeInsetsMake(40, 20, 20, 20);
     UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 230, 380)];
     [self.contentView addSubview:scroll];
@@ -46,14 +47,18 @@
         // Only height is taken into account, so other parameters are just dummy
         UIButton *header = [[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 30)] autorelease];
         [header setTitle:obj[@"title"] forState:UIControlStateNormal];
+        [self.headers addObject:header];
         
         MasterFilterComponentViewController *content = [[MasterFilterComponentViewController alloc] initWithNibName:[NSString stringWithFormat:@"%@%@", obj[@"nibName"], deviceSugar] bundle:[NSBundle mainBundle]];
         [content setFiltersManager:self.filtersManager];
         
         [accordion addHeader:header withView:content.view];
     }];
-    
-    
+    int activeFilter;
+    if((activeFilter = [self.filtersManager getActiveFilter]) != 0)
+    {
+        [accordion setSelectedIndex:activeFilter];
+    }
     // ... add more panels
     
     [accordion setNeedsLayout];

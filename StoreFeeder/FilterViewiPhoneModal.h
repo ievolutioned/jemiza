@@ -10,4 +10,6 @@
 
 @interface FilterViewiPhoneModal : FilterViewModal
 
+@property(nonatomic, retain) NSMutableArray *headers;
+
 @end
