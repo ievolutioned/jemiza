@@ -8,7 +8,8 @@
 
 #import "ProductTableViewController.h"
 #import  "ProductCell.h"
-#import "ProductDetailViewController.h"
+#import "ProductDetailAdminViewController.h"
+#import "ProductDetailStandardViewController.h"
 #import <UAModalPanel.h>
 #import "FilterViewiPhoneModal.h"
 
@@ -233,10 +234,11 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     ProductDetailViewController *detailViewController;
     NSDictionary *product = self.filteredProducts[indexPath.row];
     
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        detailViewController = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController-iPad" bundle:[NSBundle mainBundle] WithData:product];
-    else
-        detailViewController = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController-iPhone" bundle:[NSBundle mainBundle] WithData:product];
+    Class productDetailType = [self.dataManager chosenOption] == Normal ? [ProductDetailStandardViewController class] : [ProductDetailAdminViewController class];
+    NSString *deviceType = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? @"iPad" : @"iPhone";
+    NSString *nibName = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(productDetailType), deviceType];
+    
+    detailViewController = [[productDetailType alloc] initWithNibName:nibName bundle:[NSBundle mainBundle] WithData:product];
     
     UIScrollView *mainScrollView = [[[UIScrollView alloc] initWithFrame:self.view.frame] autorelease];
     [mainScrollView addSubview:detailViewController.view];

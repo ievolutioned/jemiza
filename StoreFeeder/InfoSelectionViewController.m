@@ -40,9 +40,8 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)enterSaleView
+-(void)loadTableview
 {
-    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = kLoadingInfoText;
     void(^loadHandler)(BOOL) = ^(BOOL result) {
@@ -57,9 +56,16 @@
         loadHandler(YES);
 }
 
+-(IBAction)enterSaleView
+{
+    [self.dataManager setChosenOption:Normal];
+    [self loadTableview];
+}
+
 -(IBAction)enterAdminView
 {
-    
+    [self.dataManager setChosenOption:Admin];
+    [self loadTableview];
 }
 
 @end

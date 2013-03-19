@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface ProductDetailViewController : UIViewController
+{
+    NSArray *_dataMapping;
+    NSArray *_quantitiesMapping;
+    NSArray *_datesMapping;
+}
 
 @property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productDetailLabels;
 @property(nonatomic, retain) IBOutletCollection(UIView) NSArray *viewAreas;
@@ -16,6 +22,8 @@
 @property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productDatesLabels;
 @property(nonatomic, assign) NSDictionary *productData;
 
+- (NSString *)stripDoubleSpaceFrom:(NSString *)str;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil WithData:(NSDictionary *)data;
+-(void)loadProductDataIntoView;
 
 @end

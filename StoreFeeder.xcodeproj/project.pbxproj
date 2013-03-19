@@ -14,6 +14,10 @@
 		2E38957216F3B350003161F0 /* FilteringDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E38957116F3B350003161F0 /* FilteringDataCell.m */; };
 		2E38957516F3C815003161F0 /* SubfamilyFilter-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E38957316F3C814003161F0 /* SubfamilyFilter-iPhone.xib */; };
 		2E38957616F3C815003161F0 /* WarehouseFilter-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E38957416F3C815003161F0 /* WarehouseFilter-iPhone.xib */; };
+		2EE3C3F116F82D36007E07F2 /* ProductDetailStandardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE3C3F016F82D36007E07F2 /* ProductDetailStandardViewController.m */; };
+		2EE3C3F416F82DAC007E07F2 /* ProductDetailAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE3C3F316F82DAC007E07F2 /* ProductDetailAdminViewController.m */; };
+		2EE3C3F716F82E22007E07F2 /* ProductDetailAdminViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EE3C3F516F82E22007E07F2 /* ProductDetailAdminViewController-iPad.xib */; };
+		2EE3C3F816F82E22007E07F2 /* ProductDetailAdminViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EE3C3F616F82E22007E07F2 /* ProductDetailAdminViewController-iPhone.xib */; };
 		2EF233F816F2A12C00A968FA /* FilterViewModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF233F716F2A12C00A968FA /* FilterViewModal.m */; };
 		2EF233FC16F2A1A000A968FA /* FilterViewiPhoneModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF233FB16F2A1A000A968FA /* FilterViewiPhoneModal.m */; };
 		2EFA3D2716EFBBE2002F9B42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D2616EFBBE2002F9B42 /* UIKit.framework */; };
@@ -38,8 +42,8 @@
 		2EFA3D7016EFE09A002F9B42 /* RESTDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D6F16EFE09A002F9B42 /* RESTDataManager.m */; };
 		2EFA3D7316EFE0B3002F9B42 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7216EFE0B3002F9B42 /* FileManager.m */; };
 		2EFA3D7716EFF4DB002F9B42 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7516EFF4DB002F9B42 /* ProductDetailViewController.m */; };
-		2EFA3D7816EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7616EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib */; };
-		2EFA3D7A16EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7916EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib */; };
+		2EFA3D7816EFF4DB002F9B42 /* ProductDetailStandardViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7616EFF4DB002F9B42 /* ProductDetailStandardViewController-iPad.xib */; };
+		2EFA3D7A16EFFD7E002F9B42 /* ProductDetailStandardViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D7916EFFD7E002F9B42 /* ProductDetailStandardViewController-iPhone.xib */; };
 		2EFA3D9216F11300002F9B42 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9016F112FF002F9B42 /* LoginViewController.m */; };
 		2EFA3D9316F11300002F9B42 /* LoginViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9116F11300002F9B42 /* LoginViewController-iPad.xib */; };
 		2EFA3D9516F11DD8002F9B42 /* LoginViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D9416F11DD8002F9B42 /* LoginViewController-iPhone.xib */; };
@@ -75,6 +79,12 @@
 		2E38957116F3B350003161F0 /* FilteringDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringDataCell.m; sourceTree = "<group>"; };
 		2E38957316F3C814003161F0 /* SubfamilyFilter-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SubfamilyFilter-iPhone.xib"; sourceTree = "<group>"; };
 		2E38957416F3C815003161F0 /* WarehouseFilter-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WarehouseFilter-iPhone.xib"; sourceTree = "<group>"; };
+		2EE3C3EF16F82D36007E07F2 /* ProductDetailStandardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailStandardViewController.h; sourceTree = "<group>"; };
+		2EE3C3F016F82D36007E07F2 /* ProductDetailStandardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailStandardViewController.m; sourceTree = "<group>"; };
+		2EE3C3F216F82DAC007E07F2 /* ProductDetailAdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailAdminViewController.h; sourceTree = "<group>"; };
+		2EE3C3F316F82DAC007E07F2 /* ProductDetailAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailAdminViewController.m; sourceTree = "<group>"; };
+		2EE3C3F516F82E22007E07F2 /* ProductDetailAdminViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailAdminViewController-iPad.xib"; sourceTree = "<group>"; };
+		2EE3C3F616F82E22007E07F2 /* ProductDetailAdminViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailAdminViewController-iPhone.xib"; sourceTree = "<group>"; };
 		2EF233F616F2A12C00A968FA /* FilterViewModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewModal.h; sourceTree = "<group>"; };
 		2EF233F716F2A12C00A968FA /* FilterViewModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewModal.m; sourceTree = "<group>"; };
 		2EF233FA16F2A1A000A968FA /* FilterViewiPhoneModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewiPhoneModal.h; sourceTree = "<group>"; };
@@ -113,8 +123,8 @@
 		2EFA3D7216EFE0B3002F9B42 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
 		2EFA3D7416EFF4DB002F9B42 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
 		2EFA3D7516EFF4DB002F9B42 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
-		2EFA3D7616EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailViewController-iPad.xib"; sourceTree = "<group>"; };
-		2EFA3D7916EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailViewController-iPhone.xib"; sourceTree = "<group>"; };
+		2EFA3D7616EFF4DB002F9B42 /* ProductDetailStandardViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailStandardViewController-iPad.xib"; sourceTree = "<group>"; };
+		2EFA3D7916EFFD7E002F9B42 /* ProductDetailStandardViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ProductDetailStandardViewController-iPhone.xib"; sourceTree = "<group>"; };
 		2EFA3D8F16F112FF002F9B42 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2EFA3D9016F112FF002F9B42 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2EFA3D9116F11300002F9B42 /* LoginViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPad.xib"; sourceTree = "<group>"; };
@@ -285,6 +295,10 @@
 				2EFA3D9F16F13ED0002F9B42 /* InfoSelectionViewController.m */,
 				2EFA3D5D16EFBDC8002F9B42 /* ProductTableViewController.h */,
 				2EFA3D5E16EFBDC8002F9B42 /* ProductTableViewController.m */,
+				2EE3C3EF16F82D36007E07F2 /* ProductDetailStandardViewController.h */,
+				2EE3C3F016F82D36007E07F2 /* ProductDetailStandardViewController.m */,
+				2EE3C3F216F82DAC007E07F2 /* ProductDetailAdminViewController.h */,
+				2EE3C3F316F82DAC007E07F2 /* ProductDetailAdminViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -297,8 +311,10 @@
 				2EFA3D6116EFBDEB002F9B42 /* ProductCell.m */,
 				2EFA3D6316EFBE34002F9B42 /* ProductCell-iPad.xib */,
 				2EFA3D6B16EFC9E4002F9B42 /* ProductCell-iPhone.xib */,
-				2EFA3D7616EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib */,
-				2EFA3D7916EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib */,
+				2EE3C3F516F82E22007E07F2 /* ProductDetailAdminViewController-iPad.xib */,
+				2EE3C3F616F82E22007E07F2 /* ProductDetailAdminViewController-iPhone.xib */,
+				2EFA3D7616EFF4DB002F9B42 /* ProductDetailStandardViewController-iPad.xib */,
+				2EFA3D7916EFFD7E002F9B42 /* ProductDetailStandardViewController-iPhone.xib */,
 				2EFA3D9116F11300002F9B42 /* LoginViewController-iPad.xib */,
 				2EFA3D9416F11DD8002F9B42 /* LoginViewController-iPhone.xib */,
 				2EFA3DA016F13ED0002F9B42 /* InfoSelectionViewController-iPad.xib */,
@@ -435,8 +451,8 @@
 				2EFA3D3D16EFBBE2002F9B42 /* Default-568h@2x.png in Resources */,
 				2EFA3D6416EFBE34002F9B42 /* ProductCell-iPad.xib in Resources */,
 				2EFA3D6C16EFC9E4002F9B42 /* ProductCell-iPhone.xib in Resources */,
-				2EFA3D7816EFF4DB002F9B42 /* ProductDetailViewController-iPad.xib in Resources */,
-				2EFA3D7A16EFFD7E002F9B42 /* ProductDetailViewController-iPhone.xib in Resources */,
+				2EFA3D7816EFF4DB002F9B42 /* ProductDetailStandardViewController-iPad.xib in Resources */,
+				2EFA3D7A16EFFD7E002F9B42 /* ProductDetailStandardViewController-iPhone.xib in Resources */,
 				2EFA3D9316F11300002F9B42 /* LoginViewController-iPad.xib in Resources */,
 				2EFA3D9516F11DD8002F9B42 /* LoginViewController-iPhone.xib in Resources */,
 				2EFA3D9716F13B18002F9B42 /* jemiza2_ico.png in Resources */,
@@ -450,6 +466,8 @@
 				2E38956F16F3B28C003161F0 /* FilteringDataCell-iPhone.xib in Resources */,
 				2E38957516F3C815003161F0 /* SubfamilyFilter-iPhone.xib in Resources */,
 				2E38957616F3C815003161F0 /* WarehouseFilter-iPhone.xib in Resources */,
+				2EE3C3F716F82E22007E07F2 /* ProductDetailAdminViewController-iPad.xib in Resources */,
+				2EE3C3F816F82E22007E07F2 /* ProductDetailAdminViewController-iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +532,8 @@
 				2EF233FC16F2A1A000A968FA /* FilterViewiPhoneModal.m in Sources */,
 				2E38956916F38494003161F0 /* MasterFilterComponentViewController.m in Sources */,
 				2E38957216F3B350003161F0 /* FilteringDataCell.m in Sources */,
+				2EE3C3F116F82D36007E07F2 /* ProductDetailStandardViewController.m in Sources */,
+				2EE3C3F416F82DAC007E07F2 /* ProductDetailAdminViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 #import "MasterController.h"
 
 @implementation MasterController
-@synthesize cachedInfo, filtersDataSource;
+@synthesize cachedInfo, filtersDataSource, chosenOption;
 
 -(id)init
 {

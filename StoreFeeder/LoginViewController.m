@@ -75,6 +75,7 @@
     if([[self.dataManager getProfileOfLoggedInUser] isEqualToString:@"normal"])
     {
         self.mainViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain withDataManager:self.dataManager withFilterManager:self.filterManager];
+        [self.dataManager setChosenOption:Normal];
     }
     else
     {

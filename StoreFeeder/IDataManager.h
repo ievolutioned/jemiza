@@ -11,7 +11,14 @@
 
 @protocol IDataManager <NSObject>
 
+typedef enum ChosenUserOption
+{
+    Admin,
+    Normal    
+} ChosenUserOption;
+
 @property(nonatomic, retain) NSArray *cachedInfo;
+@property(nonatomic, assign) ChosenUserOption chosenOption;
 
 -(void)loadProductListWithHandler:(void(^)(BOOL))handler;
 -(void)resyncInfoWithHandler:(void (^)(BOOL, ConnectionResult))handler;
