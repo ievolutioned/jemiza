@@ -30,11 +30,11 @@
     
     [self.loginViewController setDataManager:self.masterController];
     [self.loginViewController setFilterManager:self.masterController];
-    UISwipeGestureRecognizer *logoutSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self.masterController action:@selector(logout)];
-    [logoutSwipe setNumberOfTouchesRequired:1];
-    [logoutSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    UISwipeGestureRecognizer *backSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self.masterController action:@selector(goBack)];
+    [backSwipe setNumberOfTouchesRequired:1];
+    [backSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
     self.navController = [[[UINavigationController alloc] initWithRootViewController:self.loginViewController] autorelease];
-    [self.navController.navigationBar addGestureRecognizer:logoutSwipe];
+    [self.navController.navigationBar addGestureRecognizer:backSwipe];
     
     UIImage *image = [self imageWithColor:[UIColor colorWithRed:.658823529 green:0 blue:.101960784 alpha:1]];
     [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];

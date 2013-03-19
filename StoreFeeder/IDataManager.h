@@ -24,7 +24,7 @@ typedef enum ChosenUserOption
 -(void)resyncInfoWithHandler:(void (^)(BOOL, ConnectionResult))handler;
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(BOOL))handler;
 -(BOOL)checkLogin;
--(void)logout;
+-(void)goBack;
 -(NSString *)getProfileOfLoggedInUser;
 
 

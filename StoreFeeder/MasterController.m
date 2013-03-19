@@ -100,10 +100,14 @@
     return [self.fileManager checkIfLoginInfoExists];
 }
 
--(void)logout
+-(void)goBack
 {
-    [self.fileManager logout];
-    [self.navController popToRootViewControllerAnimated:YES];
+    if(self.navController.viewControllers.count > 1)
+    {
+        if(self.navController.viewControllers.count == 2)
+            [self.fileManager logout];
+       [self.navController popViewControllerAnimated:YES];
+    }
 }
 
 
