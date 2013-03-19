@@ -12,7 +12,7 @@
 
 -(void)getInfoFromServiceWithAccessToken:(NSString *)accessToken ToHandler:(void (^)(NSData *, ConnectionResult))handler
 {
-    NSLog(@"Comenzando bajado de info");
+    NSLog(@"Comenzando bajado de info con token %@", accessToken);
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://jemiza.herokuapp.com/admin/products.json?access_token=%@", accessToken]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -62,6 +62,7 @@
         NSDictionary *result = nil;
         if(!error && [responseJson[@"success"] boolValue])
         {
+            NSLog(@"Access token retrieved: %@", responseJson[@"user"][@"access_token"]);
             result =  @{@"result": @YES, @"profile": responseJson[@"user"][@"role"], @"accessToken": responseJson[@"user"][@"access_token"]};
         }
         else

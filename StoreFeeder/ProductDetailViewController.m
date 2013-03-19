@@ -30,7 +30,9 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (NSString *)stripDoubleSpaceFrom:(NSString *)str {
+- (NSString *)stripDoubleSpaceFrom:(id)str {
+    if(![[str class] isSubclassOfClass:[NSString class]])
+        str = [str stringValue];
     while ([str rangeOfString:@"  "].location != NSNotFound) {
         str = [str stringByReplacingOccurrencesOfString:@"  " withString:@" "];
     }
