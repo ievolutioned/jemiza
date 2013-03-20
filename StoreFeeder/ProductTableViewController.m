@@ -199,6 +199,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
             cell = [[NSBundle mainBundle] loadNibNamed:@"ProductCell-iPhone" owner:self options:nil][0];
     }
     
+    [cell setCellType:([self.dataManager chosenOption] == Normal ? NORMALCELL : ADMINCELL)];
     [cell loadData:self.filteredProducts[[idx intValue]]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
