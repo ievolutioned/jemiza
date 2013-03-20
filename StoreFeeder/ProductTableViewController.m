@@ -34,6 +34,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
              if(loaded)
              {
                  self.filteredProducts = self.dataManager.cachedInfo;
+                 self.tableStructure = [self.dataManager getTableStructure];
                  [self.tableView reloadData];
                  [self loadSearchBar];
              }
@@ -149,22 +150,30 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 
 #pragma mark - Table view data source
 
+-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return [self.tableStructure allKeys];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [[self.tableStructure allKeys] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSString *key = [self.tableStructure allKeys][section];
     // Return the number of rows in the section.
-    return [self.filteredProducts count];
+    return [self.tableStructure[key] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ProductCellIPad";
     ProductCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSString *key = [self.tableStructure allKeys][indexPath.section];
+    NSNumber *idx = self.tableStructure[key][indexPath.row];
     
     if(cell == nil)
     {
@@ -174,7 +183,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
             cell = [[NSBundle mainBundle] loadNibNamed:@"ProductCell-iPhone" owner:self options:nil][0];
     }
     
-    [cell loadData:self.filteredProducts[indexPath.row]];
+    [cell loadData:self.filteredProducts[[idx intValue]]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
     return cell;
@@ -237,7 +246,9 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductDetailViewController *detailViewController;
-    NSDictionary *product = self.filteredProducts[indexPath.row];
+    NSString *key = [self.tableStructure allKeys][indexPath.section];
+    NSNumber *idx = self.tableStructure[key][indexPath.row];
+    NSDictionary *product = self.filteredProducts[[idx intValue]];
     
     Class productDetailType = [self.dataManager chosenOption] == Normal ? [ProductDetailStandardViewController class] : [ProductDetailAdminViewController class];
     NSString *deviceType = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? @"iPad" : @"iPhone";

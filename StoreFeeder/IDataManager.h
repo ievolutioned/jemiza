@@ -23,6 +23,7 @@ typedef enum ChosenUserOption
 -(void)loadProductListWithHandler:(void(^)(BOOL))handler;
 -(void)resyncInfoWithHandler:(void (^)(BOOL, ConnectionResult))handler;
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(BOOL))handler;
+-(NSMutableDictionary *)getTableStructure;
 -(BOOL)checkLogin;
 -(void)goBack;
 -(NSString *)getProfileOfLoggedInUser;

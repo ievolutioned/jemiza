@@ -16,6 +16,7 @@ typedef void(^InfoLoadedBlock)(BOOL);
 typedef void(^ResyncInfoBlock)(BOOL, ConnectionResult);
 @interface ProductTableViewController : UITableViewController<UISearchBarDelegate>
 
+@property(nonatomic, assign) NSMutableDictionary *tableStructure;
 @property(nonatomic, assign) id<IDataManager> dataManager;
 @property(nonatomic, assign) id<IFiltersManager> filterManager;
 @property(nonatomic, retain) NSArray *filteredProducts;

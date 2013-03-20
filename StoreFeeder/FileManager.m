@@ -57,8 +57,9 @@ NSString *const kLoginFilename = @"login.info";
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(queue, ^{
         NSArray *mapping = @[@"created_at", @"updated_at"];
-        for(NSMutableDictionary *item in json)
-        {
+        NSMutableArray *objectsToDelete = [NSMutableArray new];
+        [json enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSMutableDictionary *item = ((NSMutableDictionary *)obj);
             [mapping enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 if([item valueForKeyPath:obj] != [NSNull null])
                 {
@@ -69,9 +70,22 @@ NSString *const kLoginFilename = @"login.info";
                     [item setValue:date forKeyPath:obj];
                 }
             }];
+            
+            if(item[@"product_code"] == [NSNull null])
+            {
+                [objectsToDelete addObject:[NSNumber numberWithUnsignedInt:idx]];
+            }
+        }];
+        
+        for(NSNumber *itemIndex in objectsToDelete)
+        {
+            [json removeObjectAtIndex:[itemIndex intValue]];
         }
+        
+        NSSortDescriptor *descriptor = [[[NSSortDescriptor alloc] initWithKey:@"product_code"  ascending:YES] autorelease];
+        NSArray *jsonCopy = [json sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
         dispatch_async(dispatch_get_main_queue(), ^{
-            handler(json);
+            handler(jsonCopy);
         });
     });
 }

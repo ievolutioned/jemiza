@@ -57,8 +57,30 @@
     [self.fileManager loadInfoFromJsonFileWithHandler:^(NSArray *result) {
         self.cachedInfo = result;
         self.filtered = self.cachedInfo;
+        
+        [self generateTableMappingWithInfo];
+        
         handler(self.cachedInfo != nil);
     }];
+}
+
+-(void)generateTableMappingWithInfo
+{
+    self.tableStructureMapping = [[NSMutableDictionary alloc] init];
+    [self.cachedInfo enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMutableDictionary *item = ((NSMutableDictionary *)obj);
+        NSString *firstLetter = [[item[@"product_code"] substringToIndex:1] capitalizedString];
+        if(self.tableStructureMapping[firstLetter] == nil)
+        {
+            [self.tableStructureMapping setValue:[[NSMutableArray alloc] init] forKey:firstLetter];
+        }
+        [self.tableStructureMapping[firstLetter] addObject:[NSNumber numberWithUnsignedInt:idx]];
+    }];
+}
+
+-(NSMutableDictionary *)getTableStructure
+{
+    return self.tableStructureMapping;
 }
 
 -(void)resyncInfoWithHandler:(void (^)(BOOL, ConnectionResult))handler
