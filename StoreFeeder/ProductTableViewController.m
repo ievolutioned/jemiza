@@ -34,7 +34,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
              if(loaded)
              {
                  self.filteredProducts = self.dataManager.cachedInfo;
-                 self.tableStructure = [self.dataManager getTableStructure];
+                 [self generateTableStructure];
                  [self.tableView reloadData];
                  [self loadSearchBar];
              }
@@ -60,6 +60,22 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
         self.filterManager = theFilterManager;
     }
     return self;
+}
+
+-(void)generateTableStructure
+{
+    if(self.tableStructure)
+        self.tableStructure = nil;
+    self.tableStructure = [[[CHOrderedDictionary alloc] init] autorelease];
+    [self.filteredProducts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMutableDictionary *item = ((NSMutableDictionary *)obj);
+        NSString *firstLetter = [[item[@"product_code"] substringToIndex:1] capitalizedString];
+        if(self.tableStructure[firstLetter] == nil)
+        {
+            [self.tableStructure setValue:[[NSMutableArray alloc] init] forKey:firstLetter];
+        }
+        [self.tableStructure[firstLetter] addObject:[NSNumber numberWithUnsignedInt:idx]];
+    }];
 }
 
 -(void)showErrorMessage:(ConnectionResult)err
@@ -298,6 +314,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     {
         self.filteredProducts = [self applyGlobalFilters];
     }
+    [self generateTableStructure];
     [self.tableView reloadData];
 }
 
