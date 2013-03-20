@@ -28,7 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     _dataMapping = @[@"description", @"barcode", @"warehouse", @"last_purchase", @"last_sale", @"description_category", @"description_sub_family"];
-    _quantitiesMapping = @[@"stock", @"last_cost", @"regular_stock", @"sales_factor", @"purchase_iva", @"sales_iva"];
+    _quantitiesMapping = @[@"stock", @"last_cost", @"regular_stock", @"last_cost_net", @"sales_factor", @"purchase_iva", @"sales_iva"];
     [super loadProductDataIntoView];
 }
 

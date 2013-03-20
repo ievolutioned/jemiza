@@ -53,7 +53,7 @@
 -(void)loadProductDataIntoView
 {
     [self.productDetailLabels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if(self.productData[_dataMapping[idx]] != [NSNull null])
+        if(self.productData[_dataMapping[idx]] != nil && self.productData[_dataMapping[idx]] != [NSNull null])
         {
             NSString *detail = [self stripDoubleSpaceFrom:self.productData[_dataMapping[idx]]];
             [((UILabel *)obj) setText:detail];
@@ -65,7 +65,7 @@
     }];
     
     [self.productQuantitiesLabels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if(self.productData[_quantitiesMapping[idx]] != [NSNull null])
+        if(self.productData[_quantitiesMapping[idx]] != nil && self.productData[_quantitiesMapping[idx]] != [NSNull null])
         {
             float value = [self.productData[_quantitiesMapping[idx]] floatValue];
             [((UILabel *)obj) setText:[NSString stringWithFormat:@"%.2f", value]];
