@@ -10,8 +10,15 @@
 
 @interface ProductCell : UITableViewCell
 
+typedef enum CELLTYPE
+{
+    ADMINCELL,
+    NORMALCELL
+}CELLTYPE;
+
 @property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productInfoList;
 @property(nonatomic, retain) NSArray *dataMapping;
+@property(nonatomic, assign) CELLTYPE cellType;
 -(void)loadData:(NSDictionary *)data;
 
 @end

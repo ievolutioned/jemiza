@@ -13,9 +13,13 @@
 -(void)loadInfoToJsonFile:(NSData *)jsonInfo;
 -(BOOL)saveLoginInfo:(NSDictionary *)loginInfo;
 -(BOOL)checkIfJsonFileExists;
--(NSArray *)loadInfoFromJsonFile;
+-(void)loadInfoFromJsonFileWithHandler:(void(^)(NSArray *))handler;
 -(BOOL)checkIfLoginInfoExists;
 -(void)logout;
 -(NSString *)getProfileOfLoggedInUser;
+-(void)loadFilterInfo:(NSString *)filter toHandler:(void(^)(NSArray *))handler;
+-(NSString *)getAccessTokenOfLoggedInUser;
+
+@property(nonatomic, retain) NSArray *cachedFilteringDataNames;
 
 @end

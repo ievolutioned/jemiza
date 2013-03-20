@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "IDataManager.h"
+#import "IFiltersManager.h"
 
 @interface InfoSelectionViewController : UIViewController
 
 @property(nonatomic, retain) UITableViewController *tableViewController;
 @property(nonatomic, assign) id<IDataManager> dataManager;
+@property(nonatomic, assign) id<IFiltersManager> filterManager;
 
 @end

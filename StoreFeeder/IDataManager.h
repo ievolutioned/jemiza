@@ -7,16 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ConnectionResults.h"
 
 @protocol IDataManager <NSObject>
 
+typedef enum ChosenUserOption
+{
+    Admin,
+    Normal    
+} ChosenUserOption;
+
 @property(nonatomic, retain) NSArray *cachedInfo;
+@property(nonatomic, assign) ChosenUserOption chosenOption;
 
 -(void)loadProductListWithHandler:(void(^)(BOOL))handler;
--(void)resyncInfoWithHandler:(void(^)(BOOL))handler;
+-(void)resyncInfoWithHandler:(void (^)(BOOL, ConnectionResult))handler;
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(BOOL))handler;
 -(BOOL)checkLogin;
--(void)logout;
+-(void)goBack;
 -(NSString *)getProfileOfLoggedInUser;
 
 

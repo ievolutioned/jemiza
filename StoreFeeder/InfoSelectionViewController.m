@@ -8,6 +8,7 @@
 
 #import "InfoSelectionViewController.h"
 #import "ProductTableViewController.h"
+#import <MBProgressHUD.h>
 
 @interface InfoSelectionViewController ()
 
@@ -39,16 +40,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)loadTableview
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = kLoadingInfoText;
+    void(^loadHandler)(BOOL) = ^(BOOL result) {
+        [hud hide:YES];
+        self.tableViewController = [[[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain withDataManager:self.dataManager withFilterManager:self.filterManager] autorelease];
+        [self.navigationController pushViewController:self.tableViewController animated:YES];
+    };
+    
+    if(self.dataManager.cachedInfo == nil)
+        [self.dataManager loadProductListWithHandler:loadHandler];
+    else
+        loadHandler(YES);
+}
+
 -(IBAction)enterSaleView
 {
-    self.tableViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [((ProductTableViewController *)self.tableViewController) setDataManager:self.dataManager];
-    [self.navigationController pushViewController:self.tableViewController animated:YES];
+    [self.dataManager setChosenOption:Normal];
+    [self loadTableview];
 }
 
 -(IBAction)enterAdminView
 {
-    
+    [self.dataManager setChosenOption:Admin];
+    [self loadTableview];
 }
 
 @end

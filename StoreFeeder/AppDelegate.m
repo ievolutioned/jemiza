@@ -22,18 +22,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.masterController = [[MasterController alloc] init];
+    self.masterController = [[[MasterController alloc] init] autorelease];
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         self.loginViewController = [[[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:[NSBundle mainBundle]] autorelease];
     else
         self.loginViewController = [[[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:[NSBundle mainBundle]] autorelease];
     
     [self.loginViewController setDataManager:self.masterController];
-    UISwipeGestureRecognizer *logoutSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self.masterController action:@selector(logout)];
-    [logoutSwipe setNumberOfTouchesRequired:1];
-    [logoutSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.loginViewController setFilterManager:self.masterController];
+    UISwipeGestureRecognizer *backSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self.masterController action:@selector(goBack)];
+    [backSwipe setNumberOfTouchesRequired:1];
+    [backSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
     self.navController = [[[UINavigationController alloc] initWithRootViewController:self.loginViewController] autorelease];
-    [self.navController.navigationBar addGestureRecognizer:logoutSwipe];
+    [self.navController.navigationBar addGestureRecognizer:backSwipe];
+    
+    UIImage *image = [self imageWithColor:[UIColor colorWithRed:.658823529 green:0 blue:.101960784 alpha:1]];
+    [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    
     [self.masterController setNavController:self.navController];
     
     [TestFlight takeOff:@"0f36bcf9-e6fc-4703-b724-59bbd3140139"];
@@ -70,6 +75,22 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Custom methods
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

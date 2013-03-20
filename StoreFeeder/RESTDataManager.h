@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ConnectionResults.h"
 
 @interface RESTDataManager : NSObject
 
--(void)getInfoFromServiceToHandler:(void(^)(NSData*))handler;
+-(void)getInfoFromServiceWithAccessToken:(NSString *)accessToken ToHandler:(void (^)(NSData *, ConnectionResult))handler;
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void(^)(NSDictionary *))handler;
 
 @end
