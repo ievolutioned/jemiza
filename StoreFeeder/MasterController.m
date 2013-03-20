@@ -29,6 +29,7 @@
                                    , @"SubfamilyFilter": @[@"subfamily"]
                                    , @"WarehouseFilter": @[@"warehouse"]};
         self.filters = [[[NSMutableDictionary alloc] init] autorelease];
+        self.ignoreFilters = NO;
     }
     return self;
 }
@@ -229,42 +230,70 @@
 
 -(void)applyFilters
 {
-    __block BOOL firstTime = YES;
-    [self.filters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        NSPredicate *predicate = nil;
-        NSString *valueFromList = nil;
-        if([key isEqualToString:@"category"])
-        {
-            valueFromList = self.categories[[obj intValue]];
-            predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"description_category", valueFromList];
-        }
-        if([key isEqualToString:@"warehouse"])
-        {
-            valueFromList = self.warehouses[[obj intValue]];
-            predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"warehouse", valueFromList];
-        }
-        if([key isEqualToString:@"subfamily"])
-        {
-            valueFromList = self.subfamilies[[obj intValue]];
-            predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"description_sub_family", valueFromList];
-        }
-        if([key isEqualToString:@"from_date"])
-        {
-            predicate = [NSPredicate predicateWithFormat:@"%K >= %@", @"created_at", obj];
-        }
-        if([key isEqualToString:@"to_date"])
-        {
-            predicate = [NSPredicate predicateWithFormat:@"%K <= %@", @"created_at", obj];
-        }
-        NSArray *filteredCopy;
-        if(firstTime)
-            filteredCopy = [[self.cachedInfo copy] autorelease];
-        else
-            filteredCopy = [[self.filtered copy] autorelease];
-        firstTime = NO;
-        self.filtered = [filteredCopy filteredArrayUsingPredicate:predicate];
-        NSLog(@"Obtenidos %d objectos filtrados de %d originalmente con filtro %@", [self.filtered count], [filteredCopy count], key);
-    }];
+    if(!self.ignoreFilters)
+    {
+        __block BOOL firstTime = YES;
+        [self.filters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            NSPredicate *predicate = nil;
+            NSString *valueFromList = nil;
+            if([key isEqualToString:@"category"])
+            {
+                valueFromList = self.categories[[obj intValue]];
+                predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"description_category", valueFromList];
+            }
+            if([key isEqualToString:@"warehouse"])
+            {
+                valueFromList = self.warehouses[[obj intValue]];
+                predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"warehouse", valueFromList];
+            }
+            if([key isEqualToString:@"subfamily"])
+            {
+                valueFromList = self.subfamilies[[obj intValue]];
+                predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", @"description_sub_family", valueFromList];
+            }
+            if([key isEqualToString:@"from_date"])
+            {
+                predicate = [NSPredicate predicateWithFormat:@"%K >= %@", @"updated_at", obj];
+            }
+            if([key isEqualToString:@"to_date"])
+            {
+                predicate = [NSPredicate predicateWithFormat:@"%K <= %@", @"updated_at", obj];
+            }
+            NSArray *filteredCopy;
+            if(firstTime)
+                filteredCopy = [[self.cachedInfo copy] autorelease];
+            else
+                filteredCopy = [[self.filtered copy] autorelease];
+            firstTime = NO;
+            self.filtered = [filteredCopy filteredArrayUsingPredicate:predicate];
+            NSLog(@"Obtenidos %d objectos filtrados de %d originalmente con filtro %@", [self.filtered count], [filteredCopy count], key);
+        }];
+    }
+    else
+    {
+        NSLog(@"Ignorando filtros");
+        self.ignoreFilters = NO;
+        self.filters = nil;
+        
+        self.filtered = self.cachedInfo;
+    }
+}
+
+-(void)markToDeleteFilters
+{
+    self.ignoreFilters = YES;
+}
+
+-(void)createFilterBackup
+{
+    self.filtersBackup = [self.filters copy];
+}
+
+-(void)cancelFilteringOperation
+{
+    NSLog(@"Cancelando filtros");
+    self.filters = nil;
+    self.filters = self.filtersBackup;
 }
 
 @end

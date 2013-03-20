@@ -20,6 +20,9 @@
 -(void)loadFilteringDataWithHandler:(void(^)(BOOL))handler;
 -(BOOL)checkIfFilteringDataIsLoaded;
 -(void)applyFilters;
+-(void)markToDeleteFilters;
+-(void)createFilterBackup;
+-(void)cancelFilteringOperation;
 
 @property(nonatomic, retain)NSDictionary *filtersDataSource;
 

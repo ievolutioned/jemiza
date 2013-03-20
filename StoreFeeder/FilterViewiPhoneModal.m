@@ -33,6 +33,8 @@
 
 -(void)loadAccordionView
 {
+    [self.filtersManager createFilterBackup];
+    
     self.headers = [[[NSMutableArray alloc] init] autorelease];
     self.margin = UIEdgeInsetsMake(40, 20, 20, 20);
     UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 230, 380)];
@@ -54,9 +56,9 @@
         [self.headers addObject:header];
         
         MasterFilterComponentViewController *content = [[MasterFilterComponentViewController alloc] initWithNibName:[NSString stringWithFormat:@"%@%@", obj[@"nibName"], deviceSugar] bundle:[NSBundle mainBundle]];
+        [content setFiltersManager:self.filtersManager];
         content.view.layer.cornerRadius = 6;
         content.view.layer.masksToBounds = YES;
-        [content setFiltersManager:self.filtersManager];
         
         [accordion addHeader:header withView:content.view];
     }];
@@ -73,8 +75,6 @@
     [accordion setAllowsMultipleSelection:NO];
     
     [self loadButtons];
-    
-    self.closeButton.hidden = YES;
 }
 
 -(void)loadButtons
@@ -85,6 +85,7 @@
     [save setContentMode:UIViewContentModeScaleAspectFit];
     [save setTitle:@"Filtrar" forState:UIControlStateNormal];
     [save setBackgroundColor:[UIColor colorWithRed:0 green:.188235294 blue:.635294118 alpha:1]];
+    [save addTarget:self action:@selector(sendFilterInfo) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *delete = [[UIButton alloc] initWithFrame:CGRectMake(130, 330, 100, 60)];
     delete.layer.cornerRadius = 5;
@@ -93,6 +94,13 @@
     [delete setContentMode:UIViewContentModeScaleToFill];
     [delete setTitle:@"Eliminar filtros" forState:UIControlStateNormal];
     [delete setBackgroundColor:[UIColor colorWithRed:.658823529 green:0 blue:.101960784 alpha:1]];
+    [delete addTarget:self action:@selector(deleteFilterInfo) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *cancel = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    [cancel setBackgroundColor:[UIColor clearColor]];
+    [cancel addTarget:self action:@selector(cancelFilterInfo) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self addSubview:cancel];
     
     [self.contentView addSubview:save];
     [self.contentView addSubview:delete];
@@ -115,6 +123,23 @@
     {
         [self loadAccordionView];
     }
+}
+
+-(void)sendFilterInfo
+{
+    [self performSelector:@selector(closePressed:) withObject:nil];
+}
+
+-(void)deleteFilterInfo
+{
+    [self.filtersManager markToDeleteFilters];
+    [self performSelector:@selector(closePressed:) withObject:nil];
+}
+
+-(void)cancelFilterInfo
+{
+    [self.filtersManager cancelFilteringOperation];
+    [self performSelector:@selector(closePressed:) withObject:nil];
 }
 
 @end
