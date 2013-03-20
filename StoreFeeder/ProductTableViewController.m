@@ -78,15 +78,23 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 {
     [super viewDidLoad];
     
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openFilterView)];
-    [tapRecognizer setNumberOfTouchesRequired:2];
-    [self.view addGestureRecognizer:tapRecognizer];
-
     self.title = @"Productos de abarrote";
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     [self.navigationItem setHidesBackButton:YES];
     
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(syncData)]];
+    UIButton *sync = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [sync setBackgroundImage:[UIImage imageNamed:@"actualizar_btn_up.png"] forState:UIControlStateNormal];
+    [sync setBackgroundImage:[UIImage imageNamed:@"actualizar_btn_down.png"] forState:UIControlStateSelected];
+    [sync addTarget:self action:@selector(syncData) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *customRightBarButton = [[UIBarButtonItem alloc] initWithCustomView:sync];
+    [self.navigationItem setRightBarButtonItem:customRightBarButton];
+    
+    UIButton *filter = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [filter setBackgroundImage:[UIImage imageNamed:@"filtros_btn_up.png"] forState:UIControlStateNormal];
+    [filter setBackgroundImage:[UIImage imageNamed:@"filtros_btn_down.png"] forState:UIControlStateSelected];
+    [filter addTarget:self action:@selector(openFilterView) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *customLeftBarButton = [[UIBarButtonItem alloc] initWithCustomView:filter];
+    [self.navigationItem setLeftBarButtonItem:customLeftBarButton];
     
     [self loadHud:kLoadingInfoText];
     if(self.dataManager.cachedInfo == nil)
@@ -246,6 +254,17 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     UIViewController *mainController = [[[UIViewController alloc] init] autorelease];
     [mainController setView:mainScrollView];
     mainController.title = [NSString stringWithFormat:@"Identificador - %@", product[@"product_code"]];
+    
+    mainController.navigationItem.hidesBackButton = YES;
+    
+    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [back setBackgroundImage:[UIImage imageNamed:@"regresar_btn_up.png"] forState:UIControlStateNormal];
+    [back setBackgroundImage:[UIImage imageNamed:@"regresar_btn_down.png"] forState:UIControlStateSelected];
+    [back addTarget:self.dataManager action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *customBackBarButton = [[UIBarButtonItem alloc] initWithCustomView:back];
+    [customBackBarButton setAction:@selector(goBack)];
+    [customBackBarButton setTarget:self.dataManager];
+    [mainController.navigationItem setLeftBarButtonItem:customBackBarButton];
 
     [self.navigationController pushViewController:mainController animated:YES];
 }

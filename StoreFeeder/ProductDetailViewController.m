@@ -30,6 +30,11 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (NSString *)stripDoubleSpaceFrom:(id)str {
     if(![[str class] isSubclassOfClass:[NSString class]])
         str = [str stringValue];
