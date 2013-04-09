@@ -12,8 +12,8 @@
 
 @interface InfoSelectionViewController : UIViewController
 
-@property(nonatomic, retain) UITableViewController *tableViewController;
-@property(nonatomic, assign) id<IDataManager> dataManager;
-@property(nonatomic, assign) id<IFiltersManager> filterManager;
+@property(nonatomic, strong) UITableViewController *tableViewController;
+@property(nonatomic, weak) id<IDataManager> dataManager;
+@property(nonatomic, weak) id<IFiltersManager> filterManager;
 
 @end

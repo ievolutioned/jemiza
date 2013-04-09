@@ -12,18 +12,18 @@
 #import "FileManager.h"
 #import "IFiltersManager.h"
 
-@interface MasterController : NSObject<IDataManager, IFiltersManager>
+@interface MasterController : NSObject<IDataManager, IFiltersManager, UIAlertViewDelegate>
 
-@property(nonatomic, retain)RESTDataManager *restDataManager;
-@property(nonatomic, retain)FileManager *fileManager;
-@property(nonatomic, assign)UINavigationController *navController;
-@property(nonatomic, retain)NSMutableDictionary *filters;
-@property(nonatomic, retain)NSMutableDictionary *filtersBackup;
-@property(nonatomic, retain)NSArray *categories;
-@property(nonatomic, retain)NSArray *subfamilies;
-@property(nonatomic, retain)NSArray *warehouses;
-@property(nonatomic, retain)NSString *accessToken;
-@property(nonatomic, retain)NSArray *filtered;
+@property(nonatomic, strong)RESTDataManager *restDataManager;
+@property(nonatomic, strong)FileManager *fileManager;
+@property(nonatomic, weak)UINavigationController *navController;
+@property(nonatomic, strong)NSMutableDictionary *filters;
+@property(nonatomic, strong)NSMutableDictionary *filtersBackup;
+@property(nonatomic, strong)NSArray *categories;
+@property(nonatomic, strong)NSArray *subfamilies;
+@property(nonatomic, strong)NSArray *warehouses;
+@property(nonatomic, strong)NSString *accessToken;
+@property(nonatomic, strong)NSArray *filtered;
 @property(nonatomic, assign)BOOL ignoreFilters;
 
 @end

@@ -13,8 +13,8 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, retain) UINavigationController *navController;
-@property (nonatomic, retain) LoginViewController *loginViewController;
-@property(nonatomic, retain) MasterController *masterController;
+@property (nonatomic, strong) UINavigationController *navController;
+@property (nonatomic, strong) LoginViewController *loginViewController;
+@property(nonatomic, strong) MasterController *masterController;
 
 @end

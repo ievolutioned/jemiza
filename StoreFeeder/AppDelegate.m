@@ -13,27 +13,22 @@
 
 @implementation AppDelegate
 
-- (void)dealloc
-{
-    [_window release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.masterController = [[[MasterController alloc] init] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.masterController = [[MasterController alloc] init];
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        self.loginViewController = [[[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:[NSBundle mainBundle]] autorelease];
+        self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:[NSBundle mainBundle]];
     else
-        self.loginViewController = [[[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:[NSBundle mainBundle]] autorelease];
+        self.loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:[NSBundle mainBundle]];
     
     [self.loginViewController setDataManager:self.masterController];
     [self.loginViewController setFilterManager:self.masterController];
     UISwipeGestureRecognizer *backSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self.masterController action:@selector(goBack)];
     [backSwipe setNumberOfTouchesRequired:1];
     [backSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
-    self.navController = [[[UINavigationController alloc] initWithRootViewController:self.loginViewController] autorelease];
+    self.navController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
     [self.navController.navigationBar addGestureRecognizer:backSwipe];
     
     UIImage *image = [self imageWithColor:[UIColor colorWithRed:.658823529 green:0 blue:.101960784 alpha:1]];

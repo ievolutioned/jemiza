@@ -16,11 +16,11 @@
     NSArray *_datesMapping;
 }
 
-@property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productDetailLabels;
-@property(nonatomic, retain) IBOutletCollection(UIView) NSArray *viewAreas;
-@property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productQuantitiesLabels;
-@property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productDatesLabels;
-@property(nonatomic, assign) NSDictionary *productData;
+@property(nonatomic, strong) IBOutletCollection(UILabel) NSArray *productDetailLabels;
+@property(nonatomic, strong) IBOutletCollection(UIView) NSArray *viewAreas;
+@property(nonatomic, strong) IBOutletCollection(UILabel) NSArray *productQuantitiesLabels;
+@property(nonatomic, strong) IBOutletCollection(UILabel) NSArray *productDatesLabels;
+@property(nonatomic, weak) NSDictionary *productData;
 
 - (NSString *)stripDoubleSpaceFrom:(NSString *)str;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil WithData:(NSDictionary *)data;

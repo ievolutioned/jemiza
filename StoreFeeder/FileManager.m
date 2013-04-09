@@ -63,7 +63,7 @@ NSString *const kLoginFilename = @"login.info";
             [mapping enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 if([item valueForKeyPath:obj] != [NSNull null])
                 {
-                    NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
+                    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
                     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
                     
                     NSDate *date = [formatter dateFromString:[item valueForKeyPath:obj]];
@@ -82,7 +82,7 @@ NSString *const kLoginFilename = @"login.info";
             [json removeObjectAtIndex:[itemIndex intValue]];
         }
         
-        NSSortDescriptor *descriptor = [[[NSSortDescriptor alloc] initWithKey:@"product_code"  ascending:YES] autorelease];
+        NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"product_code"  ascending:YES];
         NSArray *jsonCopy = [json sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
         dispatch_async(dispatch_get_main_queue(), ^{
             handler(jsonCopy);

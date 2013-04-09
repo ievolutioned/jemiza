@@ -11,13 +11,13 @@
 
 @interface MasterFilterComponentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property(nonatomic, retain) IBOutletCollection(UITextField) NSArray *dateTextFields;
-@property(nonatomic, retain) IBOutlet UIView *datePicker;
-@property(nonatomic, assign) id<IFiltersManager> filtersManager;
-@property(nonatomic, retain) NSArray *dataSource;
+@property(nonatomic, strong) IBOutletCollection(UITextField) NSArray *dateTextFields;
+@property(nonatomic, strong) IBOutlet UIView *datePicker;
+@property(nonatomic, weak) id<IFiltersManager> filtersManager;
+@property(nonatomic, strong) NSArray *dataSource;
 
-@property(nonatomic, retain) IBOutlet UITableView *dataTable;
-@property(nonatomic, assign) NSArray *filteringData;
+@property(nonatomic, strong) IBOutlet UITableView *dataTable;
+@property(nonatomic, weak) NSArray *filteringData;
 
 
 -(IBAction)datePickerValueChanged:(id)sender;

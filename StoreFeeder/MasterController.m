@@ -11,24 +11,19 @@
 @implementation MasterController
 @synthesize cachedInfo, filtersDataSource, chosenOption;
 
--(void)dealloc
-{
-    [super dealloc];
-    self.filtersDataSource = nil;
-}
 
 -(id)init
 {
     self = [super init];
     if(self)
     {
-        self.restDataManager = [[[RESTDataManager alloc] init] autorelease];
-        self.fileManager = [[[FileManager alloc] init] autorelease];
+        self.restDataManager = [[RESTDataManager alloc] init];
+        self.fileManager = [[FileManager alloc] init];
         self.filtersDataSource = @{@"DateFilter": @[@"from_date", @"to_date"]
                                    , @"CategoryFilter": @[@"category"]
                                    , @"SubfamilyFilter": @[@"subfamily"]
                                    , @"WarehouseFilter": @[@"warehouse"]};
-        self.filters = [[[NSMutableDictionary alloc] init] autorelease];
+        self.filters = [[NSMutableDictionary alloc] init];
         self.ignoreFilters = NO;
     }
     return self;
@@ -107,8 +102,10 @@
     if(self.navController.viewControllers.count > 1)
     {
         if(self.navController.viewControllers.count == 2)
-            [self.fileManager logout];
-       [self.navController popViewControllerAnimated:YES];
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Salir de sesión" message:@"Esta a punto de salir de su sesión actual ¿Esta seguro?" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Aceptar", nil];
+            [alertView show];
+        }
     }
 }
 
@@ -136,7 +133,7 @@
         }
     }
     self.filters = nil;
-    self.filters = [[[NSMutableDictionary alloc] init] autorelease];
+    self.filters = [[NSMutableDictionary alloc] init];
     [self.filters setValue:filterValue forKeyPath:filterName];
 }
 
@@ -170,7 +167,7 @@
     {
         if([[obj class] isSubclassOfClass:[NSDate class]])
         {
-            NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"dd/MM/yyyy"];
             return [formatter stringFromDate:obj];
         }
@@ -196,7 +193,7 @@
 -(NSArray *)getComponentListForLoggedUser
 {
     NSString *profile = [self getProfileOfLoggedInUser];
-    NSMutableArray *componentList = [[NSMutableArray new] autorelease];
+    NSMutableArray *componentList = [NSMutableArray new];
     [componentList addObject:@{@"nibName": @"DateFilter", @"title": @"Por fecha:"}];
     if(![profile isEqualToString:@"normal"])
     {
@@ -262,9 +259,9 @@
             }
             NSArray *filteredCopy;
             if(firstTime)
-                filteredCopy = [[self.cachedInfo copy] autorelease];
+                filteredCopy = [self.cachedInfo copy];
             else
-                filteredCopy = [[self.filtered copy] autorelease];
+                filteredCopy = [self.filtered copy];
             firstTime = NO;
             self.filtered = [filteredCopy filteredArrayUsingPredicate:predicate];
             NSLog(@"Obtenidos %d objectos filtrados de %d originalmente con filtro %@", [self.filtered count], [filteredCopy count], key);
@@ -295,6 +292,17 @@
     NSLog(@"Cancelando filtros");
     self.filters = nil;
     self.filters = self.filtersBackup;
+}
+
+#pragma mark - AlertViewDelegate
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        [self.fileManager logout];
+        [self.navController popViewControllerAnimated:YES];
+    }
 }
 
 @end

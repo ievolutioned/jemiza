@@ -29,7 +29,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     {
         [self setLoadHandler:^(BOOL loaded)
          {
-             self.tableView.userInteractionEnabled = YES;
+             [self.tableView setUserInteractionEnabled:YES];
              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
              if(loaded)
              {
@@ -66,7 +66,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 {
     if(self.tableStructure)
         self.tableStructure = nil;
-    self.tableStructure = [[[CHOrderedDictionary alloc] init] autorelease];
+    self.tableStructure = [[CHOrderedDictionary alloc] init];
     [self.filteredProducts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSMutableDictionary *item = ((NSMutableDictionary *)obj);
         NSString *firstLetter = [[item[@"product_code"] substringToIndex:1] capitalizedString];
@@ -273,13 +273,12 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     
     detailViewController = [[productDetailType alloc] initWithNibName:nibName bundle:[NSBundle mainBundle] WithData:product];
     
-    UIScrollView *mainScrollView = [[[UIScrollView alloc] initWithFrame:self.view.frame] autorelease];
+    UIScrollView *mainScrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     [mainScrollView addSubview:detailViewController.view];
     [mainScrollView setContentSize:detailViewController.view.frame.size];
     [mainScrollView setBackgroundColor:[UIColor colorWithRed:.941176471 green:.937254902 blue:.929411765 alpha:0]];
-    [detailViewController release];
     
-    UIViewController *mainController = [[[UIViewController alloc] init] autorelease];
+    UIViewController *mainController = [[UIViewController alloc] init];
     [mainController setView:mainScrollView];
     mainController.title = [NSString stringWithFormat:@"Identificador - %@", product[@"product_code"]];
     

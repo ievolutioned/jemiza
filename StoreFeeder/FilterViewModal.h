@@ -12,7 +12,7 @@
 
 @interface FilterViewModal : UAModalPanel
 
-@property(nonatomic, assign) id<IFiltersManager> filtersManager;
+@property(nonatomic, weak) id<IFiltersManager> filtersManager;
 
 -(void)loadView;
 

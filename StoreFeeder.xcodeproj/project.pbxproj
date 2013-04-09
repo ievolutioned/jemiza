@@ -48,11 +48,6 @@
 		2EFA3D3916EFBBE2002F9B42 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D3816EFBBE2002F9B42 /* Default.png */; };
 		2EFA3D3B16EFBBE2002F9B42 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D3A16EFBBE2002F9B42 /* Default@2x.png */; };
 		2EFA3D3D16EFBBE2002F9B42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D3C16EFBBE2002F9B42 /* Default-568h@2x.png */; };
-		2EFA3D4516EFBBE3002F9B42 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D4416EFBBE3002F9B42 /* SenTestingKit.framework */; };
-		2EFA3D4616EFBBE3002F9B42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D2616EFBBE2002F9B42 /* UIKit.framework */; };
-		2EFA3D4716EFBBE3002F9B42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFA3D2816EFBBE2002F9B42 /* Foundation.framework */; };
-		2EFA3D4F16EFBBE3002F9B42 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D4D16EFBBE3002F9B42 /* InfoPlist.strings */; };
-		2EFA3D5216EFBBE3002F9B42 /* StoreFeederTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D5116EFBBE3002F9B42 /* StoreFeederTests.m */; };
 		2EFA3D5F16EFBDC8002F9B42 /* ProductTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D5E16EFBDC8002F9B42 /* ProductTableViewController.m */; };
 		2EFA3D6216EFBDEB002F9B42 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3D6116EFBDEB002F9B42 /* ProductCell.m */; };
 		2EFA3D6416EFBE34002F9B42 /* ProductCell-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA3D6316EFBE34002F9B42 /* ProductCell-iPad.xib */; };
@@ -77,16 +72,6 @@
 		2EFA3DAF16F24C6F002F9B42 /* LineDrawProductDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA3DAE16F24C6C002F9B42 /* LineDrawProductDetail.m */; };
 		49B73B6C1D7147DE8FF7412E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FABAB9835C8C4708A9828EAC /* libPods.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2EFA3D4816EFBBE3002F9B42 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2EFA3D1B16EFBBE2002F9B42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EFA3D2216EFBBE2002F9B42;
-			remoteInfo = StoreFeeder;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2E38956716F38494003161F0 /* MasterFilterComponentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterFilterComponentViewController.h; sourceTree = "<group>"; };
@@ -140,7 +125,6 @@
 		2EFA3D3816EFBBE2002F9B42 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2EFA3D3A16EFBBE2002F9B42 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2EFA3D3C16EFBBE2002F9B42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		2EFA3D4316EFBBE3002F9B42 /* StoreFeederTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreFeederTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFA3D4416EFBBE3002F9B42 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2EFA3D4C16EFBBE3002F9B42 /* StoreFeederTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StoreFeederTests-Info.plist"; sourceTree = "<group>"; };
 		2EFA3D4E16EFBBE3002F9B42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -194,16 +178,6 @@
 				2EFA3D2916EFBBE2002F9B42 /* Foundation.framework in Frameworks */,
 				2EFA3D2B16EFBBE2002F9B42 /* CoreGraphics.framework in Frameworks */,
 				49B73B6C1D7147DE8FF7412E /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EFA3D3F16EFBBE3002F9B42 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2EFA3D4516EFBBE3002F9B42 /* SenTestingKit.framework in Frameworks */,
-				2EFA3D4616EFBBE3002F9B42 /* UIKit.framework in Frameworks */,
-				2EFA3D4716EFBBE3002F9B42 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				2EFA3D2316EFBBE2002F9B42 /* Jemiza.app */,
-				2EFA3D4316EFBBE3002F9B42 /* StoreFeederTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -459,25 +432,6 @@
 			productReference = 2EFA3D2316EFBBE2002F9B42 /* Jemiza.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2EFA3D4216EFBBE3002F9B42 /* StoreFeederTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2EFA3D5816EFBBE3002F9B42 /* Build configuration list for PBXNativeTarget "StoreFeederTests" */;
-			buildPhases = (
-				2EFA3D3E16EFBBE3002F9B42 /* Sources */,
-				2EFA3D3F16EFBBE3002F9B42 /* Frameworks */,
-				2EFA3D4016EFBBE3002F9B42 /* Resources */,
-				2EFA3D4116EFBBE3002F9B42 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2EFA3D4916EFBBE3002F9B42 /* PBXTargetDependency */,
-			);
-			name = StoreFeederTests;
-			productName = StoreFeederTests;
-			productReference = 2EFA3D4316EFBBE3002F9B42 /* StoreFeederTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -500,7 +454,6 @@
 			projectRoot = "";
 			targets = (
 				2EFA3D2216EFBBE2002F9B42 /* Jemiza */,
-				2EFA3D4216EFBBE3002F9B42 /* StoreFeederTests */,
 			);
 		};
 /* End PBXProject section */
@@ -555,14 +508,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2EFA3D4016EFBBE3002F9B42 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2EFA3D4F16EFBBE3002F9B42 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -579,19 +524,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
-		2EFA3D4116EFBBE3002F9B42 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -621,23 +553,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2EFA3D3E16EFBBE3002F9B42 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2EFA3D5216EFBBE3002F9B42 /* StoreFeederTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2EFA3D4916EFBBE3002F9B42 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EFA3D2216EFBBE2002F9B42 /* Jemiza */;
-			targetProxy = 2EFA3D4816EFBBE3002F9B42 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2EFA3D2F16EFBBE2002F9B42 /* InfoPlist.strings */ = {
@@ -719,12 +635,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA60866EC4FF4870BA444535 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Victor Manuel VALENZUELA MARTINEZ (972VCTC8E2)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6B45BB44-D69F-49A5-9BB1-00D0D4A273ED";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -734,50 +651,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA60866EC4FF4870BA444535 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Victor Manuel VALENZUELA MARTINEZ (972VCTC8E2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Manuel VALENZUELA MARTINEZ (972VCTC8E2)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6B45BB44-D69F-49A5-9BB1-00D0D4A273ED";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6B45BB44-D69F-49A5-9BB1-00D0D4A273ED";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		2EFA3D5916EFBBE3002F9B42 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StoreFeeder.app/StoreFeeder";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "StoreFeeder/StoreFeeder-Prefix.pch";
-				INFOPLIST_FILE = "StoreFeederTests/StoreFeederTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		2EFA3D5A16EFBBE3002F9B42 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StoreFeeder.app/StoreFeeder";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "StoreFeeder/StoreFeeder-Prefix.pch";
-				INFOPLIST_FILE = "StoreFeederTests/StoreFeederTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -798,15 +680,6 @@
 			buildConfigurations = (
 				2EFA3D5616EFBBE3002F9B42 /* Debug */,
 				2EFA3D5716EFBBE3002F9B42 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2EFA3D5816EFBBE3002F9B42 /* Build configuration list for PBXNativeTarget "StoreFeederTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2EFA3D5916EFBBE3002F9B42 /* Debug */,
-				2EFA3D5A16EFBBE3002F9B42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

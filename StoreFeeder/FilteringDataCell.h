@@ -10,6 +10,6 @@
 
 @interface FilteringDataCell : UITableViewCell
 
-@property(nonatomic, retain) IBOutlet UILabel *infoLabel;
+@property(nonatomic, strong) IBOutlet UILabel *infoLabel;
 
 @end

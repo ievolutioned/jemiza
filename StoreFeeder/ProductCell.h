@@ -16,8 +16,8 @@ typedef enum CELLTYPE
     NORMALCELL
 }CELLTYPE;
 
-@property(nonatomic, retain) IBOutletCollection(UILabel) NSArray *productInfoList;
-@property(nonatomic, retain) NSArray *dataMapping;
+@property(nonatomic, strong) IBOutletCollection(UILabel) NSArray *productInfoList;
+@property(nonatomic, strong) NSArray *dataMapping;
 @property(nonatomic, assign) CELLTYPE cellType;
 -(void)loadData:(NSDictionary *)data;
 

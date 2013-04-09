@@ -33,14 +33,15 @@
 
 -(void)loadAccordionView
 {
+    self.masterFilterTables = [NSMutableArray new];
     [self.filtersManager createFilterBackup];
     
-    self.headers = [[[NSMutableArray alloc] init] autorelease];
+    self.headers = [[NSMutableArray alloc] init];
     self.margin = UIEdgeInsetsMake(40, 20, 20, 20);
     UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 230, 380)];
     [self.contentView addSubview:scroll];
     
-    AccordionView *accordion = [[[AccordionView alloc] initWithFrame:CGRectMake(0, 0, 230, 370)] autorelease];
+    __block AccordionView *accordion = [[AccordionView alloc] initWithFrame:CGRectMake(0, 0, 230, 370)];
     [scroll addSubview:accordion];
     
     NSArray *filterComponents = [self.filtersManager getComponentListForLoggedUser];
@@ -48,7 +49,7 @@
     
     [filterComponents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         // Only height is taken into account, so other parameters are just dummy
-        UIButton *header = [[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 30)] autorelease];
+        UIButton *header = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 30)];
         [header setBackgroundColor:[UIColor grayColor]];
         header.layer.cornerRadius = 8;
         header.layer.masksToBounds = YES;
@@ -61,6 +62,7 @@
         content.view.layer.masksToBounds = YES;
         
         [accordion addHeader:header withView:content.view];
+        [self.masterFilterTables addObject:content];
     }];
     int activeFilter;
     if((activeFilter = [self.filtersManager getActiveFilter]) != 0)

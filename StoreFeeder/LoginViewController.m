@@ -96,18 +96,18 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
 {
     if([[self.dataManager getProfileOfLoggedInUser] isEqualToString:@"normal"])
     {
-        self.mainViewController = [[[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain withDataManager:self.dataManager withFilterManager:self.filterManager] autorelease];
+        self.mainViewController = [[ProductTableViewController alloc] initWithStyle:UITableViewStylePlain withDataManager:self.dataManager withFilterManager:self.filterManager];
         [self.dataManager setChosenOption:Normal];
     }
     else
     {
         if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         {
-            self.mainViewController = [[[InfoSelectionViewController alloc] initWithNibName:@"InfoSelectionViewController-iPad" bundle:[NSBundle mainBundle]] autorelease];
+            self.mainViewController = [[InfoSelectionViewController alloc] initWithNibName:@"InfoSelectionViewController-iPad" bundle:[NSBundle mainBundle]];
         }
         else
         {
-            self.mainViewController = [[[InfoSelectionViewController alloc] initWithNibName:@"InfoSelectionViewController-iPhone" bundle:[NSBundle mainBundle]] autorelease];
+            self.mainViewController = [[InfoSelectionViewController alloc] initWithNibName:@"InfoSelectionViewController-iPhone" bundle:[NSBundle mainBundle]];
         }
         [((InfoSelectionViewController *)self.mainViewController) setDataManager:self.dataManager];
         [((InfoSelectionViewController *)self.mainViewController) setFilterManager:self.filterManager];
