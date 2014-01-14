@@ -486,6 +486,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Victor Valenzuela";
+				TargetAttributes = {
+					2EFA3D2216EFBBE2002F9B42 = {
+						DevelopmentTeam = 5P334Q86UT;
+					};
+				};
 			};
 			buildConfigurationList = 2EFA3D1E16EFBBE2002F9B42 /* Build configuration list for PBXProject "StoreFeeder" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -719,12 +724,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA60866EC4FF4870BA444535 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Victor Manuel VALENZUELA MARTINEZ (972VCTC8E2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Omar Guzman (Z87RZKE6Z3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Omar Guzman (Z87RZKE6Z3)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6B45BB44-D69F-49A5-9BB1-00D0D4A273ED";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -734,13 +741,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA60866EC4FF4870BA444535 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Victor Manuel VALENZUELA MARTINEZ (972VCTC8E2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Manuel VALENZUELA MARTINEZ (972VCTC8E2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Omar Guzman (Z87RZKE6Z3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Omar Guzman (Z87RZKE6Z3)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6B45BB44-D69F-49A5-9BB1-00D0D4A273ED";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6B45BB44-D69F-49A5-9BB1-00D0D4A273ED";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

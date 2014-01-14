@@ -43,6 +43,8 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
 
     self.title = @"Inicio de sesión";
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
     if([self.dataManager checkLogin])
        [self completeLogin];
 }

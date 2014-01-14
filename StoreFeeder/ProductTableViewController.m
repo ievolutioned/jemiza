@@ -98,7 +98,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     self.title = @"Productos de abarrote";
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     [self.navigationItem setHidesBackButton:YES];
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     UIButton *sync = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [sync setBackgroundImage:[UIImage imageNamed:@"actualizar_btn_up.png"] forState:UIControlStateNormal];
     [sync setBackgroundImage:[UIImage imageNamed:@"actualizar_btn_down.png"] forState:UIControlStateSelected];
@@ -152,9 +152,9 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
         [searchBar setDelegate:self];
         [self.tableView setTableHeaderView:searchBar];
         
-        self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
+        self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height-20);
         
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
     }
 }
 
