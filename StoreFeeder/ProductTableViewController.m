@@ -26,14 +26,19 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 -(id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
+ 
+   
+    
     if(self)
     {
         [self setLoadHandler:^(BOOL loaded)
          {
              self.tableView.userInteractionEnabled = YES;
-             HUDJMProgress = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-             HUDJMProgress.textLabel.text = kLoadingInfoText;
-             //[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                          //[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [HUDJMProgress dismiss];
+             
+             HUDJMProgress = nil;
+
              if(loaded)
              {
                  self.filteredProducts = self.dataManager.cachedInfo;
@@ -47,7 +52,11 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
          {
              //[self.hud hide:YES];
              if(HUDJMProgress)
+             {
                  [HUDJMProgress dismiss];
+             
+                 HUDJMProgress = nil;
+             }
              if(result == CR_SUCCESS)
                  [self loadInfo];
              else
@@ -121,6 +130,10 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     UIBarButtonItem *customLeftBarButton = [[UIBarButtonItem alloc] initWithCustomView:filter];
     [self.navigationItem setLeftBarButtonItem:customLeftBarButton];
     
+    //HUDJMProgress = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    //HUDJMProgress.textLabel.text = kLoadingInfoText;
+
+    
     [self loadHud:kLoadingInfoText];
     if(self.dataManager.cachedInfo == nil)
         [self loadInfo];
@@ -142,7 +155,18 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 
 -(void)loadHud:(NSString *)text
 {
-    [HUDJMProgress showInView:self.view];
+    if (!HUDJMProgress)
+    {
+    HUDJMProgress = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    HUDJMProgress.textLabel.text = kLoadingInfoText;
+        [HUDJMProgress showInView:self.view];
+    }
+   // else
+   //[HUDJMProgress showInView:self.view];
+
+   
+    
+    
 //    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUDJMProgress.textLabel.text = text;
     self.tableView.userInteractionEnabled = NO;

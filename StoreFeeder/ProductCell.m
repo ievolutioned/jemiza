@@ -42,26 +42,35 @@
     }
     
     [self.productInfoList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        
-        if(data[self.dataMapping[idx]] != [NSNull null])
-        {
-            if([[data[self.dataMapping[idx]] class] isSubclassOfClass:[NSNumber class]])
+       
+            if(data[self.dataMapping[idx]] != [NSNull null])
             {
-                float value = [data[self.dataMapping[idx]] floatValue];
-                if(self.cellType == NORMALCELL)
-                    [((UILabel *)obj) setText:[NSString stringWithFormat:@"%.2f", value]];
+                if([[data[self.dataMapping[idx]] class] isSubclassOfClass:[NSNumber class]])
+                {
+                    float value = [data[self.dataMapping[idx]] floatValue];
+                    if(self.cellType == NORMALCELL)
+                        [((UILabel *)obj) setText:[NSString stringWithFormat:@"%.2f", value]];
+                    else
+                        [((UILabel *)obj) setText:[NSString stringWithFormat:@"$ %.2f", value]];
+                }
                 else
-                    [((UILabel *)obj) setText:[NSString stringWithFormat:@"$ %.2f", value]];
+                {
+                    [((UILabel *)obj) setText:[NSString stringWithFormat:@"%@", data[self.dataMapping[idx]]]];
+                }
             }
             else
             {
-                [((UILabel *)obj) setText:[NSString stringWithFormat:@"%@", data[self.dataMapping[idx]]]];
+                [((UILabel *)obj) setText:@""];
             }
+     @try {
+    }
+        @catch (NSException *exception) {
+            
         }
-        else
-        {
-            [((UILabel *)obj) setText:@""];
+        @finally {
+            
         }
+        
     }];
 }
 
