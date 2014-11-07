@@ -26,4 +26,6 @@
 @property(nonatomic, retain)NSArray *filtered;
 @property(nonatomic, assign)BOOL ignoreFilters;
 
+-(void)pageProductsWithHandler:(int)page withhandler:(void (^)(NSArray *, ConnectionResult))handler;
+
 @end

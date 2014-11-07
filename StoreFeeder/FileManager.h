@@ -20,6 +20,8 @@
 -(void)loadFilterInfo:(NSString *)filter toHandler:(void(^)(NSArray *))handler;
 -(NSString *)getAccessTokenOfLoggedInUser;
 
+-(void)parseDates:(NSMutableArray *)json toHandler:(void(^)(NSArray *))handler;
+
 @property(nonatomic, retain) NSArray *cachedFilteringDataNames;
 
 @end

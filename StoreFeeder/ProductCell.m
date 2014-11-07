@@ -40,7 +40,7 @@
         else
             self.dataMapping = @[@"product_code", @"description", @"last_cost"];
     }
-    
+    NSLog(@"start");
     [self.productInfoList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
        
             if(data[self.dataMapping[idx]] != [NSNull null])
@@ -55,23 +55,17 @@
                 }
                 else
                 {
-                    [((UILabel *)obj) setText:[NSString stringWithFormat:@"%@", data[self.dataMapping[idx]]]];
+                    NSString *str = [NSString stringWithFormat:@"%@", data[self.dataMapping[idx]]];
+                    [((UILabel *)obj) setText:str];
                 }
             }
             else
             {
                 [((UILabel *)obj) setText:@""];
             }
-     @try {
-    }
-        @catch (NSException *exception) {
-            
-        }
-        @finally {
-            
-        }
-        
+            NSLog([NSString stringWithFormat:@"%lu",(unsigned long)idx]);
     }];
+    NSLog(@"fin");
 }
 
 @end

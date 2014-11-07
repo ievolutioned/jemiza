@@ -27,5 +27,6 @@ typedef enum ChosenUserOption
 -(void)goBack;
 -(NSString *)getProfileOfLoggedInUser;
 
+-(void)pageProductsWithHandler:(int)page withhandler:(void (^)(NSArray *, ConnectionResult))handler;
 
 @end

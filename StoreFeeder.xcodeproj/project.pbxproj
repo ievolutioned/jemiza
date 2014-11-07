@@ -546,7 +546,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 012fe126ba85436f7929f19ed414083aa36dd667 9ac61c898eed1212cd31629bf2ac09493dd110fd01945e8e535e61c5969bee3e";
+			shellScript = "./Crashlytics.framework/run 2b0ffb50e0ea57df9f66aed239124e0a9117c7ac 92aa573c41dac82ae8175eefc38ce74df30b3ae6d3bdc174ed14a66938fed883";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -663,8 +663,8 @@
 			baseConfigurationReference = EA60866EC4FF4870BA444535 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -672,9 +672,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "fce47cca-2f3b-440b-987f-3847c0ba44fd";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -684,8 +684,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA60866EC4FF4870BA444535 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -693,10 +693,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoreFeeder/JemizaApp-Prefix.pch";
 				INFOPLIST_FILE = "StoreFeeder/JemizaApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "fce47cca-2f3b-440b-987f-3847c0ba44fd";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "fce47cca-2f3b-440b-987f-3847c0ba44fd";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

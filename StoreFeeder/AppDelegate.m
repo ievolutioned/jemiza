@@ -21,6 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+     [Crashlytics startWithAPIKey:@"2b0ffb50e0ea57df9f66aed239124e0a9117c7ac"];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.masterController = [[[MasterController alloc] init] autorelease];
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -43,11 +44,14 @@
     
     //[TestFlight takeOff:@"c908733a-b366-4740-8d11-f0bf443cd37a"];
     
-    [self.window addSubview:self.navController.view];
+    //[self.window addSubview:self.navController.view];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.window.rootViewController = self.navController;
+    
     [self.window makeKeyAndVisible];
-    [Crashlytics startWithAPIKey:@"012fe126ba85436f7929f19ed414083aa36dd667"];
+   
     return YES;
 }
 

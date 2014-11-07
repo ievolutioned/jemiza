@@ -58,7 +58,13 @@
         self.cachedInfo = result;
         self.filtered = self.cachedInfo;
         
-        handler(self.cachedInfo != nil);
+        result = nil;
+        //self.cachedInfo = nil;
+        self.filtered = nil;
+        
+        BOOL IsCache = self.cachedInfo != nil;
+        
+        handler(IsCache);
     }];
 }
 
@@ -74,6 +80,29 @@
         handler(connResult == CR_SUCCESS, connResult);
     }];
 }
+
+-(void)pageProductsWithHandler:(int)page withhandler:(void (^)(NSArray *, ConnectionResult))handler
+{
+    if(!self.accessToken)
+    {
+        self.accessToken = [self.fileManager getAccessTokenOfLoggedInUser];
+    }
+    
+    [self.restDataManager getPrudutcsByPageFromServiceWithAccessToken:self.accessToken withPage:page ToHandler:^(NSData *data, ConnectionResult connResult) {
+       
+        
+        [self.fileManager parseDates:[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil] toHandler:^(NSArray *result) {
+            if(connResult == CR_SUCCESS)
+                handler(result, connResult);
+            
+        }];
+        
+        
+        
+        
+    }];
+}
+
 
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(BOOL))handler
 {

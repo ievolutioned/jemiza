@@ -14,4 +14,8 @@
 -(void)getInfoFromServiceWithAccessToken:(NSString *)accessToken ToHandler:(void (^)(NSData *, ConnectionResult))handler;
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void(^)(NSDictionary *))handler;
 
+
+
+
+-(void)getPrudutcsByPageFromServiceWithAccessToken:(NSString *)accessToken withPage:(int)Page ToHandler:(void (^)(NSData *, ConnectionResult))handler;
 @end

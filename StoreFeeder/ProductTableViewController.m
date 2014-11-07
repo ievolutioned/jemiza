@@ -21,6 +21,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 @end
 
 @implementation ProductTableViewController
+
 @synthesize HUDJMProgress;
 
 -(id)initWithStyle:(UITableViewStyle)style
@@ -41,7 +42,14 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 
              if(loaded)
              {
-                 self.filteredProducts = self.dataManager.cachedInfo;
+                 
+                 NSMutableArray *items = [[NSMutableArray alloc] init];
+                 
+                 for (int x=0; x <10; x++) {
+                     [items addObject:[self.dataManager.cachedInfo objectAtIndex:x]];
+                 }
+                 
+                 self.filteredProducts = items;//self.dataManager.cachedInfo;
                  [self generateTableStructure];
                  [self.tableView reloadData];
                  [self loadSearchBar];
@@ -62,6 +70,8 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
              else
                  [self showErrorMessage:result];
          }];
+        
+        
     }
     return self;
 }
@@ -76,24 +86,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     return self;
 }
 
--(void)generateTableStructure
-{
-    if(self.tableStructure)
-        self.tableStructure = nil;
-    self.tableStructure = [[[CHOrderedDictionary alloc] init] autorelease];
-    [self.filteredProducts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSMutableDictionary *item = ((NSMutableDictionary *)obj);
-        if([item objectForKey:@"product_code"] != [NSNull null])
-        {
-            NSString *firstLetter = [[item[@"product_code"] substringToIndex:1] capitalizedString];
-            if(self.tableStructure[firstLetter] == nil)
-            {
-                [self.tableStructure setValue:[[NSMutableArray alloc] init] forKey:firstLetter];
-            }
-            [self.tableStructure[firstLetter] addObject:[NSNumber numberWithUnsignedInt:idx]];
-        }
-    }];
-}
+
 
 -(void)showErrorMessage:(ConnectionResult)err
 {
@@ -133,12 +126,75 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     //HUDJMProgress = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     //HUDJMProgress.textLabel.text = kLoadingInfoText;
 
-    
+   
     [self loadHud:kLoadingInfoText];
+    
     if(self.dataManager.cachedInfo == nil)
         [self loadInfo];
     else
         self.loadHandler(YES);
+    
+   pullToRefreshManager_ = [[MNMBottomPullToRefreshManager alloc] initWithPullToRefreshViewHeight:60.0f tableView:self.tableView withClient:self];
+
+      reloads_ = -1;
+    
+    Page = 1;
+}
+
+- (void)viewDidLayoutSubviews {
+    
+    [super viewDidLayoutSubviews];
+    
+    [pullToRefreshManager_ relocatePullToRefreshView];
+}
+
+/*
+ * Loads the table
+ */
+- (void)loadTable {
+
+    
+    
+     [self loadHud:kSyncInfoText];
+    
+    Page ++;
+   
+    [self.dataManager pageProductsWithHandler:Page withhandler:^(NSArray * lst, ConnectionResult result) {
+        
+        //[self.hud hide:YES];
+        if(HUDJMProgress)
+        {
+            [HUDJMProgress dismiss];
+            
+            HUDJMProgress = nil;
+        }
+        if(result == CR_SUCCESS)
+        {
+            NSArray * lstArray = self.filteredProducts;
+            
+            self.filteredProducts = nil;
+            
+            self.filteredProducts = [[NSMutableArray alloc]init];
+            
+            [self.filteredProducts addObjectsFromArray:lstArray];
+            
+            [self.filteredProducts addObjectsFromArray:lst];
+
+            [self generateTableStructure];
+
+            [self.tableView reloadData];
+            
+            [self loadSearchBar];
+
+        }
+        else
+            [self showErrorMessage:result];
+        
+        [pullToRefreshManager_ tableViewReloadFinished];
+
+        
+    }];
+    
 }
 
 -(void)loadInfo
@@ -197,6 +253,33 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     // Dispose of any resources that can be recreated.
 }
 
+-(void)generateTableStructure
+{
+    if(self.tableStructure)
+        self.tableStructure = nil;
+    
+    self.tableStructure = [[[CHOrderedDictionary alloc] init] autorelease];
+    
+    [self.filteredProducts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+        
+        NSMutableDictionary *item = ((NSMutableDictionary *)obj);
+        
+        if([item objectForKey:@"product_code"] != [NSNull null])
+        {
+            NSString *firstLetter = [[item[@"product_code"] substringToIndex:1] capitalizedString];
+            
+            if(self.tableStructure[firstLetter] == nil)
+            {
+                [self.tableStructure setValue:[[NSMutableArray alloc] init] forKey:firstLetter];
+            }
+            
+            [self.tableStructure[firstLetter] addObject:[NSNumber numberWithUnsignedInt:idx]];
+        }
+    }];
+    
+}
+
 #pragma mark - Table view data source
 
 -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -252,45 +335,6 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
         return 78;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -330,6 +374,46 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
     [self.navigationController pushViewController:mainController animated:YES];
 }
 
+#pragma mark -
+#pragma mark MNMBottomPullToRefreshManagerClient
+
+/**
+ * This is the same delegate method as UIScrollView but required in MNMBottomPullToRefreshManagerClient protocol
+ * to warn about its implementation. Here you have to call [MNMBottomPullToRefreshManager tableViewScrolled]
+ *
+ * Tells the delegate when the user scrolls the content view within the receiver.
+ *
+ * @param scrollView: The scroll-view object in which the scrolling occurred.
+ */
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+   [pullToRefreshManager_ tableViewScrolled];
+    [self.view endEditing:YES];
+}
+
+/**
+ * This is the same delegate method as UIScrollView but required in MNMBottomPullToRefreshClient protocol
+ * to warn about its implementation. Here you have to call [MNMBottomPullToRefreshManager tableViewReleased]
+ *
+ * Tells the delegate when dragging ended in the scroll view.
+ *
+ * @param scrollView: The scroll-view object that finished scrolling the content view.
+ * @param decelerate: YES if the scrolling movement will continue, but decelerate, after a touch-up gesture during a dragging operation.
+ */
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [pullToRefreshManager_ tableViewReleased];
+}
+
+/**
+ * Tells client that refresh has been triggered
+ * After reloading is completed must call [MNMBottomPullToRefreshManager tableViewReloadFinished]
+ *
+ * @param manager PTR manager
+ */
+- (void)bottomPullToRefreshTriggered:(MNMBottomPullToRefreshManager *)manager {
+    
+    [self performSelector:@selector(loadTable) withObject:nil afterDelay:1.0f];
+}
+
 #pragma mark - SearchBar delegate
 
 -(NSArray *)applyGlobalFilters
@@ -358,7 +442,7 @@ NSString *const kSyncInfoText = @"Sincronizando info...";
 }
 
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
+-(void)xxx_scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
 }

@@ -12,9 +12,20 @@
 
 -(void)getInfoFromServiceWithAccessToken:(NSString *)accessToken ToHandler:(void (^)(NSData *, ConnectionResult))handler
 {
+    
+    
     NSLog(@"Comenzando bajado de info con token %@", accessToken);
+    
+    // NSURL *urlOld = [NSURL URLWithString:[NSString stringWithFormat:@"http://jemiza.herokuapp.com/admin/products.json?access_token=%@", accessToken]];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://jemiza.herokuapp.com/admin/products.json?access_token=%@", accessToken]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"GET"];
+    
+    [request addValue:@"1" forHTTPHeaderField:@"page"];
+    
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         NSLog(@"Terminado bajado de info");
         if(!error)
@@ -38,6 +49,48 @@
         }
     }];
 }
+
+
+-(void)getPrudutcsByPageFromServiceWithAccessToken:(NSString *)accessToken withPage:(int )Page ToHandler:(void (^)(NSData *, ConnectionResult))handler
+{
+    
+    
+    NSLog(@"Comenzando bajado de info con token %@", accessToken);
+    
+    // NSURL *urlOld = [NSURL URLWithString:[NSString stringWithFormat:@"http://jemiza.herokuapp.com/admin/products.json?access_token=%@", accessToken]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://jemiza.herokuapp.com/admin/products.json?access_token=%@", accessToken]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"GET"];
+    
+    [request addValue:[NSString stringWithFormat:@"%d",Page] forHTTPHeaderField:@"page"];
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSLog(@"Terminado bajado de info");
+        if(!error)
+        {
+            handler(data, CR_SUCCESS);
+        }
+        else
+        {
+            if(error.code == kCFURLErrorTimedOut)
+            {
+                handler(nil, CR_TIMEOUT);
+            }
+            else if(error.code == kCFURLErrorBadURL)
+            {
+                handler(nil, CR_NOTFOUND);
+            }
+            else
+            {
+                handler(nil, CR_ERROR);
+            }
+        }
+    }];
+}
+
 
 -(void)loginWithUsername:(NSString *)username withPassword:(NSString *)password withHandler:(void (^)(NSDictionary *))handler
 {
